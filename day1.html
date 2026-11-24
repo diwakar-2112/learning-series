@@ -1,0 +1,2091 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 1 Mastery — 30-Day Job Switch Roadmap</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-alt: #f1f5f9;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --primary: #1e40af;
+      --primary-light: #dbeafe;
+      --accent: #0f766e;
+      --accent-light: #ccfbf1;
+      --warn-bg: #fffbeb;
+      --warn-border: #f59e0b;
+      --warn-text: #92400e;
+      --danger-bg: #fef2f2;
+      --danger-border: #ef4444;
+      --danger-text: #991b1b;
+      --code-bg: #0f172a;
+      --code-text: #e2e8f0;
+      --shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+      --radius: 10px;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b1120;
+      --surface: #111827;
+      --surface-alt: #1e293b;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --primary: #60a5fa;
+      --primary-light: #1e3a8a;
+      --accent: #2dd4bf;
+      --accent-light: #134e4a;
+      --warn-bg: #292008;
+      --warn-border: #d97706;
+      --warn-text: #fcd34d;
+      --danger-bg: #2c1012;
+      --danger-border: #dc2626;
+      --danger-text: #fca5a5;
+      --code-bg: #020617;
+      --code-text: #e2e8f0;
+      --shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* Layout */
+    .layout {
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: 20px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .brand {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 14px;
+    }
+
+    .brand-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 3px 8px;
+      border-radius: 999px;
+      margin-bottom: 6px;
+    }
+
+    .brand h1 {
+      font-size: 18px;
+      margin: 4px 0 2px;
+      line-height: 1.3;
+    }
+
+    .brand p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .progress-box {
+      background: var(--surface-alt);
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .progress-bar-bg {
+      height: 8px;
+      background: var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-group-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin: 10px 0 4px;
+    }
+
+    .nav-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-links li a {
+      display: block;
+      padding: 6px 10px;
+      border-radius: 6px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13.5px;
+      transition: background 0.15s;
+    }
+
+    .nav-links li a:hover {
+      background: var(--surface-alt);
+      color: var(--primary);
+    }
+
+    .theme-btn {
+      margin-top: auto;
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      background: var(--surface-alt);
+      color: var(--text);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13.5px;
+      font-weight: 600;
+    }
+
+    /* Main Content */
+    .main {
+      max-width: 960px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 32px 36px 80px;
+    }
+
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+
+    .hero h2 {
+      margin: 0 0 8px;
+      font-size: 26px;
+      line-height: 1.25;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .pill {
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px 28px;
+      margin-bottom: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      border-bottom: 2px solid var(--surface-alt);
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-size: 22px;
+      color: var(--primary);
+    }
+
+    .topic-check {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      background: var(--surface-alt);
+      padding: 5px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    h3 {
+      font-size: 18px;
+      margin: 22px 0 10px;
+      color: var(--text);
+    }
+
+    h4 {
+      font-size: 15.5px;
+      margin: 16px 0 8px;
+    }
+
+    p { margin: 0 0 12px; }
+
+    ul, ol {
+      margin: 0 0 14px;
+      padding-left: 22px;
+    }
+
+    li { margin-bottom: 6px; }
+
+    /* Callouts */
+    .callout {
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin: 16px 0;
+      border-left: 4px solid;
+      font-size: 15px;
+    }
+
+    .callout-title {
+      font-weight: 700;
+      font-size: 13.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .callout-analogy {
+      background: var(--primary-light);
+      border-color: var(--primary);
+    }
+
+    .callout-pro {
+      background: var(--accent-light);
+      border-color: var(--accent);
+    }
+
+    .callout-warn {
+      background: var(--warn-bg);
+      border-color: var(--warn-border);
+      color: var(--warn-text);
+    }
+
+    .callout-trap {
+      background: var(--danger-bg);
+      border-color: var(--danger-border);
+      color: var(--danger-text);
+    }
+
+    /* Code */
+    pre {
+      background: var(--code-bg);
+      color: var(--code-text);
+      padding: 16px 18px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 13.8px;
+      line-height: 1.55;
+      margin: 12px 0 16px;
+      border: 1px solid #1e293b;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    p code, li code, td code {
+      background: var(--surface-alt);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.88em;
+      border: 1px solid var(--border);
+    }
+
+    /* Tables */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 14px 0 18px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14.5px;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--surface-alt);
+      font-weight: 700;
+    }
+
+    /* Interactive Details / Accordions */
+    details {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin: 12px 0;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 15px;
+      user-select: none;
+    }
+
+    details[open] summary {
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .qa-item {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+      background: var(--bg);
+    }
+
+    .qa-q {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-right: 6px;
+    }
+
+    .badge-easy { background: #dcfce7; color: #166534; }
+    .badge-med { background: #fef3c7; color: #92400e; }
+    .badge-hard { background: #fee2e2; color: #991b1b; }
+
+    .mobile-bar {
+      display: none;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media (max-width: 920px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar {
+        display: none;
+        position: fixed;
+        inset: 0 auto 0 0;
+        width: 280px;
+        z-index: 30;
+      }
+      .sidebar.open { display: flex; }
+      .mobile-bar { display: flex; }
+      .main { padding: 20px 16px 60px; }
+      .section-card { padding: 18px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="mobile-bar">
+  <strong>Day 1 Mastery — Job Switch</strong>
+  <button onclick="document.querySelector('.sidebar').classList.toggle('open')" style="padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:var(--surface-alt);color:var(--text);">☰ Menu</button>
+</div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-tag">30-Day Job Switch Plan</span>
+      <h1>Day 1 Complete Guide</h1>
+      <p>JS Core • System Design • DSA • AI Kickoff</p>
+    </div>
+
+    <div class="progress-box">
+      <div class="progress-header">
+        <span>Day 1 Progress</span>
+        <span id="progress-text">0 / 11</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="nav-group-title">Master Plan</div>
+      <ul class="nav-links">
+        <li><a href="#dsa-master">0. 134-Problem DSA Master Sheet</a></li>
+      </ul>
+
+      <div class="nav-group-title">Day 1 Core JS (Zero → Hero)</div>
+      <ul class="nav-links">
+        <li><a href="#topic-1">1. let, const &amp; var</a></li>
+        <li><a href="#topic-2">2. Scope &amp; Scope Chain</a></li>
+        <li><a href="#topic-3">3. Hoisting &amp; Execution Context</a></li>
+        <li><a href="#topic-4">4. Closures &amp; Real Use Cases</a></li>
+        <li><a href="#topic-5">5. The "this" Keyword</a></li>
+        <li><a href="#topic-6">6. Arrays Deep Dive</a></li>
+        <li><a href="#topic-7">7. Objects Deep Dive</a></li>
+      </ul>
+
+      <div class="nav-group-title">Practice &amp; Parallel Tracks</div>
+      <ul class="nav-links">
+        <li><a href="#practical-5">8. Day 1 Output: 5 JS Problems</a></li>
+        <li><a href="#ai-track">9. Day 1 AI / Python (30 min)</a></li>
+        <li><a href="#system-design">10. Day 1 System Design</a></li>
+        <li><a href="#dsa-day1">11. Day 1 DSA (3 Problems)</a></li>
+      </ul>
+    </div>
+
+    <button class="theme-btn" id="theme-toggle">🌙 Switch to Dark Mode</button>
+  </aside>
+
+  <main class="main">
+    <!-- HERO -->
+    <div class="hero">
+      <span class="brand-tag">Week 1 • Day 1</span>
+      <h2>JavaScript Internals, System Design Foundations &amp; Arrays/Hashing DSA</h2>
+      <p>
+        <strong>Today's Goal:</strong> Lock down the exact JavaScript fundamentals that eliminate 70% of candidates in Round 1 frontend/full-stack interviews, understand how every web request travels through your <em>Support Operations Center</em>, start your Python/AI parallel track, and conquer the first 3 sequential DSA problems.
+      </p>
+      <div class="hero-meta">
+        <span class="pill">⏱ Core JS: 60–90 min</span>
+        <span class="pill">🏗 System Design: 30 min</span>
+        <span class="pill">🧠 DSA: 30–45 min</span>
+        <span class="pill">🤖 Python/AI: 30 min</span>
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 0: 134-PROBLEM DSA MASTER SHEET                   -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="dsa-master">
+      <div class="section-header">
+        <h2>0. Your 134-Problem Pattern-Wise DSA Master Sheet</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="dsa-plan"> Reviewed Plan</label>
+      </div>
+      <p>
+        You do <strong>not</strong> need 500–600 LeetCode problems to switch into a strong product company as an Angular/Full-Stack engineer. You need <strong>pattern mastery</strong>. Below is a curated <strong>134-problem list</strong> (modeled after NeetCode 150 / Blind 75) organized across <strong>17 patterns</strong> from Easy → Hard. At 3–4 problems/day, you cover the core patterns in ~30–40 days.
+      </p>
+
+      <details>
+        <summary>📋 Click to Expand / Collapse Full 134-Problem DSA Master Roadmap (Checkboxes Saved Locally)</summary>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Done</th>
+                <th>Pattern</th>
+                <th>#</th>
+                <th>Problem Name</th>
+                <th>Difficulty</th>
+                <th>Core Concept</th>
+              </tr>
+            </thead>
+            <tbody id="dsa-master-body">
+              <!-- Populated cleanly via inline script below so checkboxes persist -->
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- TOPIC 1: let, const, var                                  -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="topic-1">
+      <div class="section-header">
+        <h2>1. <code>let</code>, <code>const</code> (and <code>var</code>)</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="t1"> Mastered</label>
+      </div>
+
+      <h3>Beginner Mental Model</h3>
+      <p>
+        Think of variables as labeled storage boxes in memory. JavaScript gives you three keywords to create these boxes: <code>var</code> (the old 1995 way), <code>let</code> (modern changeable box), and <code>const</code> (modern locked label).
+      </p>
+
+      <div class="callout callout-analogy">
+        <span class="callout-title">Real-Life Analogy</span>
+        Imagine a hotel room keycard:
+        <ul>
+          <li><code>let</code> is a whiteboard marker on your room door — you can erase the guest name and write a new one.</li>
+          <li><code>const</code> is an engraved metal nameplate on the door — you cannot swap the nameplate for another door, <em>but</em> the furniture inside that room (object properties / array items) can still be rearranged!</li>
+          <li><code>var</code> is like shouting across the entire floor — no matter which closet (<code>if</code>/<code>for</code> block) you shouted from, everyone on the whole floor (the entire function) hears it and overwrites each other.</li>
+        </ul>
+      </div>
+
+      <h3>Complete Technical Comparison</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th><code>var</code></th>
+              <th><code>let</code></th>
+              <th><code>const</code></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Scope</strong></td>
+              <td>Function-scoped (or Global)</td>
+              <td>Block-scoped <code>{ ... }</code></td>
+              <td>Block-scoped <code>{ ... }</code></td>
+            </tr>
+            <tr>
+              <td><strong>Redeclaration in same scope</strong></td>
+              <td>Allowed (silently overwrites!)</td>
+              <td><code>SyntaxError</code></td>
+              <td><code>SyntaxError</code></td>
+            </tr>
+            <tr>
+              <td><strong>Reassignment</strong></td>
+              <td>Allowed</td>
+              <td>Allowed</td>
+              <td><code>TypeError</code></td>
+            </tr>
+            <tr>
+              <td><strong>Initialize without value?</strong></td>
+              <td>Yes (defaults to <code>undefined</code>)</td>
+              <td>Yes (defaults to <code>undefined</code>)</td>
+              <td>No (<code>SyntaxError: Missing initializer</code>)</td>
+            </tr>
+            <tr>
+              <td><strong>Hoisting behavior</strong></td>
+              <td>Hoisted &amp; initialized to <code>undefined</code></td>
+              <td>Hoisted into <strong>TDZ</strong> (uninitialized)</td>
+              <td>Hoisted into <strong>TDZ</strong> (uninitialized)</td>
+            </tr>
+            <tr>
+              <td><strong>Attaches to global <code>window</code>?</strong></td>
+              <td>Yes (at top level in browser scripts)</td>
+              <td>No (stored in Script/Declarative Env)</td>
+              <td>No</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Deep Dive Cases &amp; Edge Cases</h3>
+
+      <h4>Case 1: The Temporal Dead Zone (TDZ)</h4>
+      <p>
+        The <strong>TDZ</strong> is the time/region between entering a block scope and the line where a <code>let</code> or <code>const</code> variable is declared and initialized. Accessing the variable inside the TDZ throws a <code>ReferenceError</code>.
+      </p>
+<pre><code>{
+  // --- TDZ for 'status' starts here ---
+  console.log(status); // ❌ ReferenceError: Cannot access 'status' before initialization
+  console.log(typeof status); // ❌ STILL ReferenceError! (Unlike undeclared variables!)
+  // --- TDZ ends on the next line ---
+  let status = "OPEN";
+  console.log(status); // ✅ "OPEN"
+}
+
+// Note the weird 'typeof' difference:
+console.log(typeof totallyUndeclaredVar); // ✅ "undefined" (safe)
+// Inside a TDZ, typeof throws ReferenceError!</code></pre>
+
+      <h4>Case 2: <code>const</code> Means Constant Binding, NOT Immutable Value</h4>
+      <p>
+        For primitive values (<code>number</code>, <code>string</code>, <code>boolean</code>), <code>const</code> locks the value. For reference types (<code>Object</code>, <code>Array</code>), <code>const</code> only locks the <strong>memory address pointer</strong>, not the contents inside.
+      </p>
+<pre><code>const ticket = { id: 101, priority: "LOW" };
+ticket.priority = "HIGH"; // ✅ Works! Same object reference, property mutated.
+// ticket = { id: 102 };  // ❌ TypeError: Assignment to constant variable.
+
+const tags = ["angular", "ts"];
+tags.push("rxjs");        // ✅ Works! Array content changed.
+// tags = ["react"];      // ❌ TypeError!
+
+// If you want true shallow immutability:
+const frozenTicket = Object.freeze({ id: 101, priority: "LOW" });
+frozenTicket.priority = "HIGH"; // Fails silently in non-strict mode, TypeError in strict mode!</code></pre>
+
+      <h4>Case 3: <code>var</code> Leaking Out of <code>if</code> and <code>for</code> Blocks</h4>
+<pre><code>if (true) {
+  var leaked = "I escaped the block!";
+  let contained = "I stay inside!";
+}
+console.log(leaked);    // ✅ "I escaped the block!"
+// console.log(contained); // ❌ ReferenceError: contained is not defined</code></pre>
+
+      <div class="callout callout-pro">
+        <span class="callout-title">Angular &amp; Full-Stack Production Rule</span>
+        Always default to <code>const</code>. Only switch to <code>let</code> when reassignment is genuinely required (e.g., loop counters, accumulators, retry attempts). Never use <code>var</code> in modern TypeScript/Angular/Node codebases. Also remember: in Angular (<code>OnPush</code> change detection) and React/Redux, mutating a <code>const</code> object/array in place breaks reference equality checks (<code>prev === next</code>), causing UI updates not to trigger!
+      </div>
+
+      <h3>Interview Questions &amp; Practice Problems</h3>
+
+      <div class="qa-item">
+        <div class="qa-q">Q1 (Interview): What is the difference between <code>undefined</code> and <code>ReferenceError: x is not defined</code> vs <code>ReferenceError: Cannot access 'x' before initialization</code>?</div>
+        <details>
+          <summary>Show Answer</summary>
+          <ul>
+            <li><code>undefined</code>: The variable exists in memory (e.g., hoisted <code>var</code> or declared <code>let a;</code>) and currently holds no assigned value.</li>
+            <li><code>x is not defined</code>: <code>x</code> was never declared anywhere in the current scope chain.</li>
+            <li><code>Cannot access 'x' before initialization</code>: <code>x</code> <em>was</em> declared using <code>let</code>/<code>const</code>/<code>class</code> in the current scope, so the engine knows it exists, but you tried to read it while it is still inside its <strong>Temporal Dead Zone (TDZ)</strong>.</li>
+          </ul>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q2 (Predict Output): What will this code log and why?</div>
+<pre><code>let x = 10;
+function test() {
+  console.log(x);
+  let x = 20;
+}
+test();</code></pre>
+        <details>
+          <summary>Show Answer</summary>
+          <p><strong>Output:</strong> <code>ReferenceError: Cannot access 'x' before initialization</code>.</p>
+          <p><strong>Why:</strong> Even though outer <code>x = 10</code> exists, the inner <code>let x = 20</code> hoists inside <code>test()</code> and creates a local TDZ for <code>x</code> from the top of <code>test()</code> until line <code>let x = 20</code>. The local <code>x</code> shadows the outer <code>x</code>, so JS does not fall back to outer <code>x = 10</code>.</p>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q3 (Practice Coding): Safely update a user settings object declared with <code>const</code> without mutating the original object, and verify the original remains untouched.</div>
+        <details>
+          <summary>Show Solution</summary>
+<pre><code>const defaultSettings = { theme: "light", notifications: true, retries: 3 };
+
+// Wrong (mutates original):
+// defaultSettings.theme = "dark";
+
+// Right (creates new reference):
+const updatedSettings = {
+  ...defaultSettings,
+  theme: "dark"
+};
+
+console.log(defaultSettings.theme); // "light"
+console.log(updatedSettings.theme); // "dark"
+console.log(defaultSettings === updatedSettings); // false</code></pre>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- TOPIC 2: Scope & Scope Chain                              -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="topic-2">
+      <div class="section-header">
+        <h2>2. Scope &amp; Scope Chain (Lexical Scope)</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="t2"> Mastered</label>
+      </div>
+
+      <h3>Beginner Mental Model</h3>
+      <p>
+        <strong>Scope</strong> answers one question: <em>"Where in my code is this variable visible and accessible?"</em>
+      </p>
+
+      <div class="callout callout-analogy">
+        <span class="callout-title">Real-Life Analogy: One-Way Tinted Glass Building</span>
+        Imagine nested glass rooms: Outer Room (Global) → Middle Room (Function) → Inner Room (Block).
+        If you are standing in the Inner Room, you can look <strong>outward</strong> through the one-way glass and see variables in the Middle and Outer rooms. However, someone in the Outer Room <strong>cannot</strong> see inside the Inner Room!
+      </div>
+
+      <h3>The 4 Types of Scope in JavaScript</h3>
+      <ol>
+        <li><strong>Global Scope:</strong> Declared outside all functions/blocks. Accessible everywhere. (Avoid polluting it!)</li>
+        <li><strong>Function (Local) Scope:</strong> Created whenever a function is invoked. Parameters and variables inside belong only to that function.</li>
+        <li><strong>Block Scope:</strong> Created by <code>{ ... }</code> (<code>if</code>, <code>for</code>, <code>while</code>, standalone blocks) for <code>let</code>, <code>const</code>, and <code>class</code> (and functions in strict mode).</li>
+        <li><strong>Module Scope:</strong> Every ES Module file (<code>.ts</code> / <code>.mjs</code> in Angular, React, Node) has its own private top-level scope. Nothing leaks globally unless explicitly <code>export</code>ed.</li>
+      </ol>
+
+      <h3>Lexical Scope &amp; The Scope Chain (How the Engine Resolves Variables)</h3>
+      <p>
+        JavaScript uses <strong>Lexical (Static) Scope</strong>. This means a function's outer scope is determined by <strong>where the function was written in the source code</strong>, NOT where it was called from!
+      </p>
+      <p>
+        When JavaScript looks up a variable:
+      </p>
+      <ol>
+        <li>Check the current <strong>Lexical Environment</strong>.</li>
+        <li>If not found, follow the hidden <code>[[OuterEnv]]</code> pointer to the parent Lexical Environment.</li>
+        <li>Keep walking up the <strong>Scope Chain</strong> until reaching the Global Environment.</li>
+        <li>If still not found → throw <code>ReferenceError</code> (or in non-strict mode, accidentally create a global variable if assigning!).</li>
+      </ol>
+
+<pre><code>const envName = "GLOBAL";
+
+function outer() {
+  const secret = "FROM_OUTER";
+
+  function inner() {
+    const local = "FROM_INNER";
+    // Scope Chain: inner -> outer -> global
+    console.log(local);   // found in inner
+    console.log(secret);  // found in outer
+    console.log(envName); // found in global
+  }
+
+  return inner;
+}
+
+function caller() {
+  const secret = "FROM_CALLER";
+  const fn = outer();
+  fn(); // Logs "FROM_OUTER", NOT "FROM_CALLER"! (Lexical scope!)
+}
+
+caller();</code></pre>
+
+      <h3>Variable Shadowing &amp; Illegal Shadowing</h3>
+      <p>
+        <strong>Shadowing</strong> happens when an inner scope declares a variable with the exact same name as an outer scope variable. The inner variable temporarily "hides" the outer one.
+      </p>
+<pre><code>let role = "VIEWER";
+
+function checkAccess() {
+  let role = "ADMIN"; // ✅ Valid shadowing (block/function scope)
+  console.log(role);  // "ADMIN"
+}
+checkAccess();
+console.log(role);    // "VIEWER"
+
+// ILLEGAL SHADOWING:
+let count = 10;
+if (true) {
+  // var count = 20; // ❌ SyntaxError: Identifier 'count' has already been declared
+  // Why? Because 'var' tries to cross out of the 'if' block into the same scope as 'let count'!
+}
+
+// Note: The reverse IS legal:
+var mode = "dev";
+if (true) {
+  let mode = "prod"; // ✅ Legal! 'let' stays confined inside the 'if' block.
+}</code></pre>
+
+      <div class="callout callout-trap">
+        <span class="callout-title">Interview Trap: Accidental Global Variable</span>
+        In non-strict mode, writing <code>function f() { count = 5; }</code> without <code>let/const/var</code> walks up the scope chain, doesn't find <code>count</code>, and silently creates <code>window.count = 5</code>! In ES Modules, TypeScript, and Angular (which run in <code>"use strict"</code> mode automatically), this throws a <code>ReferenceError</code>.
+      </div>
+
+      <h3>Interview Questions &amp; Practice Problems</h3>
+
+      <div class="qa-item">
+        <div class="qa-q">Q1 (Interview): What is the difference between Lexical Scope and Dynamic Scope? Which does JS use?</div>
+        <details>
+          <summary>Show Answer</summary>
+          <p>
+            <strong>Lexical Scope</strong> binds a function's variable lookup to where the function is <em>physically defined</em> in the code. <strong>Dynamic Scope</strong> binds it to where the function is <em>called</em> on the runtime call stack. JavaScript uses <strong>Lexical Scope</strong> for all variables (though the <code>this</code> keyword behaves dynamically depending on the call site!).
+          </p>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q2 (Predict Output): What gets logged here?</div>
+<pre><code>var a = 1;
+function first() {
+  console.log(a);
+}
+function second() {
+  var a = 2;
+  first();
+}
+second();</code></pre>
+        <details>
+          <summary>Show Answer</summary>
+          <p><strong>Output:</strong> <code>1</code>.</p>
+          <p><strong>Why:</strong> <code>first()</code> was defined in the Global Scope, so its outer lexical reference points to Global, even though it was invoked inside <code>second()</code>.</p>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q3 (Practice): Fix the following function so it neither causes illegal shadowing nor leaks variables globally.</div>
+<pre><code>let status = "idle";
+function update(flag) {
+  if (flag) {
+    var status = "loading"; // wait: why does this work or fail?
+    serverUrl = "https://api.example.com";
+  }
+  return status;
+}</code></pre>
+        <details>
+          <summary>Show Solution &amp; Explanation</summary>
+          <p>Notice <code>var status = "loading"</code> inside a <em>function</em> actually does NOT fail illegal shadowing because <code>var</code> stops at the function boundary! However, <code>serverUrl</code> has no declaration and leaks globally (or throws in strict mode). Also <code>var status</code> hoists to the top of <code>update()</code>, so if <code>flag</code> is <code>false</code>, <code>update(false)</code> returns <code>undefined</code> instead of <code>"idle"</code>! Fix:</p>
+<pre><code>let status = "idle";
+function update(flag) {
+  const serverUrl = "https://api.example.com";
+  if (flag) {
+    const localStatus = "loading";
+    return { localStatus, serverUrl };
+  }
+  return { localStatus: status, serverUrl };
+}</code></pre>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- TOPIC 3: Hoisting                                         -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="topic-3">
+      <div class="section-header">
+        <h2>3. Hoisting &amp; Execution Context</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="t3"> Mastered</label>
+      </div>
+
+      <h3>Beginner Mental Model</h3>
+      <p>
+        Many tutorials say <em>"Hoisting moves declarations to the top of the file."</em> Your code doesn't actually move! Instead, the JavaScript engine reads every scope in <strong>two phases</strong> before running a single line:
+      </p>
+      <ol>
+        <li><strong>Phase 1 — Memory Creation Phase (Compilation/Setup):</strong> The engine scans the scope for all declarations (<code>var</code>, <code>let</code>, <code>const</code>, <code>function</code>, <code>class</code>) and reserves memory slots for them.</li>
+        <li><strong>Phase 2 — Code Execution Phase:</strong> The engine runs line by line, assigning values and executing functions.</li>
+      </ol>
+
+      <div class="callout callout-analogy">
+        <span class="callout-title">Real-Life Analogy</span>
+        Think of setting up a theater stage before the play starts:
+        <ul>
+          <li><code>function</code> declaration → The actor is already on stage in full costume before Scene 1 begins (you can call it above its definition!).</li>
+          <li><code>var</code> → An empty chair labeled with the actor's name and a sticky note saying <code>undefined</code>.</li>
+          <li><code>let</code> / <code>const</code> / <code>class</code> → A reserved chair wrapped in yellow caution tape (the <strong>TDZ</strong>). Nobody can sit in it until the exact line in the script where they enter!</li>
+        </ul>
+      </div>
+
+      <h3>All 5 Hoisting Rules Side-by-Side</h3>
+<pre><code>// 1. Function Declaration -> Fully hoisted (name + body)
+greet(); // ✅ "Hello!"
+function greet() {
+  console.log("Hello!");
+}
+
+// 2. var -> Hoisted & initialized to undefined
+console.log(port); // ✅ undefined
+var port = 3000;
+
+// 3. let / const -> Hoisted, UNINITIALIZED (TDZ -> ReferenceError)
+// console.log(apiKey); // ❌ ReferenceError: Cannot access 'apiKey' before initialization
+const apiKey = "xyz";
+
+// 4. Function Expression with var -> Variable is undefined, NOT a function!
+// sayBye(); // ❌ TypeError: sayBye is not a function
+var sayBye = function () {
+  console.log("Bye!");
+};
+
+// 5. Arrow Function with const -> TDZ ReferenceError if called above
+// ping(); // ❌ ReferenceError: Cannot access 'ping' before initialization
+const ping = () => console.log("pong");</code></pre>
+
+      <h3>Advanced Hoisting Edge Cases (Experienced Level)</h3>
+      <h4>1. Function vs Variable Precedence</h4>
+      <p>During the Creation Phase, <strong>function declarations take priority</strong> over <code>var</code> declarations of the same name. However, during Execution, an assignment (<code>=</code>) overwrites it.</p>
+<pre><code>console.log(typeof compute); // "function" (function wins during creation!)
+
+var compute = "just a string";
+function compute() { return 42; }
+
+console.log(typeof compute); // "string" (execution phase assignment overwrote it!)</code></pre>
+
+      <h4>2. <code>class</code> Declarations Are Also Hoisted into TDZ</h4>
+<pre><code>// const svc = new TicketService(); // ❌ ReferenceError: Cannot access 'TicketService' before initialization
+class TicketService {}</code></pre>
+
+      <h3>Interview Questions &amp; Practice Problems</h3>
+
+      <div class="qa-item">
+        <div class="qa-q">Q1 (Interview): Are <code>let</code> and <code>const</code> hoisted? If yes, why do they throw an error when accessed before declaration?</div>
+        <details>
+          <summary>Show Answer</summary>
+          <p>
+            <strong>Yes, they ARE hoisted!</strong> The engine allocates memory for them during the Creation Phase. However, unlike <code>var</code> (which is initialized to <code>undefined</code>), <code>let</code> and <code>const</code> remain <strong>uninitialized</strong> in the <strong>Temporal Dead Zone</strong> until the execution thread reaches their declaration line. Proof: if <code>let x</code> inside a function wasn't hoisted, accessing <code>x</code> above it would read an outer global <code>x</code> instead of throwing <code>ReferenceError: Cannot access 'x' before initialization</code>!
+          </p>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q2 (Predict Output — Classic Tricky Question):</div>
+<pre><code>var rate = 10;
+function calc() {
+  console.log(rate);
+  if (false) {
+    var rate = 50;
+  }
+  console.log(rate);
+}
+calc();</code></pre>
+        <details>
+          <summary>Show Answer</summary>
+          <p><strong>Output:</strong> <code>undefined</code>, then <code>undefined</code>.</p>
+          <p><strong>Why:</strong> Even though <code>if (false)</code> never runs, <code>var rate</code> is function-scoped and hoisted to the top of <code>calc()</code> during the Creation Phase, shadowing the global <code>rate = 10</code> with a local <code>rate = undefined</code>.</p>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q3 (Predict Output): Function Declaration vs Function Expression</div>
+<pre><code>console.log(alpha());
+console.log(beta());
+
+function alpha() { return 1; }
+var beta = function () { return 2; };</code></pre>
+        <details>
+          <summary>Show Answer</summary>
+          <p><strong>Output:</strong> First logs <code>1</code>, then throws <code>TypeError: beta is not a function</code> (because at line 2, <code>beta</code> is <code>undefined</code>, and calling <code>undefined()</code> throws a <code>TypeError</code>).</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- TOPIC 4: Closures                                         -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="topic-4">
+      <div class="section-header">
+        <h2>4. Closures (From First Principles to Production Patterns)</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="t4"> Mastered</label>
+      </div>
+
+      <h3>Beginner Mental Model</h3>
+      <p>
+        Normally, when a function finishes running, all its local variables are destroyed and cleared from memory. A <strong>closure</strong> breaks that rule in a magical way: when an inner function references variables from an outer function and gets returned (or passed to a callback), it packs those outer variables into a <strong>"backpack"</strong> and carries them around forever!
+      </p>
+
+      <div class="callout callout-analogy">
+        <span class="callout-title">Real-Life Analogy</span>
+        Imagine a bank account manager (<code>createAccount</code>) who sets up a private vault (<code>balance</code>) and hands you a debit card (an inner function <code>withdraw</code>). Even after the manager goes home (outer function finishes executing), your debit card still remembers and securely accesses that exact private vault! Nobody else can walk into the vault directly.
+      </div>
+
+      <h3>Technical Definition</h3>
+      <p>
+        A <strong>Closure</strong> is the combination of a <strong>function</strong> bundled together with references to its surrounding state (its <strong>Lexical Environment</strong>). Even after the outer function pops off the Call Stack, its Lexical Environment stays alive on the <strong>Heap</strong> as long as the inner function holds a reference to it.
+      </p>
+
+<pre><code>function createCounter(initial = 0) {
+  let count = initial; // Private variable stored in closure heap environment
+
+  return {
+    increment() {
+      count += 1;
+      return count;
+    },
+    decrement() {
+      count -= 1;
+      return count;
+    },
+    getValue() {
+      return count;
+    }
+  };
+}
+
+const ticketCounter = createCounter(10);
+console.log(ticketCounter.increment()); // 11
+console.log(ticketCounter.increment()); // 12
+console.log(ticketCounter.count);       // undefined! (True data privacy)</code></pre>
+
+      <h3>5 Real-World Production Use Cases (Why Interviewers Love Closures)</h3>
+
+      <h4>1. Classic Interview Bug: <code>for</code> Loop with <code>var</code> vs <code>let</code> + <code>setTimeout</code></h4>
+<pre><code>// BUGGY with var:
+for (var i = 1; i <= 3; i++) {
+  setTimeout(() => console.log("var:", i), 100);
+}
+// Logs: var: 4, var: 4, var: 4
+// Why? All 3 callbacks share ONE function-scoped 'i', which became 4 before timers ran!
+
+// FIX 1 (Modern): Use 'let' -> creates a fresh lexical binding per loop iteration
+for (let j = 1; j <= 3; j++) {
+  setTimeout(() => console.log("let:", j), 100);
+}
+// Logs: let: 1, let: 2, let: 3
+
+// FIX 2 (Pre-ES6 IIFE Closure):
+for (var k = 1; k <= 3; k++) {
+  ((captured) => {
+    setTimeout(() => console.log("IIFE:", captured), 100);
+  })(k);
+}</code></pre>
+
+      <h4>2. Debouncing (Crucial for Search Bars in Support Operations Center!)</h4>
+      <p>Prevents firing an API call on every single keystroke; waits until the user pauses typing for <code>delay</code> ms. <code>timerId</code> is remembered across calls via a closure.</p>
+<pre><code>function debounce(fn, delay) {
+  let timerId; // Persists across keystrokes via closure!
+  return function (...args) {
+    clearTimeout(timerId);
+    timerId = setTimeout(() => {
+      fn.apply(this, args);
+    }, delay);
+  };
+}
+
+const searchTickets = debounce((query) => {
+  console.log("Fetching tickets for:", query);
+}, 300);</code></pre>
+
+      <h4>3. Memoization (Caching Expensive Calculations)</h4>
+<pre><code>function memoize(fn) {
+  const cache = new Map(); // Protected inside closure
+  return function (...args) {
+    const key = JSON.stringify(args);
+    if (cache.has(key)) return cache.get(key);
+    const result = fn.apply(this, args);
+    cache.set(key, result);
+    return result;
+  };
+}</code></pre>
+
+      <h4>4. Function Currying &amp; Config Factories</h4>
+<pre><code>const createLogger = (serviceName) => (level) => (message) => {
+  console.log(`[${serviceName}] [${level.toUpperCase()}]: ${message}`);
+};
+const authError = createLogger("AuthService")("error");
+authError("JWT expired"); // [AuthService] [ERROR]: JWT expired</code></pre>
+
+      <h4>5. Stale Closures &amp; Memory Leaks (Senior Awareness)</h4>
+      <div class="callout callout-trap">
+        <span class="callout-title">Production &amp; Angular / React Pitfall</span>
+        <ul>
+          <li><strong>Memory Leaks:</strong> If an event listener or <code>setInterval</code> or RxJS <code>Observable.subscribe()</code> forms a closure over a huge data array or Angular component instance and you forget to unsubscribe in <code>ngOnDestroy</code> (or <code>takeUntilDestroyed</code>), the Garbage Collector <strong>cannot</strong> free that memory!</li>
+          <li><strong>Stale Closure:</strong> If a callback captures a primitive value (like <code>const count = 0</code>) at render/init time and runs later inside <code>setInterval</code>, it continues reading the outdated <code>0</code> forever unless it reads from a mutable reference or latest state setter.</li>
+        </ul>
+      </div>
+
+      <h3>Interview Questions &amp; Practice Problems</h3>
+
+      <div class="qa-item">
+        <div class="qa-q">Q1 (Interview): Do closures copy variables by value, or keep a live reference to them?</div>
+        <details>
+          <summary>Show Answer</summary>
+          <p>
+            Closures keep a <strong>live reference</strong> to the variable's Lexical Environment binding, NOT a static snapshot copy! That is why if an outer variable changes after the inner function is created, the inner function sees the updated value (which also explains why the <code>for (var i...)</code> loop prints <code>4, 4, 4</code>!).
+          </p>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q2 (Practice Coding): Write a function <code>once(fn)</code> that ensures <code>fn</code> can only be executed one time. Subsequent calls should return the result of the first call without re-running <code>fn</code>.</div>
+        <details>
+          <summary>Show Solution</summary>
+<pre><code>function once(fn) {
+  let hasRun = false;
+  let result;
+
+  return function (...args) {
+    if (!hasRun) {
+      hasRun = true;
+      result = fn.apply(this, args);
+    }
+    return result;
+  };
+}
+
+const initDB = once(() => {
+  console.log("Connecting to PostgreSQL...");
+  return { connected: true };
+});
+
+console.log(initDB()); // Logs "Connecting...", returns { connected: true }
+console.log(initDB()); // Does NOT log, returns { connected: true }</code></pre>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q3 (Predict Output):</div>
+<pre><code>function createFns() {
+  let count = 0;
+  function inc() { count++; }
+  let msg = `Count is ${count}`;
+  function log() { console.log(msg); }
+  return [inc, log];
+}
+const [inc, log] = createFns();
+inc();
+inc();
+log();</code></pre>
+        <details>
+          <summary>Show Answer</summary>
+          <p><strong>Output:</strong> <code>"Count is 0"</code>!</p>
+          <p><strong>Why (Stale Closure Classic!):</strong> <code>msg</code> was evaluated ONCE when <code>createFns()</code> ran (when <code>count</code> was <code>0</code>) and stored as the primitive string <code>"Count is 0"</code>. Calling <code>inc()</code> updates <code>count</code> to 2, but never re-evaluates <code>msg</code>!</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- TOPIC 5: The 'this' Keyword                               -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="topic-5">
+      <div class="section-header">
+        <h2>5. The <code>this</code> Keyword (All 4 Rules + Arrow Functions)</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="t5"> Mastered</label>
+      </div>
+
+      <h3>Beginner Mental Model</h3>
+      <p>
+        For regular functions, <code>this</code> does <strong>not</strong> depend on where the function was written. It depends on <strong>HOW the function was called</strong> (who is left of the dot at call time!).
+      </p>
+
+      <div class="callout callout-analogy">
+        <span class="callout-title">Real-Life Analogy</span>
+        The pronoun <strong>"I"</strong> in English has no fixed person attached to it. If Alice says "I am hungry", "I" = Alice. If Bob says the exact same sentence, "I" = Bob. In JavaScript, <code>this</code> means "whoever is speaking (calling the function) right now."
+      </div>
+
+      <h3>The 4 Binding Rules (In Order of Precedence: Highest → Lowest)</h3>
+
+      <h4>Rule 1 (Highest): <code>new</code> Binding</h4>
+      <p>Calling a function with <code>new</code> creates a brand new empty object, links its prototype, binds <code>this</code> to that new object, and returns it automatically.</p>
+<pre><code>function Ticket(title) {
+  this.title = title;
+}
+const t1 = new Ticket("Login 500 error");
+console.log(t1.title); // "Login 500 error"</code></pre>
+
+      <h4>Rule 2: Explicit Binding (<code>call</code>, <code>apply</code>, <code>bind</code>)</h4>
+      <p>You manually tell JavaScript what <code>this</code> should be.</p>
+      <ul>
+        <li><code>fn.call(obj, arg1, arg2)</code> → Invokes immediately; arguments passed <strong>individually</strong> (Comma-separated).</li>
+        <li><code>fn.apply(obj, [arg1, arg2])</code> → Invokes immediately; arguments passed as an <strong>Array</strong>.</li>
+        <li><code>const boundFn = fn.bind(obj, arg1)</code> → Does <strong>NOT</strong> invoke immediately; returns a permanent new function with <code>this</code> locked to <code>obj</code> (and optional partial arguments).</li>
+      </ul>
+<pre><code>function introduce(role, city) {
+  console.log(`${this.name} is a ${role} in ${city}`);
+}
+const dev = { name: "Aarav" };
+
+introduce.call(dev, "Angular Dev", "Bengaluru");
+introduce.apply(dev, ["Full-Stack Dev", "Pune"]);
+const boundIntro = introduce.bind(dev, "AI Engineer");
+boundIntro("Hyderabad"); // "Aarav is a AI Engineer in Hyderabad"</code></pre>
+
+      <h4>Rule 3: Implicit Binding (Left of the Dot)</h4>
+<pre><code>const agent = {
+  name: "Riya",
+  greet() {
+    console.log("Hi, I am", this.name);
+  }
+};
+agent.greet(); // ✅ Left of the dot is 'agent' -> "Hi, I am Riya"
+
+// TRAP: Lost 'this' when extracting method or passing as callback!
+const detached = agent.greet;
+detached(); // ❌ Left of dot is NOTHING -> falls back to Default Binding! (undefined or window.name)</code></pre>
+
+      <h4>Rule 4 (Lowest): Default Binding</h4>
+      <ul>
+        <li>In <code>"use strict"</code> mode (ES Modules, TypeScript, Angular): standalone <code>fn()</code> sets <code>this</code> to <code>undefined</code>.</li>
+        <li>In non-strict mode: standalone <code>fn()</code> sets <code>this</code> to the global object (<code>window</code> / <code>globalThis</code>).</li>
+      </ul>
+
+      <h3>Arrow Functions &amp; <code>this</code> (The Game Changer)</h3>
+      <p>
+        Arrow functions <strong>do NOT have their own <code>this</code></strong>! Instead, they inherit <code>this</code> <strong>lexically</strong> from the enclosing scope where they were created. Even <code>call</code>, <code>apply</code>, and <code>bind</code> <strong>cannot</strong> change an arrow function's <code>this</code>!
+      </p>
+<pre><code>const dashboard = {
+  serviceName: "SupportOps",
+  // Regular method has 'this' = dashboard
+  loadTickets() {
+    // Arrow function inherits 'this' from loadTickets()!
+    setTimeout(() => {
+      console.log("Loaded for:", this.serviceName); // ✅ "SupportOps"
+    }, 100);
+  },
+  // DANGER: Arrow function directly as an object method!
+  brokenMethod: () => {
+    // Enclosing scope is Global/Module, NOT 'dashboard'!
+    console.log(this?.serviceName); // ❌ undefined
+  }
+};
+dashboard.loadTickets();
+dashboard.brokenMethod();</code></pre>
+
+      <div class="callout callout-pro">
+        <span class="callout-title">Angular &amp; DOM Event Listener Connection</span>
+        In a DOM listener <code>btn.addEventListener("click", function() { console.log(this); })</code>, <code>this</code> is the <code>btn</code> DOM element. If you use an arrow function <code>() =&gt; console.log(this)</code>, <code>this</code> stays bound to your Angular/TS component class instance! That is also why passing a class method like <code>setTimeout(this.onTimeout, 500)</code> loses <code>this</code> unless you write <code>() =&gt; this.onTimeout()</code> or define it as an arrow property <code>onTimeout = () =&gt; {}</code>.
+      </div>
+
+      <h3>Interview Questions &amp; Practice Problems</h3>
+
+      <div class="qa-item">
+        <div class="qa-q">Q1 (Predict Output): What does this log?</div>
+<pre><code>const user = {
+  name: "Kiran",
+  sayHi() { console.log(this.name); },
+  sayArrow: () => { console.log(this.name); }
+};
+user.sayHi();
+user.sayArrow();
+const fn = user.sayHi;
+fn();</code></pre>
+        <details>
+          <summary>Show Answer</summary>
+          <ul>
+            <li><code>user.sayHi()</code> → <code>"Kiran"</code> (Implicit binding)</li>
+            <li><code>user.sayArrow()</code> → <code>undefined</code> (Arrow inherits global/module <code>this</code>, where <code>name</code> doesn't exist)</li>
+            <li><code>fn()</code> → <code>undefined</code> (or <code>TypeError</code> in strict mode when accessing property on <code>undefined</code>! Lost implicit binding.)</li>
+          </ul>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q2 (Interview Coding): Write a simple polyfill for <code>Function.prototype.myBind</code>.</div>
+        <details>
+          <summary>Show Solution</summary>
+<pre><code>Function.prototype.myBind = function (context, ...boundArgs) {
+  const originalFn = this; // The function on which .myBind was called
+  return function (...callArgs) {
+    return originalFn.apply(context, [...boundArgs, ...callArgs]);
+  };
+};
+
+// Test:
+function sum(a, b, c) { return this.base + a + b + c; }
+const boundSum = sum.myBind({ base: 100 }, 10);
+console.log(boundSum(20, 30)); // 160</code></pre>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q3 (Interview): Can you change an arrow function's <code>this</code> using <code>.call()</code> or <code>.bind()</code>?</div>
+        <details>
+          <summary>Show Answer</summary>
+          <p><strong>No.</strong> Calling <code>arrowFn.call(obj)</code> ignores <code>obj</code> completely (though it still passes the regular arguments). Arrow functions always keep their lexical <code>this</code> captured at creation time.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- TOPIC 6: Arrays Deep Dive                                 -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="topic-6">
+      <div class="section-header">
+        <h2>6. Arrays (Internals, Mutability &amp; Essential Methods)</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="t6"> Mastered</label>
+      </div>
+
+      <h3>Beginner Mental Model &amp; Internals</h3>
+      <p>
+        Unlike C++ or Java where arrays are fixed-size contiguous blocks of the same data type, JavaScript arrays are <strong>dynamic, resizable, heterogeneous list-like objects</strong> (<code>typeof [] === "object"</code>). Always check arrays using <code>Array.isArray(x)</code>!
+      </p>
+      <p>
+        <strong>Under the hood (Experienced edge):</strong> Modern JS engines (like V8 in Chrome/Node) optimize dense arrays (<code>[1, 2, 3]</code>) as fast contiguous C-style arrays in memory, whereas leaving gaps (<code>arr[1000] = 5</code> — a <em>sparse array</em>) forces V8 to fall back to slower hash-table lookups.
+      </p>
+
+      <h3>Mutating vs. Non-Mutating Methods (Critical for Angular/React!)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Mutating (Modifies Original Array ⚠️)</th>
+              <th>Non-Mutating (Returns New Array / Value ✅)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>push()</code>, <code>pop()</code>, <code>shift()</code>, <code>unshift()</code></td>
+              <td><code>map()</code>, <code>filter()</code>, <code>reduce()</code>, <code>slice()</code></td>
+            </tr>
+            <tr>
+              <td><code>splice()</code>, <code>sort()</code>, <code>reverse()</code>, <code>fill()</code></td>
+              <td><code>concat()</code>, <code>flat()</code>, <code>flatMap()</code>, <code>[...arr]</code></td>
+            </tr>
+            <tr>
+              <td><em>Warning: Breaks Angular OnPush &amp; React state diffs!</em></td>
+              <td>ES2023 Immutable versions: <code>toSorted()</code>, <code>toReversed()</code>, <code>toSpliced()</code>, <code>with()</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Core Higher-Order Methods &amp; Traps</h3>
+<pre><code>const tickets = [
+  { id: 1, title: "DB slow", priority: 2, open: true },
+  { id: 2, title: "Login crash", priority: 1, open: true },
+  { id: 3, title: "Typo in FAQ", priority: 3, open: false }
+];
+
+// 1. map -> 1-to-1 transformation (always same length)
+const titles = tickets.map(t => t.title);
+
+// 2. filter -> keep items matching predicate
+const openTickets = tickets.filter(t => t.open);
+
+// 3. reduce -> collapse array into ANY shape (number, object, grouped map)
+const countsByStatus = tickets.reduce((acc, t) => {
+  const key = t.open ? "open" : "closed";
+  acc[key] = (acc[key] || 0) + 1;
+  return acc; // NEVER forget to return acc!
+}, {}); // ALWAYS pass initial value ({}) to avoid crashing on empty arrays!
+
+// 4. find / some / every -> SHORT-CIRCUIT (stop early when satisfied!)
+const urgent = tickets.find(t => t.priority === 1); // returns first matching object or undefined
+const hasOpen = tickets.some(t => t.open);          // boolean
+const allOpen = tickets.every(t => t.open);         // boolean
+
+// 5. forEach trap -> Cannot 'break', cannot 'continue' (use return for continue), ignores async/await!
+// Use a standard 'for...of' loop if you need 'break' or sequential 'await'.</code></pre>
+
+      <div class="callout callout-trap">
+        <span class="callout-title">Top Array Interview Traps</span>
+        <ol>
+          <li><strong><code>.sort()</code> converts items to strings by default!</strong> <code>[10, 2, 1].sort()</code> produces <code>[1, 10, 2]</code>! Always pass a comparator: <code>arr.sort((a, b) =&gt; a - b)</code> (and clone first: <code>[...arr].sort(...)</code> or use <code>arr.toSorted((a, b) =&gt; a - b)</code>).</li>
+          <li><strong><code>slice(start, end)</code> vs <code>splice(start, deleteCount, ...items)</code>:</strong> <code>slice</code> is non-mutating and extracts a sub-array; <code>splice</code> mutates the original array in place!</li>
+          <li><strong><code>reduce()</code> without <code>initialValue</code>:</strong> Throws <code>TypeError: Reduce of empty array with no initial value</code> when the array is empty <code>[]</code>.</li>
+        </ol>
+      </div>
+
+      <h3>Interview Questions &amp; Practice Problems</h3>
+
+      <div class="qa-item">
+        <div class="qa-q">Q1 (Interview): What is the difference between <code>map()</code> and <code>forEach()</code>?</div>
+        <details>
+          <summary>Show Answer</summary>
+          <p><code>map()</code> allocates and returns a <strong>new array</strong> of transformed values (chainable with <code>.filter()</code> etc.). <code>forEach()</code> always returns <code>undefined</code> and is used strictly for side effects (like logging or DOM writes). Neither supports <code>break</code>.</p>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q2 (Practice Coding): Group an array of support tickets by <code>team</code> using <code>reduce()</code>.</div>
+<pre><code>const input = [
+  { id: 1, team: "infra" },
+  { id: 2, team: "auth" },
+  { id: 3, team: "infra" }
+];</code></pre>
+        <details>
+          <summary>Show Solution</summary>
+<pre><code>const grouped = input.reduce((acc, ticket) => {
+  if (!acc[ticket.team]) {
+    acc[ticket.team] = [];
+  }
+  acc[ticket.team].push(ticket);
+  return acc;
+}, {});
+
+// Output: { infra: [{id:1...}, {id:3...}], auth: [{id:2...}] }</code></pre>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q3 (Practice Coding): Flatten a nested array of arbitrary depth <em>without</em> using <code>Array.prototype.flat(Infinity)</code>.</div>
+        <details>
+          <summary>Show Solution</summary>
+<pre><code>function flattenArray(arr) {
+  return arr.reduce((acc, item) => {
+    return Array.isArray(item)
+      ? acc.concat(flattenArray(item))
+      : acc.concat(item);
+  }, []);
+}
+
+console.log(flattenArray([1, [2, [3, 4]], 5])); // [1, 2, 3, 4, 5]</code></pre>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- TOPIC 7: Objects Deep Dive                                -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="topic-7">
+      <div class="section-header">
+        <h2>7. Objects (Properties, Cloning, Modern Operators &amp; Prototypes)</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="t7"> Mastered</label>
+      </div>
+
+      <h3>Beginner Mental Model</h3>
+      <p>
+        An Object is a collection of <strong>key–value pairs</strong> (keys are always converted to <strong>Strings</strong> or <strong>Symbols</strong>). Primitives (<code>42</code>, <code>"hi"</code>, <code>true</code>) are copied by <strong>value</strong>; Objects (including Arrays &amp; Functions) are copied and compared by <strong>memory reference</strong>.
+      </p>
+
+<pre><code>const a = { id: 1 };
+const b = { id: 1 };
+const c = a;
+
+console.log(a === b); // false (two different objects in heap memory!)
+console.log(a === c); // true  (both point to exact same memory address)</code></pre>
+
+      <h3>Essential Object Inspection &amp; Modern Syntax</h3>
+<pre><code>const ticket = { id: 42, status: "OPEN", priority: 0, meta: { slaHours: 4 } };
+
+// 1. Iteration APIs
+Object.keys(ticket);    // ["id", "status", "priority", "meta"]
+Object.values(ticket);  // [42, "OPEN", 0, { slaHours: 4 }]
+Object.entries(ticket); // [["id", 42], ["status", "OPEN"], ...]
+Object.fromEntries([["a", 1], ["b", 2]]); // { a: 1, b: 2 }
+
+// 2. Destructuring with Rename + Default + Rest
+const { status: currentStatus, assignee = "Unassigned", ...rest } = ticket;
+// currentStatus = "OPEN", assignee = "Unassigned", rest = { id: 42, priority: 0, meta: ... }
+
+// 3. Optional Chaining (?.) & Nullish Coalescing (??)
+const sla = ticket.customer?.tier?.sla ?? 24; // safe if customer/tier is null/undefined
+
+// TRAP: || vs ??
+console.log(ticket.priority || 5); // ❌ 5! Because 0 is falsy!
+console.log(ticket.priority ?? 5); // ✅ 0! Because ?? ONLY falls back on null or undefined!</code></pre>
+
+      <h3>Shallow Copy vs. Deep Copy (Huge Interview Topic)</h3>
+      <p>
+        Spread (<code>{ ...obj }</code>) and <code>Object.assign({}, obj)</code> only perform a <strong>Shallow Copy</strong> — nested objects are STILL shared by reference!
+      </p>
+<pre><code>const original = { name: "Ops", config: { retries: 3 } };
+const shallow = { ...original };
+shallow.config.retries = 99;
+console.log(original.config.retries); // 😱 99! Original nested object got mutated!
+
+// Deep Copy Options:
+// 1. structuredClone(obj) -> Modern native standard! Handles Dates, Maps, Sets, circular refs.
+//    (Fails only on functions / DOM nodes.)
+const deep = structuredClone(original);
+
+// 2. JSON.parse(JSON.stringify(obj)) -> Old hack with major flaws:
+//    - Drops undefined values, functions, Symbols
+//    - Turns Date objects into ISO strings
+//    - Turns NaN / Infinity into null
+//    - Crashes on circular references!</code></pre>
+
+      <h3>Property Descriptors, <code>freeze</code> vs <code>seal</code> &amp; Prototypes</h3>
+      <ul>
+        <li><code>Object.freeze(obj)</code>: Cannot add, delete, or modify existing properties (shallow!).</li>
+        <li><code>Object.seal(obj)</code>: Cannot add or delete properties, <em>can</em> still modify existing property values.</li>
+        <li><strong>Property Descriptors:</strong> Every property has hidden metadata flags: <code>value</code>, <code>writable</code>, <code>enumerable</code> (shows up in <code>Object.keys</code> / <code>for..in</code>), <code>configurable</code> (can delete/redefine).</li>
+        <li><strong>Prototype Chain Basics:</strong> Every object has a hidden <code>[[Prototype]]</code> link. When you access <code>obj.toString()</code>, JS checks <code>obj</code> first, then walks up <code>[[Prototype]]</code> to <code>Object.prototype</code>. Use <code>Object.hasOwn(obj, "key")</code> to check only own properties (not inherited ones).</li>
+      </ul>
+
+      <div class="callout callout-trap">
+        <span class="callout-title">Weird JS Object Keys Trap</span>
+        If you use two different objects as keys on a plain object: <code>const obj = {}; const k1 = {}; const k2 = {}; obj[k1] = "A"; obj[k2] = "B";</code> → <code>obj[k1]</code> becomes <code>"B"</code>! Why? Both objects convert to the string <code>"[object Object]"</code>. Use a <code>new Map()</code> whenever keys are objects or arbitrary types!
+      </div>
+
+      <h3>Interview Questions &amp; Practice Problems</h3>
+
+      <div class="qa-item">
+        <div class="qa-q">Q1 (Interview): Difference between <code>==</code>, <code>===</code>, and <code>Object.is()</code>?</div>
+        <details>
+          <summary>Show Answer</summary>
+          <ul>
+            <li><code>==</code> performs type coercion before comparing (e.g., <code>"5" == 5</code> is <code>true</code>).</li>
+            <li><code>===</code> strict equality (no coercion), EXCEPT: <code>NaN === NaN</code> is <code>false</code>, and <code>+0 === -0</code> is <code>true</code>.</li>
+            <li><code>Object.is(a, b)</code> behaves like <code>===</code>, EXCEPT it fixes those two edge cases: <code>Object.is(NaN, NaN)</code> is <code>true</code>, and <code>Object.is(+0, -0)</code> is <code>false</code>. (Used internally by React &amp; Angular Signals!).</li>
+          </ul>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q2 (Practice Coding): Write a custom recursive <code>deepClone(obj)</code> function that handles nested objects, arrays, and primitives.</div>
+        <details>
+          <summary>Show Solution</summary>
+<pre><code>function deepClone(value) {
+  if (value === null || typeof value !== "object") {
+    return value; // Primitives & null
+  }
+  if (value instanceof Date) return new Date(value.getTime());
+  if (Array.isArray(value)) {
+    return value.map(item => deepClone(item));
+  }
+  const cloned = {};
+  for (const key of Object.keys(value)) {
+    cloned[key] = deepClone(value[key]);
+  }
+  return cloned;
+}</code></pre>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 8: DAY 1 PRACTICAL OUTPUT (5 JS PROBLEMS)         -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="practical-5">
+      <div class="section-header">
+        <h2>8. Day 1 Practical Output: Solve 5 Short JavaScript Problems</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="p5"> Completed All 5</label>
+      </div>
+      <p>From your roadmap: <strong>"Day 1 Practical Output: Solve 5 short JavaScript problems."</strong> Try solving each in your browser console or Node before opening the solution!</p>
+
+      <div class="qa-item">
+        <div class="qa-q">Problem 1 (Closures + State): Create a <code>createRateLimiter(limit)</code> function that returns a function allowing at most <code>limit</code> calls; subsequent calls return <code>"Rate limit exceeded"</code>.</div>
+        <details>
+          <summary>Show Solution</summary>
+<pre><code>function createRateLimiter(limit) {
+  let calls = 0;
+  return function (actionName) {
+    if (calls >= limit) return "Rate limit exceeded";
+    calls++;
+    return `Executed ${actionName} (${calls}/${limit})`;
+  };
+}
+const apiCall = createRateLimiter(2);
+console.log(apiCall("getTickets")); // Executed getTickets (1/2)
+console.log(apiCall("createTicket")); // Executed createTicket (2/2)
+console.log(apiCall("deleteTicket")); // Rate limit exceeded</code></pre>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Problem 2 (Arrays + Objects): Given an array of Support Operations tickets, return the top 2 highest-priority <em>open</em> ticket titles sorted alphabetically if priorities tie.</div>
+<pre><code>const tickets = [
+  { title: "SSL Cert", priority: 1, status: "CLOSED" },
+  { title: "Redis Down", priority: 1, status: "OPEN" },
+  { title: "Auth Timeout", priority: 1, status: "OPEN" },
+  { title: "UI Alignment", priority: 3, status: "OPEN" }
+];</code></pre>
+        <details>
+          <summary>Show Solution</summary>
+<pre><code>const topTwoTitles = tickets
+  .filter(t => t.status === "OPEN")
+  .toSorted((a, b) => a.priority - b.priority || a.title.localeCompare(b.title))
+  .slice(0, 2)
+  .map(t => t.title);
+
+console.log(topTwoTitles); // ["Auth Timeout", "Redis Down"]</code></pre>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Problem 3 (<code>this</code> Binding Fix): Fix the broken timer inside <code>ticketPoller</code> so it logs <code>"Polling SupportOps every 5s"</code> without changing how <code>start()</code> is called.</div>
+<pre><code>const ticketPoller = {
+  appName: "SupportOps",
+  start() {
+    setTimeout(function () {
+      console.log(`Polling ${this.appName} every 5s`);
+    }, 100);
+  }
+};</code></pre>
+        <details>
+          <summary>Show Solution</summary>
+<pre><code>// Solution A (Arrow function inherits lexical 'this'):
+const ticketPoller = {
+  appName: "SupportOps",
+  start() {
+    setTimeout(() => {
+      console.log(`Polling ${this.appName} every 5s`);
+    }, 100);
+  }
+};
+// Solution B: .bind(this) on the regular callback function.</code></pre>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Problem 4 (Objects + Deep Flatten): Flatten a nested config object into dot-notation keys: <code>{ db: { host: "localhost", port: 5432 } }</code> → <code>{ "db.host": "localhost", "db.port": 5432 }</code>.</div>
+        <details>
+          <summary>Show Solution</summary>
+<pre><code>function flattenObject(obj, prefix = "", res = {}) {
+  for (const [key, val] of Object.entries(obj)) {
+    const newKey = prefix ? `${prefix}.${key}` : key;
+    if (val !== null && typeof val === "object" && !Array.isArray(val)) {
+      flattenObject(val, newKey, res);
+    } else {
+      res[newKey] = val;
+    }
+  }
+  return res;
+}
+console.log(flattenObject({ db: { host: "localhost", port: 5432 }, debug: true }));
+// { "db.host": "localhost", "db.port": 5432, debug: true }</code></pre>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Problem 5 (Hoisting + Scope Predict): Explain the exact output without running it first.</div>
+<pre><code>var x = 1;
+(function () {
+  console.log(x);
+  var x = 2;
+  console.log(x);
+})();
+console.log(x);</code></pre>
+        <details>
+          <summary>Show Solution</summary>
+          <p><strong>Output:</strong> <code>undefined</code>, <code>2</code>, <code>1</code>.</p>
+          <p>Inside the IIFE, <code>var x</code> hoists to the top of the function scope as <code>undefined</code> (shadowing global <code>x = 1</code>). Then it gets assigned <code>2</code> locally. Outside, global <code>x</code> remains untouched as <code>1</code>.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 9: DAY 1 PARALLEL AI / PYTHON KICKOFF             -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="ai-track">
+      <div class="section-header">
+        <h2>9. Day 1 AI Track (30 Mins): Python Fundamentals Kickoff</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="ai1"> Completed AI Slot</label>
+      </div>
+      <p>
+        From Roadmap Section 5 (<strong>Week 1: Python Fundamentals</strong>): Spend just 30 minutes today bridging your JavaScript knowledge to Python so you are ready for LLM APIs, RAG, and AI agents later.
+      </p>
+
+      <h3>JavaScript vs. Python Day 1 Cheat Sheet</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Concept</th>
+              <th>JavaScript / TypeScript</th>
+              <th>Python</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Variables</strong></td>
+              <td><code>const name = "Aarav";</code> / <code>let age = 24;</code></td>
+              <td><code>name = "Aarav"</code> / <code>age = 24</code> (no <code>let/const</code>!)</td>
+            </tr>
+            <tr>
+              <td><strong>Blocks</strong></td>
+              <td>Curly braces <code>{ ... }</code></td>
+              <td>Indentation (4 spaces) + colon <code>:</code></td>
+            </tr>
+            <tr>
+              <td><strong>Booleans &amp; Null</strong></td>
+              <td><code>true</code>, <code>false</code>, <code>null</code>/<code>undefined</code></td>
+              <td><code>True</code>, <code>False</code>, <code>None</code> (Capitalized!)</td>
+            </tr>
+            <tr>
+              <td><strong>Template Strings</strong></td>
+              <td><code>`Hello ${name}`</code></td>
+              <td><code>f"Hello {name}"</code> (f-strings)</td>
+            </tr>
+            <tr>
+              <td><strong>Core Types</strong></td>
+              <td><code>number</code>, <code>string</code>, <code>boolean</code></td>
+              <td><code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+<pre><code># Day 1 Python Mini-Script (Save as day1.py and run: python day1.py)
+service_name = "Support Operations Center"
+open_tickets = 14        # int
+avg_sla_hours = 2.5      # float
+ai_enabled = True        # bool
+
+print(f"{service_name} has {open_tickets} tickets (SLA: {avg_sla_hours}h)")
+print(type(open_tickets), type(avg_sla_hours), type(ai_enabled))
+
+# Quick check: Why Python for AI?
+# Every major AI SDK (OpenAI, LangChain, Hugging Face, FastAPI) treats Python as a first-class citizen,
+# while TypeScript lets you call LLM APIs directly from your Node/Express backend too!</code></pre>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 10: DAY 1 SYSTEM DESIGN                           -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="system-design">
+      <div class="section-header">
+        <h2>10. Day 1 System Design: How Web Requests Work &amp; Scaling Basics</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="sd1"> Mastered</label>
+      </div>
+
+      <p>
+        System Design isn't just for Staff Engineers — product companies test 2+ YoE Frontend &amp; Full-Stack engineers on whether they actually understand what happens between clicking "Submit" in Angular/Next.js and saving a row in PostgreSQL.
+      </p>
+
+      <h3>Part A: End-to-End Lifecycle of a Request (Your Support Operations Center)</h3>
+      <div class="callout callout-analogy">
+        <span class="callout-title">Real-Life Analogy: Ordering Food via Phone</span>
+        <ul>
+          <li><strong>DNS Lookup</strong> = Looking up the restaurant's phone number in your contacts (Domain name <code>api.supportops.com</code> → IP address <code>34.120.10.5</code>).</li>
+          <li><strong>TCP + TLS Handshake</strong> = Dialing, saying "Hello, can you hear me?" (3-way TCP handshake: SYN → SYN-ACK → ACK), and agreeing on a secret language so nobody eavesdrops (HTTPS/TLS encryption).</li>
+          <li><strong>HTTP Request/Response</strong> = Placing your JSON order (<code>POST /api/tickets</code>) and receiving the confirmation receipt (<code>201 Created</code>).</li>
+        </ul>
+      </div>
+
+      <p>Trace your exact <strong>Support Operations Center</strong> flow:</p>
+      <ol>
+        <li><strong>Client (Browser — Next.js/Angular):</strong> User clicks "Create Ticket". Browser resolves API domain via <strong>DNS</strong> (cached in Browser → OS → Router → ISP → Root/TLD/Authoritative servers).</li>
+        <li><strong>Transport Layer (TCP vs UDP):</strong>
+          <ul>
+            <li><strong>TCP (Transmission Control Protocol):</strong> Reliable, ordered, error-checked delivery. Used for HTTP/REST APIs, PostgreSQL connections (you cannot lose half a support ticket!).</li>
+            <li><strong>UDP (User Datagram Protocol):</strong> Fast, connectionless, no delivery guarantee. Used for live video/audio calls, gaming, DNS queries, HTTP/3 (QUIC).</li>
+          </ul>
+        </li>
+        <li><strong>Application Layer (HTTP/HTTPS):</strong> Next.js sends an <code>HTTPS POST</code> request with JSON payload + JWT in the <code>Authorization</code> header.</li>
+        <li><strong>Backend (Node.js + Express):</strong> Validates request (Zod), verifies JWT, uses <strong>Prisma ORM</strong> to open a TCP connection to <strong>PostgreSQL</strong>, inserts row, returns <code>201 Created</code>.</li>
+      </ol>
+
+      <h3>Part B: Key System Design Metrics &amp; Scaling Basics</h3>
+      <ul>
+        <li><strong>Latency vs. Throughput:</strong>
+          <ul>
+            <li><em>Latency:</em> Time taken for <strong>one</strong> request to go and come back (e.g., 120 ms). Like how fast one car drives through a tunnel.</li>
+            <li><em>Throughput:</em> Number of requests handled <strong>per second</strong> (RPS / QPS, e.g., 5,000 req/s). Like how many cars pass through a 6-lane highway per minute.</li>
+          </ul>
+        </li>
+        <li><strong>Vertical Scaling (Scale Up):</strong> Upgrade your single Node.js/Postgres server from 4 GB RAM → 64 GB RAM, faster CPU.
+          <br><em>Pros:</em> Zero code changes, simple. <em>Cons:</em> Hardware ceiling, Single Point of Failure (SPOF), downtime during upgrades.</li>
+        <li><strong>Horizontal Scaling (Scale Out):</strong> Add more servers (e.g., 5 Node.js Express containers behind a <strong>Load Balancer</strong>).
+          <br><em>Pros:</em> Nearly limitless scale, fault tolerance (if 1 crashes, 4 survive). <em>Cons:</em> Requires <strong>stateless</strong> backend (no in-memory sessions — store sessions/tokens in JWT or Redis!), load balancer needed.</li>
+      </ul>
+
+      <h3>Day 1 System Design Interview Questions</h3>
+      <div class="qa-item">
+        <div class="qa-q">Q1: If your Support Operations Center gets 10x traffic tomorrow and you scale Node.js horizontally to 4 instances, what breaks if you stored logged-in users in a local JS <code>Map()</code>?</div>
+        <details>
+          <summary>Show Answer</summary>
+          <p>Users will randomly get logged out! Instance 1 holds their session in its RAM, so when the Load Balancer routes their next request to Instance 2, Instance 2 has no idea who they are. <strong>Fix:</strong> Keep Node.js <strong>stateless</strong> using JWTs or an external shared store like <strong>Redis</strong>.</p>
+        </details>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">Q2: Why do we use HTTPS instead of HTTP for internal or external APIs?</div>
+        <details>
+          <summary>Show Answer</summary>
+          <p>HTTP sends headers (including JWTs/passwords) and JSON bodies in plain text over the wire. HTTPS wraps HTTP inside <strong>TLS</strong>, guaranteeing <strong>Confidentiality</strong> (encryption), <strong>Integrity</strong> (tamper detection), and <strong>Authentication</strong> (SSL certificate proves you are talking to the real server).</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 11: DAY 1 DSA SEQUENTIAL (3 PROBLEMS)             -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="dsa-day1">
+      <div class="section-header">
+        <h2>11. Day 1 DSA (Sequential): Pattern 1 — Arrays &amp; Hashing (3 Problems)</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="dsa1"> Solved All 3</label>
+      </div>
+      <p>
+        <strong>Pattern Rule of Thumb:</strong> Whenever a problem asks <em>"Have I seen this before?"</em>, <em>"How many times does X appear?"</em>, or <em>"Find a pair that adds to Y"</em>, reach for a <strong><code>Set</code></strong> or <strong><code>Map</code> (Hash Table)</strong> to trade <code>O(n)</code> space for <code>O(n)</code> speed!
+      </p>
+
+      <!-- Problem 1 -->
+      <h3>DSA #1: Contains Duplicate (LeetCode #217 — <span class="badge badge-easy">Easy</span>)</h3>
+      <p><strong>Problem:</strong> Given an integer array <code>nums</code>, return <code>true</code> if any value appears at least twice, and <code>false</code> if every element is distinct.</p>
+      <ul>
+        <li><strong>Brute Force:</strong> Nested loop comparing every pair → Time <code>O(n²)</code>, Space <code>O(1)</code>.</li>
+        <li><strong>Sorting:</strong> Sort array and check adjacent neighbors <code>nums[i] === nums[i-1]</code> → Time <code>O(n log n)</code>, Space <code>O(1)</code> or <code>O(n)</code>.</li>
+        <li><strong>Optimal (Hash Set):</strong> Iterate once; if <code>seen.has(num)</code> return <code>true</code>, else <code>seen.add(num)</code>. Time <code>O(n)</code>, Space <code>O(n)</code>.</li>
+      </ul>
+<pre><code>function containsDuplicate(nums) {
+  const seen = new Set();
+  for (const num of nums) {
+    if (seen.has(num)) return true;
+    seen.add(num);
+  }
+  return false;
+}
+// Dry run: [1, 2, 3, 1] -> seen:{1} -> {1,2} -> {1,2,3} -> 1 is in seen! -> true</code></pre>
+
+      <!-- Problem 2 -->
+      <h3>DSA #2: Valid Anagram (LeetCode #242 — <span class="badge badge-easy">Easy</span>)</h3>
+      <p><strong>Problem:</strong> Given two strings <code>s</code> and <code>t</code>, return <code>true</code> if <code>t</code> is an anagram of <code>s</code> (same characters with exact same frequencies), and <code>false</code> otherwise.</p>
+      <ul>
+        <li><strong>Edge Case First:</strong> If <code>s.length !== t.length</code>, immediately return <code>false</code>!</li>
+        <li><strong>Sorting Approach:</strong> Sort both strings and compare → Time <code>O(n log n)</code>, Space <code>O(n)</code>.</li>
+        <li><strong>Optimal (Frequency Map / Array):</strong> Count characters of <code>s</code> (+1) and decrement for <code>t</code> (-1). If any count goes below 0, return <code>false</code>. Time <code>O(n)</code>, Space <code>O(1)</code> (26 lowercase letters) or <code>O(k)</code> for Unicode.</li>
+      </ul>
+<pre><code>function isAnagram(s, t) {
+  if (s.length !== t.length) return false;
+
+  const freq = new Map();
+  for (const ch of s) {
+    freq.set(ch, (freq.get(ch) || 0) + 1);
+  }
+  for (const ch of t) {
+    const count = freq.get(ch) || 0;
+    if (count === 0) return false;
+    freq.set(ch, count - 1);
+  }
+  return true;
+}
+// Follow-up Answer: Using a Map naturally supports ALL Unicode characters (emojis, accented letters),
+// whereas a fixed new Array(26) only works for lowercase a-z!</code></pre>
+
+      <!-- Problem 3 -->
+      <h3>DSA #3: Two Sum (LeetCode #1 — <span class="badge badge-easy">Easy</span>)</h3>
+      <p><strong>Problem:</strong> Given an array of integers <code>nums</code> and an integer <code>target</code>, return <em>indices</em> of the two numbers such that they add up to <code>target</code>. You may not use the same element twice.</p>
+      <ul>
+        <li><strong>Brute Force:</strong> Two loops checking <code>nums[i] + nums[j] === target</code> → Time <code>O(n²)</code>, Space <code>O(1)</code>.</li>
+        <li><strong>Optimal (Single-Pass Hash Map):</strong> For each number <code>num</code> at index <code>i</code>, compute <code>complement = target - num</code>. Check if <code>complement</code> is already in our <code>Map</code> (storing <code>value -&gt; index</code>). If yes, return <code>[map.get(complement), i]</code>. Otherwise store <code>map.set(num, i)</code>!</li>
+      </ul>
+<pre><code>function twoSum(nums, target) {
+  const indexByValue = new Map(); // value -> index
+
+  for (let i = 0; i < nums.length; i++) {
+    const complement = target - nums[i];
+    if (indexByValue.has(complement)) {
+      return [indexByValue.get(complement), i];
+    }
+    indexByValue.set(nums[i], i);
+  }
+  return [];
+}
+
+// Dry run: nums = [3, 3], target = 6
+// i=0: num=3, comp=3. Map is {} -> not found. Map becomes {3: 0}.
+// i=1: num=3, comp=3. Map has 3 -> returns [0, 1]! (Checking BEFORE inserting avoids reusing index 0!)
+// Time: O(n), Space: O(n)</code></pre>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  // 1. Theme Toggle
+  const root = document.documentElement;
+  const themeBtn = document.getElementById("theme-toggle");
+  const savedTheme = localStorage.getItem("day1_theme") || "light";
+  root.setAttribute("data-theme", savedTheme);
+  themeBtn.textContent = savedTheme === "dark" ? "☀️ Switch to Light Mode" : "🌙 Switch to Dark Mode";
+
+  themeBtn.addEventListener("click", () => {
+    const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    localStorage.setItem("day1_theme", next);
+    themeBtn.textContent = next === "dark" ? "☀️ Switch to Light Mode" : "🌙 Switch to Dark Mode";
+  });
+
+  // 2. Day 1 Progress Tracker
+  const dayChecks = document.querySelectorAll(".day-check");
+  const progressText = document.getElementById("progress-text");
+  const progressFill = document.getElementById("progress-fill");
+
+  function updateProgress() {
+    let done = 0;
+    dayChecks.forEach(cb => {
+      if (cb.checked) done++;
+    });
+    const total = dayChecks.length;
+    progressText.textContent = `${done} / ${total}`;
+    progressFill.style.width = `${Math.round((done / total) * 100)}%`;
+  }
+
+  dayChecks.forEach(cb => {
+    const key = "day1_check_" + cb.dataset.id;
+    cb.checked = localStorage.getItem(key) === "true";
+    cb.addEventListener("change", () => {
+      localStorage.setItem(key, cb.checked);
+      updateProgress();
+    });
+  });
+  updateProgress();
+
+  // 3. Curated 134-Problem Pattern-Wise DSA Master List
+  const dsaList = [
+    // Arrays & Hashing (9)
+    ["Arrays & Hashing", 217, "Contains Duplicate", "Easy", "Hash Set"],
+    ["Arrays & Hashing", 242, "Valid Anagram", "Easy", "Frequency Map"],
+    ["Arrays & Hashing", 1, "Two Sum", "Easy", "Complement Hash Map"],
+    ["Arrays & Hashing", 49, "Group Anagrams", "Medium", "Canonical Key Map"],
+    ["Arrays & Hashing", 347, "Top K Frequent Elements", "Medium", "Bucket Sort / Heap"],
+    ["Arrays & Hashing", 238, "Product of Array Except Self", "Medium", "Prefix & Suffix"],
+    ["Arrays & Hashing", 36, "Valid Sudoku", "Medium", "Row/Col/Box Sets"],
+    ["Arrays & Hashing", 271, "Encode and Decode Strings", "Medium", "Length-Prefix Framing"],
+    ["Arrays & Hashing", 128, "Longest Consecutive Sequence", "Medium", "Set Sequence Start"],
+    // Two Pointers (5)
+    ["Two Pointers", 125, "Valid Palindrome", "Easy", "Left/Right Converge"],
+    ["Two Pointers", 167, "Two Sum II - Input Array Is Sorted", "Medium", "Sorted Two Pointers"],
+    ["Two Pointers", 15, "3Sum", "Medium", "Sort + Two Pointers"],
+    ["Two Pointers", 11, "Container With Most Water", "Medium", "Greedy Width Shrink"],
+    ["Two Pointers", 42, "Trapping Rain Water", "Hard", "Prefix Max / Two Pointers"],
+    // Sliding Window (6)
+    ["Sliding Window", 121, "Best Time to Buy and Sell Stock", "Easy", "Min-So-Far Window"],
+    ["Sliding Window", 3, "Longest Substring Without Repeating Characters", "Medium", "Variable Window + Set"],
+    ["Sliding Window", 424, "Longest Repeating Character Replacement", "Medium", "Window + MaxFreq"],
+    ["Sliding Window", 567, "Permutation in String", "Medium", "Fixed Window Match"],
+    ["Sliding Window", 76, "Minimum Window Substring", "Hard", "Expand & Shrink Map"],
+    ["Sliding Window", 239, "Sliding Window Maximum", "Hard", "Monotonic Deque"],
+    // Stack (7)
+    ["Stack", 20, "Valid Parentheses", "Easy", "Bracket Matching Stack"],
+    ["Stack", 155, "Min Stack", "Medium", "Auxiliary Min Tracking"],
+    ["Stack", 150, "Evaluate Reverse Polish Notation", "Medium", "Postfix Stack"],
+    ["Stack", 22, "Generate Parentheses", "Medium", "Backtracking + Counts"],
+    ["Stack", 739, "Daily Temperatures", "Medium", "Monotonic Decreasing Stack"],
+    ["Stack", 853, "Car Fleet", "Medium", "Sort + Arrival Time Stack"],
+    ["Stack", 84, "Largest Rectangle in Histogram", "Hard", "Monotonic Increasing Stack"],
+    // Binary Search (7)
+    ["Binary Search", 704, "Binary Search", "Easy", "Classic Mid Partition"],
+    ["Binary Search", 74, "Search a 2D Matrix", "Medium", "Flattened Index Mapping"],
+    ["Binary Search", 875, "Koko Eating Bananas", "Medium", "Binary Search on Answer"],
+    ["Binary Search", 153, "Find Minimum in Rotated Sorted Array", "Medium", "Pivot Detection"],
+    ["Binary Search", 33, "Search in Rotated Sorted Array", "Medium", "Sorted Half Check"],
+    ["Binary Search", 981, "Time Based Key-Value Store", "Medium", "Map + Upper Bound Search"],
+    ["Binary Search", 4, "Median of Two Sorted Arrays", "Hard", "Partition Binary Search"],
+    // Linked List (11)
+    ["Linked List", 206, "Reverse Linked List", "Easy", "Iterative / Recursive Pointer Flip"],
+    ["Linked List", 21, "Merge Two Sorted Lists", "Easy", "Dummy Head Merge"],
+    ["Linked List", 141, "Linked List Cycle", "Easy", "Floyd Fast & Slow Pointers"],
+    ["Linked List", 143, "Reorder List", "Medium", "Mid + Reverse + Merge"],
+    ["Linked List", 19, "Remove Nth Node From End of List", "Medium", "N-Gap Two Pointers"],
+    ["Linked List", 138, "Copy List with Random Pointer", "Medium", "Old->New Node Map"],
+    ["Linked List", 2, "Add Two Numbers", "Medium", "Carry Simulation"],
+    ["Linked List", 287, "Find the Duplicate Number", "Medium", "Floyd Cycle Detection"],
+    ["Linked List", 146, "LRU Cache", "Medium", "Hash Map + Doubly Linked List"],
+    ["Linked List", 23, "Merge k Sorted Lists", "Hard", "Min-Heap / Divide & Conquer"],
+    ["Linked List", 25, "Reverse Nodes in k-Group", "Hard", "Group Pointer Rewiring"],
+    // Trees (15)
+    ["Trees", 226, "Invert Binary Tree", "Easy", "DFS / BFS Swap"],
+    ["Trees", 104, "Maximum Depth of Binary Tree", "Easy", "Recursive Height"],
+    ["Trees", 543, "Diameter of Binary Tree", "Easy", "Post-order Height + Global Max"],
+    ["Trees", 110, "Balanced Binary Tree", "Easy", "Bottom-up Height Check"],
+    ["Trees", 100, "Same Tree", "Easy", "Structural DFS Compare"],
+    ["Trees", 572, "Subtree of Another Tree", "Easy", "DFS + SameTree"],
+    ["Trees", 235, "Lowest Common Ancestor of a BST", "Medium", "BST Split Point"],
+    ["Trees", 102, "Binary Tree Level Order Traversal", "Medium", "BFS Queue by Level"],
+    ["Trees", 199, "Binary Tree Right Side View", "Medium", "BFS Last Node per Level"],
+    ["Trees", 1448, "Count Good Nodes in Binary Tree", "Medium", "Pre-order Max Path"],
+    ["Trees", 98, "Validate Binary Search Tree", "Medium", "Min/Max Range Bounds"],
+    ["Trees", 230, "Kth Smallest Element in a BST", "Medium", "In-order Traversal"],
+    ["Trees", 105, "Construct Binary Tree from Preorder & Inorder", "Medium", "Index Split Recursion"],
+    ["Trees", 124, "Binary Tree Maximum Path Sum", "Hard", "Post-order Gain Return"],
+    ["Trees", 297, "Serialize and Deserialize Binary Tree", "Hard", "Pre-order Null Markers"],
+    // Tries (3)
+    ["Tries", 208, "Implement Trie (Prefix Tree)", "Medium", "TrieNode Children Map"],
+    ["Tries", 211, "Design Add and Search Words Data Structure", "Medium", "Trie + Wildcard DFS"],
+    ["Tries", 212, "Word Search II", "Hard", "Trie + Grid Backtracking"],
+    // Heap / Priority Queue (7)
+    ["Heap / Priority Queue", 703, "Kth Largest Element in a Stream", "Easy", "Min-Heap Size K"],
+    ["Heap / Priority Queue", 1046, "Last Stone Weight", "Easy", "Max-Heap Simulation"],
+    ["Heap / Priority Queue", 973, "K Closest Points to Origin", "Medium", "Max-Heap Size K / Quickselect"],
+    ["Heap / Priority Queue", 215, "Kth Largest Element in an Array", "Medium", "Min-Heap / Quickselect"],
+    ["Heap / Priority Queue", 621, "Task Scheduler", "Medium", "Max-Heap + Cooldown Queue"],
+    ["Heap / Priority Queue", 355, "Design Twitter", "Medium", "K-Way Merge with Heap"],
+    ["Heap / Priority Queue", 295, "Find Median from Data Stream", "Hard", "Two Heaps (Max + Min)"],
+    // Backtracking (9)
+    ["Backtracking", 78, "Subsets", "Medium", "Include / Exclude Tree"],
+    ["Backtracking", 39, "Combination Sum", "Medium", "Reuse Current Index"],
+    ["Backtracking", 46, "Permutations", "Medium", "Used Set / Swapping"],
+    ["Backtracking", 90, "Subsets II", "Medium", "Sort + Skip Adjacent Dupes"],
+    ["Backtracking", 40, "Combination Sum II", "Medium", "Sort + Level Duplicate Skip"],
+    ["Backtracking", 79, "Word Search", "Medium", "Grid DFS + Visited Backtrack"],
+    ["Backtracking", 131, "Palindrome Partitioning", "Medium", "Prefix Palindrome Cut"],
+    ["Backtracking", 17, "Letter Combinations of a Phone Number", "Medium", "Digit Mapping DFS"],
+    ["Backtracking", 51, "N-Queens", "Hard", "Col/Diag/AntiDiag Sets"],
+    // Graphs (12)
+    ["Graphs", 200, "Number of Islands", "Medium", "Grid DFS/BFS Flood Fill"],
+    ["Graphs", 695, "Max Area of Island", "Medium", "Grid Area Counting"],
+    ["Graphs", 133, "Clone Graph", "Medium", "Node Map + DFS/BFS"],
+    ["Graphs", 994, "Rotting Oranges", "Medium", "Multi-Source BFS"],
+    ["Graphs", 417, "Pacific Atlantic Water Flow", "Medium", "Reverse Border DFS"],
+    ["Graphs", 130, "Surrounded Regions", "Medium", "Border-Connected Mark"],
+    ["Graphs", 207, "Course Schedule", "Medium", "Cycle Detection / Kahn's Topo"],
+    ["Graphs", 210, "Course Schedule II", "Medium", "Topological Sort Order"],
+    ["Graphs", 684, "Redundant Connection", "Medium", "Union-Find (DSU)"],
+    ["Graphs", 323, "Number of Connected Components", "Medium", "Union-Find / DFS"],
+    ["Graphs", 261, "Graph Valid Tree", "Medium", "E == V-1 & Connected"],
+    ["Graphs", 127, "Word Ladder", "Hard", "Shortest Path Wildcard BFS"],
+    // Advanced Graphs (3)
+    ["Advanced Graphs", 743, "Network Delay Time", "Medium", "Dijkstra's Shortest Path"],
+    ["Advanced Graphs", 787, "Cheapest Flights Within K Stops", "Medium", "Bellman-Ford / BFS"],
+    ["Advanced Graphs", 1584, "Min Cost to Connect All Points", "Medium", "Prim's / Kruskal's MST"],
+    // 1-D DP (12)
+    ["1-D DP", 70, "Climbing Stairs", "Easy", "Fibonacci State Transition"],
+    ["1-D DP", 746, "Min Cost Climbing Stairs", "Easy", "Min of Prev Two"],
+    ["1-D DP", 198, "House Robber", "Medium", "Take vs Skip Adjacent"],
+    ["1-D DP", 213, "House Robber II", "Medium", "Two Linear Passes"],
+    ["1-D DP", 5, "Longest Palindromic Substring", "Medium", "Expand Around Center"],
+    ["1-D DP", 647, "Palindromic Substrings", "Medium", "Center Expansion Count"],
+    ["1-D DP", 91, "Decode Ways", "Medium", "1-Digit & 2-Digit Transitions"],
+    ["1-D DP", 322, "Coin Change", "Medium", "Unbounded Min Coins"],
+    ["1-D DP", 152, "Maximum Product Subarray", "Medium", "Track Max & Min Product"],
+    ["1-D DP", 139, "Word Break", "Medium", "Prefix Reachability DP"],
+    ["1-D DP", 300, "Longest Increasing Subsequence", "Medium", "DP O(n^2) / Patience O(n log n)"],
+    ["1-D DP", 416, "Partition Equal Subset Sum", "Medium", "0/1 Knapsack Target Sum"],
+    // 2-D DP (8)
+    ["2-D DP", 62, "Unique Paths", "Medium", "Grid Top + Left Sums"],
+    ["2-D DP", 1143, "Longest Common Subsequence", "Medium", "Match vs Skip 2D Table"],
+    ["2-D DP", 309, "Best Time to Buy & Sell Stock with Cooldown", "Medium", "State Machine DP"],
+    ["2-D DP", 518, "Coin Change II", "Medium", "Unbounded Knapsack Combos"],
+    ["2-D DP", 494, "Target Sum", "Medium", "Memoization / Subset Diff"],
+    ["2-D DP", 97, "Interleaving String", "Medium", "2-Pointer Index DP"],
+    ["2-D DP", 72, "Edit Distance", "Medium", "Insert/Delete/Replace Grid"],
+    ["2-D DP", 329, "Longest Increasing Path in a Matrix", "Hard", "DFS + Memoization"],
+    // Greedy (7)
+    ["Greedy", 53, "Maximum Subarray", "Medium", "Kadane's Algorithm"],
+    ["Greedy", 55, "Jump Game", "Medium", "Max Reachable Index"],
+    ["Greedy", 45, "Jump Game II", "Medium", "Greedy BFS Level Range"],
+    ["Greedy", 134, "Gas Station", "Medium", "Reset Start on Negative Tank"],
+    ["Greedy", 846, "Hand of Straights", "Medium", "Min-Order Group Formation"],
+    ["Greedy", 763, "Partition Labels", "Medium", "Last Occurrence Window"],
+    ["Greedy", 678, "Valid Parenthesis String", "Medium", "Min/Max Open Range"],
+    // Intervals (5)
+    ["Intervals", 57, "Insert Interval", "Medium", "Before / Merge / After"],
+    ["Intervals", 56, "Merge Intervals", "Medium", "Sort by Start & Overlap"],
+    ["Intervals", 435, "Non-overlapping Intervals", "Medium", "Sort by End (Greedy Keep)"],
+    ["Intervals", 252, "Meeting Rooms", "Easy", "Adjacent Overlap Check"],
+    ["Intervals", 253, "Meeting Rooms II", "Medium", "Min-Heap / Sweep Line"],
+    // Math & Bit Manipulation (8)
+    ["Math & Matrix", 48, "Rotate Image", "Medium", "Transpose + Reverse Rows"],
+    ["Math & Matrix", 54, "Spiral Matrix", "Medium", "4-Boundary Shrink"],
+    ["Math & Matrix", 73, "Set Matrix Zeroes", "Medium", "First Row/Col Flags"],
+    ["Bit Manipulation", 136, "Single Number", "Easy", "XOR Cancellation"],
+    ["Bit Manipulation", 191, "Number of 1 Bits", "Easy", "n & (n - 1) Trick"],
+    ["Bit Manipulation", 338, "Counting Bits", "Easy", "DP + Right Shift"],
+    ["Bit Manipulation", 190, "Reverse Bits", "Easy", "Shift & Mask 32 Bits"],
+    ["Bit Manipulation", 268, "Missing Number", "Easy", "XOR / Gauss Sum"]
+  ];
+
+  const tbody = document.getElementById("dsa-master-body");
+  dsaList.forEach(([pattern, num, title, diff, concept]) => {
+    const tr = document.createElement("tr");
+    const badgeClass = diff === "Easy" ? "badge-easy" : diff === "Medium" ? "badge-med" : "badge-hard";
+    const key = "dsa_done_" + num;
+    const checked = localStorage.getItem(key) === "true" ? "checked" : "";
+    tr.innerHTML = `
+      <td><input type="checkbox" ${checked} onchange="localStorage.setItem('${key}', this.checked)"></td>
+      <td>${pattern}</td>
+      <td><strong>#${num}</strong></td>
+      <td>${title}</td>
+      <td><span class="badge ${badgeClass}">${diff}</span></td>
+      <td>${concept}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+</script>
+</body>
+</html>
