@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 3 Mastery — 30-Day Job Switch Roadmap</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-alt: #f1f5f9;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --primary: #1e40af;
+      --primary-light: #dbeafe;
+      --accent: #0f766e;
+      --accent-light: #ccfbf1;
+      --warn-bg: #fffbeb;
+      --warn-border: #f59e0b;
+      --warn-text: #92400e;
+      --danger-bg: #fef2f2;
+      --danger-border: #ef4444;
+      --danger-text: #991b1b;
+      --code-bg: #0f172a;
+      --code-text: #e2e8f0;
+      --shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+      --radius: 10px;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b1120;
+      --surface: #111827;
+      --surface-alt: #1e293b;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --primary: #60a5fa;
+      --primary-light: #1e3a8a;
+      --accent: #2dd4bf;
+      --accent-light: #134e4a;
+      --warn-bg: #292008;
+      --warn-border: #d97706;
+      --warn-text: #fcd34d;
+      --danger-bg: #2c1012;
+      --danger-border: #dc2626;
+      --danger-text: #fca5a5;
+      --code-bg: #020617;
+      --code-text: #e2e8f0;
+      --shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: 20px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .brand {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 14px;
+    }
+
+    .brand-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 3px 8px;
+      border-radius: 999px;
+      margin-bottom: 6px;
+    }
+
+    .brand h1 { font-size: 18px; margin: 4px 0 2px; line-height: 1.3; }
+    .brand p { margin: 0; font-size: 13px; color: var(--text-muted); }
+
+    .progress-box {
+      background: var(--surface-alt);
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .progress-bar-bg {
+      height: 8px;
+      background: var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-group-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin: 10px 0 4px;
+    }
+
+    .nav-links { list-style: none; padding: 0; margin: 0; }
+    .nav-links li a {
+      display: block;
+      padding: 6px 10px;
+      border-radius: 6px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13.5px;
+      transition: background 0.15s;
+    }
+    .nav-links li a:hover { background: var(--surface-alt); color: var(--primary); }
+
+    .theme-btn {
+      margin-top: auto;
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      background: var(--surface-alt);
+      color: var(--text);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13.5px;
+      font-weight: 600;
+    }
+
+    .main {
+      max-width: 960px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 32px 36px 80px;
+    }
+
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+
+    .hero h2 { margin: 0 0 8px; font-size: 26px; line-height: 1.25; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .pill {
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px 28px;
+      margin-bottom: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      border-bottom: 2px solid var(--surface-alt);
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+
+    .section-header h2 { margin: 0; font-size: 22px; color: var(--primary); }
+
+    .topic-check {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      background: var(--surface-alt);
+      padding: 5px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    h3 { font-size: 18px; margin: 22px 0 10px; color: var(--text); }
+    h4 { font-size: 15.5px; margin: 16px 0 8px; }
+    p { margin: 0 0 12px; }
+    ul, ol { margin: 0 0 14px; padding-left: 22px; }
+    li { margin-bottom: 6px; }
+
+    .callout {
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin: 16px 0;
+      border-left: 4px solid;
+      font-size: 15px;
+    }
+
+    .callout-title {
+      font-weight: 700;
+      font-size: 13.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .callout-analogy { background: var(--primary-light); border-color: var(--primary); }
+    .callout-pro { background: var(--accent-light); border-color: var(--accent); }
+    .callout-warn { background: var(--warn-bg); border-color: var(--warn-border); color: var(--warn-text); }
+    .callout-trap { background: var(--danger-bg); border-color: var(--danger-border); color: var(--danger-text); }
+
+    pre {
+      background: var(--code-bg);
+      color: var(--code-text);
+      padding: 16px 18px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 13.8px;
+      line-height: 1.55;
+      margin: 12px 0 16px;
+      border: 1px solid #1e293b;
+    }
+
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+
+    p code, li code, td code {
+      background: var(--surface-alt);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.88em;
+      border: 1px solid var(--border);
+    }
+
+    .table-wrap { overflow-x: auto; margin: 14px 0 18px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+    th, td { border: 1px solid var(--border); padding: 10px 12px; text-align: left; vertical-align: top; }
+    th { background: var(--surface-alt); font-weight: 700; }
+
+    details {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin: 12px 0;
+    }
+
+    summary { cursor: pointer; font-weight: 700; font-size: 15px; user-select: none; }
+    details[open] summary { margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+
+    .qa-item {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+      background: var(--bg);
+    }
+    .qa-q { font-weight: 700; margin-bottom: 8px; }
+
+    .badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-right: 6px;
+    }
+    .badge-easy { background: #dcfce7; color: #166534; }
+    .badge-med { background: #fef3c7; color: #92400e; }
+    .badge-hard { background: #fee2e2; color: #991b1b; }
+
+    .mobile-bar {
+      display: none;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media (max-width: 920px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { display: none; position: fixed; inset: 0 auto 0 0; width: 280px; z-index: 30; }
+      .sidebar.open { display: flex; }
+      .mobile-bar { display: flex; }
+      .main { padding: 20px 16px 60px; }
+      .section-card { padding: 18px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="mobile-bar">
+  <strong>Day 3 Mastery — Job Switch</strong>
+  <button onclick="document.querySelector('.sidebar').classList.toggle('open')" style="padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:var(--surface-alt);color:var(--text);">☰ Menu</button>
+</div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-tag">30-Day Job Switch Plan</span>
+      <h1>Day 3 Complete Guide</h1>
+      <p>TypeScript • DB Design • DSA • Python</p>
+    </div>
+
+    <div class="progress-box">
+      <div class="progress-header">
+        <span>Day 3 Progress</span>
+        <span id="progress-text">0 / 9</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="nav-group-title">Day 3 TypeScript (Zero → Hero)</div>
+      <ul class="nav-links">
+        <li><a href="#topic-1">1. Core Types, unknown &amp; Structural Typing</a></li>
+        <li><a href="#topic-2">2. Interfaces vs Type Aliases</a></li>
+        <li><a href="#topic-3">3. Unions, Intersections &amp; Discriminated</a></li>
+        <li><a href="#topic-4">4. Generics &amp; Utility Types</a></li>
+        <li><a href="#topic-5">5. Type Narrowing &amp; Type Guards</a></li>
+      </ul>
+
+      <div class="nav-group-title">Practice &amp; Parallel Tracks</div>
+      <ul class="nav-links">
+        <li><a href="#practical-ts">6. Output: Typed Functions &amp; Interfaces</a></li>
+        <li><a href="#ai-track">7. Day 3 AI / Python (30 min)</a></li>
+        <li><a href="#system-design">8. Day 3 System Design (DB &amp; Indexes)</a></li>
+        <li><a href="#dsa-day3">9. Day 3 DSA (Final 3 Arrays/Hash)</a></li>
+      </ul>
+    </div>
+
+    <button class="theme-btn" id="theme-toggle">🌙 Switch to Dark Mode</button>
+  </aside>
+
+  <main class="main">
+    <!-- HERO -->
+    <div class="hero">
+      <span class="brand-tag">Week 1 • Day 3</span>
+      <h2>TypeScript Mastery, PostgreSQL Internals &amp; Completing Pattern 1 DSA</h2>
+      <p>
+        <strong>Today's Goal:</strong> Master TypeScript beyond basic annotations (Generics, Discriminated Unions, Type Narrowing, Utility Types), understand how PostgreSQL indexes and ACID transactions protect your Support Operations Center, bridge TS types to Python OOP/type hints, and finish the <strong>Arrays &amp; Hashing</strong> DSA pattern!
+      </p>
+      <div class="hero-meta">
+        <span class="pill">⏱ TypeScript: 60–90 min</span>
+        <span class="pill">🏗 System Design: 30 min</span>
+        <span class="pill">🧠 DSA: 45 min</span>
+        <span class="pill">🤖 Python/AI: 30 min</span>
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- TOPIC 1: TYPES, UNKNOWN, NEVER, STRUCTURAL TYPING         -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="topic-1">
+      <div class="section-header">
+        <h2>1. Core Types, <code>any</code> vs <code>unknown</code> vs <code>never</code> &amp; Structural Typing</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="d3_t1"> Mastered</label>
+      </div>
+
+      <h3>Beginner Mental Model</h3>
+      <p>
+        TypeScript is JavaScript with a <strong>compile-time type checker</strong>. When you build an Angular, Next.js, or Node app, <code>tsc</code> checks all types <em>before</em> the code runs and then <strong>erases every type annotation</strong> when compiling down to plain JavaScript! That means TypeScript adds <strong>zero runtime overhead</strong> — and also means TypeScript types alone do NOT validate incoming API/JSON data at runtime (that's why you use <strong>Zod</strong> in your Express backend!).
+      </p>
+
+      <div class="callout callout-analogy">
+        <span class="callout-title">Real-Life Analogy: Airport Security vs Boarding</span>
+        TypeScript is like an architect inspecting building blueprints (compile-time) before construction begins — it catches mismatched pipes and missing beams early. Runtime validation (like Zod) is like the security guard checking IDs at the actual building door when strangers (external HTTP requests) walk in.
+      </div>
+
+      <h3><code>any</code> vs <code>unknown</code> vs <code>void</code> vs <code>never</code> (Must-Know Comparison!)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Meaning</th>
+              <th>Can Assign Anything To It?</th>
+              <th>Can You Call Methods On It Directly?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>any</code></td>
+              <td>Turns OFF type checking (escape hatch — avoid!)</td>
+              <td>Yes</td>
+              <td>Yes (dangerous! Crashes at runtime if wrong)</td>
+            </tr>
+            <tr>
+              <td><code>unknown</code></td>
+              <td><strong>Type-safe top type</strong> ("I don't know what this is yet")</td>
+              <td>Yes</td>
+              <td><strong>NO!</strong> Must narrow/validate first with <code>typeof</code> / type guard!</td>
+            </tr>
+            <tr>
+              <td><code>void</code></td>
+              <td>Function returns no useful value (<code>undefined</code>)</td>
+              <td>N/A (return type)</td>
+              <td>N/A</td>
+            </tr>
+            <tr>
+              <td><code>never</code></td>
+              <td><strong>Bottom type</strong> — value that can <em>never</em> exist (function throws or loops forever; empty union)</td>
+              <td>Nothing can be assigned to <code>never</code>!</td>
+              <td>Used for exhaustive <code>switch</code> checks!</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+<pre><code>// 1. Primitives, Arrays, Tuples
+let count: number = 5;
+let tags: string[] = ["angular", "prisma"];
+let coords: [number, number] = [12.97, 77.59]; // Fixed-length Tuple
+
+// 2. 'any' vs 'unknown'
+function parseSafe(raw: unknown) {
+  // raw.toUpperCase(); // ❌ Compile Error: 'raw' is of type 'unknown'
+  if (typeof raw === "string") {
+    return raw.toUpperCase(); // ✅ Safe! Narrowed to string
+  }
+  return "";
+}
+
+// 3. 'never' (throws or infinite loop)
+function crash(msg: string): never {
+  throw new Error(msg);
+}
+
+// 4. 'as const' (Locks literal values & makes nested arrays/objects readonly!)
+const PRIORITIES = ["P1", "P2", "P3"] as const;
+// Type is readonly ["P1", "P2", "P3"] instead of string[]!
+type Priority = (typeof PRIORITIES)[number]; // "P1" | "P2" | "P3"</code></pre>
+
+      <h3>Structural Typing ("Duck Typing") — Experienced Level</h3>
+      <p>
+        Unlike Java or C# (<em>Nominal typing</em>, where two classes with identical fields aren't compatible unless explicitly related), TypeScript uses <strong>Structural Typing</strong>: compatibility is based on <strong>shape</strong>!
+      </p>
+<pre><code>type Point2D = { x: number; y: number };
+type Point3D = { x: number; y: number; z: number };
+
+function logPoint(p: Point2D) {
+  console.log(p.x, p.y);
+}
+
+const p3: Point3D = { x: 1, y: 2, z: 3 };
+logPoint(p3); // ✅ VALID! Point3D has at least { x, y }!
+
+// Exception: Excess Property Check on inline object literals!
+// logPoint({ x: 1, y: 2, z: 3 }); // ❌ Compile Error when passing fresh object literal directly!</code></pre>
+
+      <h3>Interview Questions &amp; Practice Problems</h3>
+      <div class="qa-item">
+        <div class="qa-q">Q1 (Interview): Why is <code>unknown</code> strongly preferred over <code>any</code> in catch blocks and API parsers?</div>
+        <details>
+          <summary>Show Answer</summary>
+          <p><code>any</code> disables TypeScript completely and silently spreads bugs everywhere it touches. <code>unknown</code> accepts any value safely (e.g., <code>catch (err: unknown)</code>), while forcing you to check <code>err instanceof Error</code> before reading <code>err.message</code> — preventing runtime <code>TypeError</code> crashes.</p>
+        </details>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">Q2 (Practice): Create a readonly tuple type <code>HttpEntry</code> of <code>[statusCode: number, message: string]</code> and derive a union type of all allowed statuses from a <code>const</code> array using <code>as const</code>.</div>
+        <details>
+          <summary>Show Solution</summary>
+<pre><code>type HttpEntry = readonly [statusCode: number, message: string];
+const okEntry: HttpEntry = [200, "OK"];
+
+const TICKET_STATUSES = ["OPEN", "IN_PROGRESS", "RESOLVED", "CLOSED"] as const;
+type TicketStatus = (typeof TICKET_STATUSES)[number];
+// TicketStatus = "OPEN" | "IN_PROGRESS" | "RESOLVED" | "CLOSED"</code></pre>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- TOPIC 2: INTERFACES vs TYPE ALIASES                       -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="topic-2">
+      <div class="section-header">
+        <h2>2. Interfaces (and <code>interface</code> vs <code>type</code>)</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="d3_t2"> Mastered</label>
+      </div>
+
+      <h3>Defining Contracts with <code>interface</code></h3>
+<pre><code>interface BaseEntity {
+  readonly id: string;
+  createdAt: Date;
+}
+
+interface Ticket extends BaseEntity {
+  title: string;
+  description?: string; // Optional -> string | undefined
+  priority: 1 | 2 | 3;
+  // Method signature:
+  formatLabel(): string;
+}
+
+// Implementing an interface in a class (Common in Angular Services / Backend Repositories)
+class SupportTicket implements Ticket {
+  readonly id: string;
+  createdAt = new Date();
+  constructor(public title: string, public priority: 1 | 2 | 3) {
+    this.id = crypto.randomUUID();
+  }
+  formatLabel() {
+    return `[P${this.priority}] ${this.title}`;
+  }
+}</code></pre>
+
+      <h3><code>interface</code> vs <code>type</code> — Complete Comparison</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Capability</th>
+              <th><code>interface</code></th>
+              <th><code>type</code> (Type Alias)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Describe Object Shapes &amp; Classes</td>
+              <td>Yes</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Primitives, Unions (<code>A | B</code>), Tuples</td>
+              <td><strong>NO!</strong> (Object shapes only)</td>
+              <td><strong>Yes!</strong></td>
+            </tr>
+            <tr>
+              <td>Extending / Combining</td>
+              <td><code>interface B extends A</code></td>
+              <td>Intersection: <code>type B = A &amp; { ... }</code></td>
+            </tr>
+            <tr>
+              <td><strong>Declaration Merging</strong> (Same name declared twice merges automatically)</td>
+              <td><strong>Yes!</strong> (Great for augmenting Express <code>Request.user</code>!)</td>
+              <td><strong>NO</strong> (Duplicate identifier error)</td>
+            </tr>
+            <tr>
+              <td>Mapped / Conditional Types (<code>[K in keyof T]</code>)</td>
+              <td>No</td>
+              <td><strong>Yes!</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-pro">
+        <span class="callout-title">Real-World Support Operations Center Tip (Declaration Merging!)</span>
+        In Express with JWT middleware, when you attach <code>req.user = decodedJwt</code>, TypeScript complains that <code>user</code> doesn't exist on <code>Express.Request</code>. You fix this using <strong>Interface Declaration Merging</strong> inside a <code>types/express.d.ts</code> file:
+<pre><code>declare global {
+  namespace Express {
+    interface Request {
+      user?: { id: string; role: "AGENT" | "ADMIN" };
+    }
+  }
+}</code></pre>
+      </div>
+
+      <h3>Interview Questions &amp; Practice Problems</h3>
+      <div class="qa-item">
+        <div class="qa-q">Q1 (Interview): When should you prefer <code>interface</code> vs <code>type</code>?</div>
+        <details>
+          <summary>Show Answer</summary>
+          <p>Use <strong><code>type</code></strong> for unions, intersections, tuples, function signatures, and mapped/utility transformations. Use <strong><code>interface</code></strong> for object contracts, public library APIs, class <code>implements</code>, or when you need declaration merging (like augmenting Express <code>Request</code>). Most importantly: stay consistent within a codebase!</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- TOPIC 3: UNIONS, INTERSECTIONS & DISCRIMINATED UNIONS     -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="topic-3">
+      <div class="section-header">
+        <h2>3. Unions, Intersections &amp; Discriminated Unions</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="d3_t3"> Mastered</label>
+      </div>
+
+      <h3>Unions (<code>|</code>) vs Intersections (<code>&amp;</code>)</h3>
+      <ul>
+        <li><strong>Union (<code>A | B</code>):</strong> Value can be <em>either</em> A or B. You can only access properties guaranteed on <strong>BOTH</strong> until you narrow!</li>
+        <li><strong>Intersection (<code>A &amp; B</code>):</strong> Value must satisfy <strong>ALL</strong> properties of A AND B combined. (If A has <code>id: string</code> and B has <code>id: number</code>, <code>id</code> becomes <code>never</code>!).</li>
+      </ul>
+
+      <h3>Discriminated (Tagged) Unions — The Cleanest Pattern in TypeScript!</h3>
+      <p>
+        Instead of writing sloppy optional flags like <code>{ loading: boolean; data?: T; error?: string }</code> (which allows impossible states like <code>loading: true</code> AND <code>error: "Failed"</code> at the same time!), model states using a shared literal tag (e.g. <code>status</code> or <code>kind</code>):
+      </p>
+<pre><code>type AsyncState&lt;T&gt; =
+  | { status: "idle" }
+  | { status: "loading" }
+  | { status: "success"; data: T }
+  | { status: "error"; message: string };
+
+function renderTickets(state: AsyncState&lt;string[]&gt;): string {
+  switch (state.status) {
+    case "idle":
+      return "Click load to fetch tickets";
+    case "loading":
+      return "Spinner...";
+    case "success":
+      return `Loaded ${state.data.length} tickets`; // TS knows 'data' exists ONLY here!
+    case "error":
+      return `Error: ${state.message}`;             // TS knows 'message' exists ONLY here!
+    default: {
+      // Exhaustiveness check! If someone adds { status: "retrying" } above and forgets a case,
+      // TypeScript flags a COMPILE ERROR right on this line!
+      const _exhaustive: never = state;
+      return _exhaustive;
+    }
+  }
+}</code></pre>
+
+      <h3>Interview Questions &amp; Practice Problems</h3>
+      <div class="qa-item">
+        <div class="qa-q">Q1 (Practice): Model a Discriminated Union <code>NotificationEvent</code> with 3 variants: <code>"EMAIL"</code> (has <code>to</code>, <code>subject</code>), <code>"SLACK"</code> (has <code>channel</code>, <code>text</code>), and <code>"SMS"</code> (has <code>phone</code>), and write an exhaustive <code>sendNotification(event)</code> function.</div>
+        <details>
+          <summary>Show Solution</summary>
+<pre><code>type NotificationEvent =
+  | { type: "EMAIL"; to: string; subject: string }
+  | { type: "SLACK"; channel: string; text: string }
+  | { type: "SMS"; phone: string };
+
+function sendNotification(event: NotificationEvent): string {
+  switch (event.type) {
+    case "EMAIL": return `Email to ${event.to}: ${event.subject}`;
+    case "SLACK": return `Slack #${event.channel}: ${event.text}`;
+    case "SMS":   return `SMS to ${event.phone}`;
+    default: {
+      const _never: never = event;
+      return _never;
+    }
+  }
+}</code></pre>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- TOPIC 4: GENERICS & UTILITY TYPES                         -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="topic-4">
+      <div class="section-header">
+        <h2>4. Generics (<code>&lt;T&gt;</code>) &amp; Built-in Utility Types</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="d3_t4"> Mastered</label>
+      </div>
+
+      <h3>Beginner Mental Model</h3>
+      <p>
+        Regular functions accept <em>value parameters</em> like <code>(x: number)</code>. <strong>Generics</strong> let functions, interfaces, and classes accept <strong>type parameters</strong> like <code>&lt;T&gt;</code> — preserving the exact input type all the way to the return type without losing safety to <code>any</code>!
+      </p>
+
+      <div class="callout callout-analogy">
+        <span class="callout-title">Real-Life Analogy: Standardized Shipping Box</span>
+        A generic <code>ApiResponse&lt;T&gt;</code> wrapper is like a clear glass shipping box. Whether you put a <code>Ticket</code> inside (<code>ApiResponse&lt;Ticket&gt;</code>) or a <code>User[]</code> inside (<code>ApiResponse&lt;User[]&gt;</code>), the box label (<code>success</code>, <code>timestamp</code>, <code>data</code>) stays identical while TypeScript remembers the exact item inside!
+      </div>
+
+<pre><code>// 1. Generic Interface
+interface ApiResponse&lt;T = unknown&gt; {
+  success: boolean;
+  data: T;
+  requestId: string;
+}
+
+// 2. Generic Function
+function wrapResponse&lt;T&gt;(data: T): ApiResponse&lt;T&gt; {
+  return { success: true, data, requestId: "req_123" };
+}
+const res = wrapResponse({ id: 1, title: "Bug" }); // res.data is inferred as { id: number; title: string }!
+
+// 3. Generic Constraints (extends) + keyof!
+function getProperty&lt;T, K extends keyof T&gt;(obj: T, key: K): T[K] {
+  return obj[key];
+}
+const ticket = { id: 101, priority: "P1" };
+const p = getProperty(ticket, "priority"); // Type is string!
+// getProperty(ticket, "nonExistent");     // ❌ Compile Error! "nonExistent" not in keyof ticket!</code></pre>
+
+      <h3>Essential Built-in Utility Types (Used Daily in Angular/Next.js/Prisma!)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Utility Type</th>
+              <th>What It Does</th>
+              <th>Real-World Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>Partial&lt;T&gt;</code></td>
+              <td>Makes all properties of <code>T</code> optional</td>
+              <td><code>PATCH /tickets/:id</code> update payload: <code>Partial&lt;Ticket&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>Required&lt;T&gt;</code></td>
+              <td>Makes all optional properties required</td>
+              <td>Final validated config object</td>
+            </tr>
+            <tr>
+              <td><code>Readonly&lt;T&gt;</code></td>
+              <td>Marks all top-level properties <code>readonly</code></td>
+              <td>NgRx / Signal immutable state</td>
+            </tr>
+            <tr>
+              <td><code>Pick&lt;T, K&gt;</code></td>
+              <td>Selects a subset of keys <code>K</code> from <code>T</code></td>
+              <td><code>Pick&lt;Ticket, "id" | "title"&gt;</code> for list view</td>
+            </tr>
+            <tr>
+              <td><code>Omit&lt;T, K&gt;</code></td>
+              <td>Removes keys <code>K</code> from <code>T</code></td>
+              <td><code>Omit&lt;User, "passwordHash"&gt;</code> for safe public DTO!</td>
+            </tr>
+            <tr>
+              <td><code>Record&lt;K, V&gt;</code></td>
+              <td>Dictionary mapping keys <code>K</code> to values <code>V</code></td>
+              <td><code>Record&lt;TicketStatus, number&gt;</code> for status counts</td>
+            </tr>
+            <tr>
+              <td><code>ReturnType&lt;F&gt;</code> / <code>Awaited&lt;P&gt;</code></td>
+              <td>Extracts return type of function / unwrapped Promise value</td>
+              <td>Inferring Prisma query result types cleanly!</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Interview Questions &amp; Practice Problems</h3>
+      <div class="qa-item">
+        <div class="qa-q">Q1 (Interview): What is the difference between <code>Pick&lt;T, K&gt;</code> vs <code>Extract&lt;U, V&gt;</code>, and <code>Omit&lt;T, K&gt;</code> vs <code>Exclude&lt;U, V&gt;</code>?</div>
+        <details>
+          <summary>Show Answer</summary>
+          <p><code>Pick</code> and <code>Omit</code> operate on <strong>Object property keys</strong>. <code>Extract</code> and <code>Exclude</code> operate on <strong>Union types</strong> (e.g., <code>Exclude&lt;"A" | "B" | "C", "C"&gt;</code> → <code>"A" | "B"</code>).</p>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q2 (Practice): Given <code>interface User { id: string; name: string; email: string; passwordHash: string; role: "ADMIN" | "AGENT"; }</code>, define <code>PublicUser</code> (without <code>passwordHash</code>) and <code>UpdateUserDto</code> (optional fields, cannot change <code>id</code> or <code>passwordHash</code>).</div>
+        <details>
+          <summary>Show Solution</summary>
+<pre><code>type PublicUser = Omit&lt;User, "passwordHash"&gt;;
+type UpdateUserDto = Partial&lt;Omit&lt;User, "id" | "passwordHash"&gt;&gt;;</code></pre>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- TOPIC 5: TYPE NARROWING & TYPE GUARDS                     -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="topic-5">
+      <div class="section-header">
+        <h2>5. Type Narrowing &amp; Custom Type Guards</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="d3_t5"> Mastered</label>
+      </div>
+
+      <h3>Beginner Mental Model</h3>
+      <p>
+        <strong>Type Narrowing</strong> is how TypeScript tracks your runtime <code>if / switch / return</code> checks (Control Flow Analysis) and shrinks a broad type (like <code>string | number | null</code>) down to a specific type inside that block!
+      </p>
+
+      <h3>All 6 Type Narrowing Techniques</h3>
+<pre><code>// 1. typeof guard (Watch out: typeof null === "object" in JS!)
+function formatId(id: string | number) {
+  if (typeof id === "number") return `TKT-${id.toFixed(0)}`;
+  return id.trim().toUpperCase();
+}
+
+// 2. Truthiness & Equality narrowing (handles null/undefined)
+function printTitle(title?: string | null) {
+  if (!title) return; // Narrows out undefined, null, and ""
+  console.log(title.toUpperCase());
+}
+
+// 3. 'in' operator narrowing
+type Admin = { permissions: string[] };
+type Customer = { company: string };
+function describeAccount(acc: Admin | Customer) {
+  if ("permissions" in acc) {
+    console.log("Admin perms:", acc.permissions.join(", "));
+  } else {
+    console.log("Customer org:", acc.company);
+  }
+}
+
+// 4. 'instanceof' narrowing (Classes & Errors)
+function handleError(err: unknown): string {
+  if (err instanceof Error) return err.message;
+  return "Unknown error";
+}
+
+// 5. Custom Type Predicate ('param is Type') — Huge Interview Favorite!
+interface Ticket { id: number; title: string; }
+
+function isTicket(value: unknown): value is Ticket {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    "id" in value && typeof (value as any).id === "number" &&
+    "title" in value && typeof (value as any).title === "string"
+  );
+}
+
+// 6. Assertion Function ('asserts cond' or 'asserts val is T')
+function assertNonNull&lt;T&gt;(val: T, msg: string): asserts val is NonNullable&lt;T&gt; {
+  if (val === null || val === undefined) throw new Error(msg);
+}</code></pre>
+
+      <div class="callout callout-trap">
+        <span class="callout-title">Interview Trap: Type Assertion (<code>as</code>) vs Type Guard (<code>is</code>)</span>
+        Writing <code>const t = data as Ticket;</code> tells the compiler <em>"Trust me, shut up"</em> — zero runtime safety! A Type Guard (<code>isTicket(data)</code>) performs an actual runtime check, keeping your app safe from malformed API responses.
+      </div>
+
+      <h3>Interview Questions &amp; Practice Problems</h3>
+      <div class="qa-item">
+        <div class="qa-q">Q1 (Practice): Filter out <code>null</code> and <code>undefined</code> from <code>(string | null | undefined)[]</code> so TypeScript infers the result strictly as <code>string[]</code> (hint: use a type predicate!).</div>
+        <details>
+          <summary>Show Solution</summary>
+<pre><code>const rawTags: (string | null | undefined)[] = ["angular", null, "ts", undefined];
+
+function isDefined&lt;T&gt;(val: T): val is NonNullable&lt;T&gt; {
+  return val !== null && val !== undefined;
+}
+
+const cleanTags: string[] = rawTags.filter(isDefined); // Strictly string[]!</code></pre>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 6: DAY 3 PRACTICAL OUTPUT                         -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="practical-ts">
+      <div class="section-header">
+        <h2>6. Day 3 Practical Output: Create Typed Functions &amp; Interfaces</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="d3_p"> Completed</label>
+      </div>
+      <p>From your roadmap: <strong>"Day 3 Practical Output: Create typed functions and interfaces."</strong> Put all 5 TS concepts together in one clean Support Operations Center module:</p>
+
+<pre><code>// support-ops.types.ts
+export type TicketPriority = "P1" | "P2" | "P3";
+export type TicketStatus = "OPEN" | "IN_PROGRESS" | "CLOSED";
+
+export interface Ticket {
+  readonly id: string;
+  title: string;
+  priority: TicketPriority;
+  status: TicketStatus;
+  assigneeId: string | null;
+}
+
+export type UpdateTicketInput = Partial&lt;Omit&lt;Ticket, "id"&gt;&gt;;
+
+export interface PaginatedResult&lt;T&gt; {
+  items: T[];
+  total: number;
+  page: number;
+}
+
+// Generic filter helper constrained to keys of T
+export function filterByField&lt;T, K extends keyof T&gt;(
+  list: readonly T[],
+  key: K,
+  value: T[K]
+): T[] {
+  return list.filter(item => item[key] === value);
+}
+
+// Type-safe immutable patch function
+export function patchTicket(ticket: Ticket, patch: UpdateTicketInput): Ticket {
+  return { ...ticket, ...patch };
+}
+
+// Custom Type Guard
+export function isCriticalOpenTicket(ticket: Ticket): boolean {
+  return ticket.priority === "P1" && ticket.status !== "CLOSED";
+}
+
+// Usage check:
+const sample: Ticket = {
+  id: "t-1",
+  title: "Prisma timeout",
+  priority: "P1",
+  status: "OPEN",
+  assigneeId: null
+};
+const updated = patchTicket(sample, { status: "IN_PROGRESS", assigneeId: "agent-7" });
+const p1List = filterByField([updated], "priority", "P1");</code></pre>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 7: DAY 3 AI / PYTHON TRACK                        -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="ai-track">
+      <div class="section-header">
+        <h2>7. Day 3 AI Track (30 Mins): Python Functions, OOP, Exceptions &amp; Type Hints</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="d3_ai"> Completed AI Slot</label>
+      </div>
+      <p>
+        Since today is TypeScript day, notice how modern AI Python (FastAPI, Pydantic, OpenAI SDK) uses <strong>Python Type Hints</strong> (<code>def fn(x: str) -&gt; int:</code>) — very similar to TypeScript!
+      </p>
+
+<pre><code># day3.py — Functions, *args/**kwargs, Classes, Exceptions & Type Hints
+from typing import Optional
+
+class TicketClassifier:
+    def __init__(self, model_name: str = "gpt-4o-mini") -> None:
+        self.model_name = model_name  # 'self' is like 'this' in JS/TS!
+
+    def classify(self, title: str, *tags: str, **metadata: str) -> dict:
+        if not title.strip():
+            raise ValueError("Ticket title cannot be empty")
+        priority = "P1" if "down" in title.lower() else "P2"
+        return {
+            "model": self.model_name,
+            "priority": priority,
+            "tags": list(tags),
+            "meta": metadata
+        }
+
+try:
+    clf = TicketClassifier()
+    result = clf.classify("Auth service down", "auth", "urgent", region="ap-south-1")
+    print(result)
+except ValueError as err:
+    print(f"Validation failed: {err}")
+finally:
+    print("Done classification attempt.")</code></pre>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 8: DAY 3 SYSTEM DESIGN                            -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="system-design">
+      <div class="section-header">
+        <h2>8. Day 3 System Design: Databases, Indexing, ACID &amp; Connection Pooling</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="d3_sd"> Mastered</label>
+      </div>
+
+      <h3>Part A: SQL (PostgreSQL) vs NoSQL (MongoDB/DynamoDB)</h3>
+      <ul>
+        <li><strong>Why your Support Operations Center uses PostgreSQL (SQL):</strong> Tickets, Users, Organizations, Comments, and Audit Logs are <strong>highly relational</strong> and require strict schemas, foreign-key integrity, complex joins/aggregations (e.g., SLA reports), and multi-row transactions.</li>
+        <li><strong>When NoSQL shines:</strong> Massive horizontal write-heavy logs, flexible un-joined documents, or simple key-value lookups at millions of RPS. (Plus PostgreSQL's <code>JSONB</code> and <code>pgvector</code> cover most semi-structured &amp; AI embedding needs without adding a second DB!).</li>
+      </ul>
+
+      <h3>Part B: How Database Indexes Actually Work (B-Tree)</h3>
+      <p>
+        Without an index on <code>tickets(status)</code>, running <code>WHERE status = 'OPEN'</code> forces PostgreSQL to perform a <strong>Sequential Scan</strong> — reading all 5 million rows on disk (<code>O(N)</code>)!
+      </p>
+      <p>
+        Adding a <strong>B-Tree Index</strong> creates a balanced sorted tree pointer structure on disk, reducing lookups from <code>O(N)</code> to <strong><code>O(log N)</code></strong> (~3–4 disk hops for millions of rows!).
+      </p>
+      <div class="callout callout-warn">
+        <span class="callout-title">Index Trade-off (Interview Gold!)</span>
+        Indexes make <strong>READs (<code>SELECT</code>) dramatically faster</strong>, but make <strong>WRITEs (<code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>) slightly slower</strong> and consume extra disk/RAM, because Postgres must update every index tree whenever a row changes! Never index blindly — index columns used in <code>WHERE</code>, <code>JOIN</code>, and <code>ORDER BY</code>.
+      </div>
+
+      <h3>Part C: ACID Transactions &amp; Connection Pooling</h3>
+      <ul>
+        <li><strong>A — Atomicity:</strong> All-or-nothing (when reassigning a ticket AND writing an AuditLog entry inside <code>prisma.$transaction(...)</code>, if AuditLog fails, the ticket assignment rolls back!).</li>
+        <li><strong>C — Consistency:</strong> Constraints (Foreign keys, <code>NOT NULL</code>, <code>UNIQUE</code>) are never violated.</li>
+        <li><strong>I — Isolation:</strong> Concurrent transactions don't corrupt each other (preventing double-claiming the same ticket).</li>
+        <li><strong>D — Durability:</strong> Once committed, data survives power crashes (Write-Ahead Log / WAL).</li>
+        <li><strong>Connection Pooling:</strong> Opening a fresh TCP + auth connection to PostgreSQL per HTTP request is expensive (~20–50ms) and Postgres only handles ~100–300 direct connections cleanly. Prisma / PgBouncer maintains a <strong>pool of reusable open connections</strong> shared across Express requests.</li>
+      </ul>
+
+      <h3>Day 3 System Design Interview Questions</h3>
+      <div class="qa-item">
+        <div class="qa-q">Q1: Your Support Operations Center query <code>SELECT * FROM tickets WHERE org_id = 5 AND status = 'OPEN' ORDER BY created_at DESC</code> is slow on 2M rows. What index do you add and why does column order matter?</div>
+        <details>
+          <summary>Show Answer</summary>
+          <p>Add a <strong>Composite Index</strong>: <code>CREATE INDEX idx_tickets_org_status_created ON tickets(org_id, status, created_at DESC);</code>. Column order matters (<strong>Leftmost Prefix Rule</strong>): equality filters (<code>org_id</code>, <code>status</code>) go first to narrow down the slice, and the range/sort column (<code>created_at</code>) goes last so Postgres reads results already in sorted order!</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 9: DAY 3 DSA SEQUENTIAL                           -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="dsa-day3">
+      <div class="section-header">
+        <h2>9. Day 3 DSA (Sequential): Finishing Pattern 1 — Arrays &amp; Hashing (3 Mediums)</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="d3_dsa"> Solved All 3</label>
+      </div>
+      <p>Today completes all 9 problems in <strong>Pattern 1: Arrays &amp; Hashing</strong>! Tomorrow (Day 4 — Angular kickoff!) we begin <strong>Pattern 2: Two Pointers</strong>.</p>
+
+      <!-- Problem 1: #36 -->
+      <h3>DSA #7: Valid Sudoku (LeetCode #36 — <span class="badge badge-med">Medium</span>)</h3>
+      <p><strong>Problem:</strong> Determine if a <code>9 x 9</code> Sudoku board is valid (no duplicates in any row, column, or <code>3 x 3</code> sub-box). Empty cells are <code>'.'</code>.</p>
+      <ul>
+        <li><strong>Key Trick:</strong> Map every cell <code>(r, c)</code> to its <code>3 x 3</code> box index using integer division: <code>box = Math.floor(r / 3) * 3 + Math.floor(c / 3)</code> (values 0 through 8)!</li>
+        <li>Maintain 9 row Sets, 9 col Sets, and 9 box Sets. Time: <code>O(81)</code> = <code>O(1)</code> constant!</li>
+      </ul>
+<pre><code>function isValidSudoku(board) {
+  const rows = Array.from({ length: 9 }, () => new Set());
+  const cols = Array.from({ length: 9 }, () => new Set());
+  const boxes = Array.from({ length: 9 }, () => new Set());
+
+  for (let r = 0; r < 9; r++) {
+    for (let c = 0; c < 9; c++) {
+      const val = board[r][c];
+      if (val === ".") continue;
+
+      const boxIdx = Math.floor(r / 3) * 3 + Math.floor(c / 3);
+      if (rows[r].has(val) || cols[c].has(val) || boxes[boxIdx].has(val)) {
+        return false;
+      }
+      rows[r].add(val);
+      cols[c].add(val);
+      boxes[boxIdx].add(val);
+    }
+  }
+  return true;
+}</code></pre>
+
+      <!-- Problem 2: #271 -->
+      <h3>DSA #8: Encode and Decode Strings (LeetCode #271 — <span class="badge badge-med">Medium</span>)</h3>
+      <p><strong>Problem:</strong> Design an algorithm to encode a list of strings to a single string, and decode that single string back to the exact original list. Strings can contain <strong>ANY character</strong> (including commas, hashes <code>#</code>, spaces, or empty strings!).</p>
+      <ul>
+        <li><strong>Why simple delimiter fails:</strong> Joining with <code>","</code> or <code>"#"</code> breaks if a string itself contains <code>"a#b"</code>!</li>
+        <li><strong>Optimal (Length-Prefix Framing):</strong> Prefix every string with <code>length + "#"</code>! E.g. <code>["lint", "co#de", ""]</code> → <code>"4#lint5#co#de0#"</code>. During decode, read digits until <code>#</code> to learn exact length <code>len</code>, then slice exactly <code>len</code> characters — regardless of what characters are inside!</li>
+      </ul>
+<pre><code>function encode(strs) {
+  return strs.map(s => `${s.length}#${s}`).join("");
+}
+
+function decode(str) {
+  const res = [];
+  let i = 0;
+  while (i < str.length) {
+    let j = i;
+    while (str[j] !== "#") j++; // Find delimiter after length digits
+    const len = Number(str.slice(i, j));
+    const wordStart = j + 1;
+    res.push(str.slice(wordStart, wordStart + len));
+    i = wordStart + len;
+  }
+  return res;
+}
+// Time: O(N) total characters, Space: O(1) extra (excluding output)</code></pre>
+
+      <!-- Problem 3: #128 -->
+      <h3>DSA #9: Longest Consecutive Sequence (LeetCode #128 — <span class="badge badge-med">Medium</span>)</h3>
+      <p><strong>Problem:</strong> Given an unsorted array of integers <code>nums</code>, return the length of the longest consecutive elements sequence. Must run in <strong><code>O(n)</code></strong> time! (So sorting in <code>O(n log n)</code> is not allowed).</p>
+      <ul>
+        <li><strong>Core Intuition:</strong> Put all numbers in a <code>Set</code> (<code>O(n)</code>). How do we avoid re-scanning sequences? <strong>ONLY start counting forward when <code>num</code> is the START of a sequence</strong> — meaning <code>!set.has(num - 1)</code>!</li>
+        <li>Because we only walk forward from sequence heads, every number in the Set is visited at most twice → guaranteed <strong><code>O(n)</code></strong>!</li>
+      </ul>
+<pre><code>function longestConsecutive(nums) {
+  const numSet = new Set(nums);
+  let longest = 0;
+
+  for (const num of numSet) {
+    // Only begin counting if 'num' has no left neighbor (it's a sequence start!)
+    if (!numSet.has(num - 1)) {
+      let current = num;
+      let streak = 1;
+
+      while (numSet.has(current + 1)) {
+        current++;
+        streak++;
+      }
+      longest = Math.max(longest, streak);
+    }
+  }
+  return longest;
+}
+// Dry run: [100, 4, 200, 1, 3, 2]
+// 100 -> no 99 -> streak 1.
+// 4   -> has 3 -> SKIP!
+// 200 -> no 199 -> streak 1.
+// 1   -> no 0 -> counts 1,2,3,4 -> streak 4! (max=4)
+// 3,2 -> have left neighbors -> SKIP! -> returns 4.
+// Time: O(n), Space: O(n)</code></pre>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  const root = document.documentElement;
+  const themeBtn = document.getElementById("theme-toggle");
+  const savedTheme = localStorage.getItem("day3_theme") || "light";
+  root.setAttribute("data-theme", savedTheme);
+  themeBtn.textContent = savedTheme === "dark" ? "☀️ Switch to Light Mode" : "🌙 Switch to Dark Mode";
+
+  themeBtn.addEventListener("click", () => {
+    const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    localStorage.setItem("day3_theme", next);
+    themeBtn.textContent = next === "dark" ? "☀️ Switch to Light Mode" : "🌙 Switch to Dark Mode";
+  });
+
+  const dayChecks = document.querySelectorAll(".day-check");
+  const progressText = document.getElementById("progress-text");
+  const progressFill = document.getElementById("progress-fill");
+
+  function updateProgress() {
+    let done = 0;
+    dayChecks.forEach(cb => { if (cb.checked) done++; });
+    progressText.textContent = `${done} / ${dayChecks.length}`;
+    progressFill.style.width = `${Math.round((done / dayChecks.length) * 100)}%`;
+  }
+
+  dayChecks.forEach(cb => {
+    const key = "day3_check_" + cb.dataset.id;
+    cb.checked = localStorage.getItem(key) === "true";
+    cb.addEventListener("change", () => {
+      localStorage.setItem(key, cb.checked);
+      updateProgress();
+    });
+  });
+  updateProgress();
+</script>
+</body>
+</html>
