@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 2 Mastery — 30-Day Job Switch Roadmap</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-alt: #f1f5f9;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --primary: #1e40af;
+      --primary-light: #dbeafe;
+      --accent: #0f766e;
+      --accent-light: #ccfbf1;
+      --warn-bg: #fffbeb;
+      --warn-border: #f59e0b;
+      --warn-text: #92400e;
+      --danger-bg: #fef2f2;
+      --danger-border: #ef4444;
+      --danger-text: #991b1b;
+      --code-bg: #0f172a;
+      --code-text: #e2e8f0;
+      --shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+      --radius: 10px;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b1120;
+      --surface: #111827;
+      --surface-alt: #1e293b;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --primary: #60a5fa;
+      --primary-light: #1e3a8a;
+      --accent: #2dd4bf;
+      --accent-light: #134e4a;
+      --warn-bg: #292008;
+      --warn-border: #d97706;
+      --warn-text: #fcd34d;
+      --danger-bg: #2c1012;
+      --danger-border: #dc2626;
+      --danger-text: #fca5a5;
+      --code-bg: #020617;
+      --code-text: #e2e8f0;
+      --shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: 20px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .brand {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 14px;
+    }
+
+    .brand-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 3px 8px;
+      border-radius: 999px;
+      margin-bottom: 6px;
+    }
+
+    .brand h1 {
+      font-size: 18px;
+      margin: 4px 0 2px;
+      line-height: 1.3;
+    }
+
+    .brand p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .progress-box {
+      background: var(--surface-alt);
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .progress-bar-bg {
+      height: 8px;
+      background: var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-group-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin: 10px 0 4px;
+    }
+
+    .nav-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-links li a {
+      display: block;
+      padding: 6px 10px;
+      border-radius: 6px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13.5px;
+      transition: background 0.15s;
+    }
+
+    .nav-links li a:hover {
+      background: var(--surface-alt);
+      color: var(--primary);
+    }
+
+    .theme-btn {
+      margin-top: auto;
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      background: var(--surface-alt);
+      color: var(--text);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13.5px;
+      font-weight: 600;
+    }
+
+    .main {
+      max-width: 960px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 32px 36px 80px;
+    }
+
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+
+    .hero h2 {
+      margin: 0 0 8px;
+      font-size: 26px;
+      line-height: 1.25;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .pill {
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px 28px;
+      margin-bottom: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      border-bottom: 2px solid var(--surface-alt);
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-size: 22px;
+      color: var(--primary);
+    }
+
+    .topic-check {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      background: var(--surface-alt);
+      padding: 5px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    h3 {
+      font-size: 18px;
+      margin: 22px 0 10px;
+      color: var(--text);
+    }
+
+    h4 {
+      font-size: 15.5px;
+      margin: 16px 0 8px;
+    }
+
+    p { margin: 0 0 12px; }
+    ul, ol { margin: 0 0 14px; padding-left: 22px; }
+    li { margin-bottom: 6px; }
+
+    .callout {
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin: 16px 0;
+      border-left: 4px solid;
+      font-size: 15px;
+    }
+
+    .callout-title {
+      font-weight: 700;
+      font-size: 13.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .callout-analogy { background: var(--primary-light); border-color: var(--primary); }
+    .callout-pro { background: var(--accent-light); border-color: var(--accent); }
+    .callout-warn { background: var(--warn-bg); border-color: var(--warn-border); color: var(--warn-text); }
+    .callout-trap { background: var(--danger-bg); border-color: var(--danger-border); color: var(--danger-text); }
+
+    pre {
+      background: var(--code-bg);
+      color: var(--code-text);
+      padding: 16px 18px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 13.8px;
+      line-height: 1.55;
+      margin: 12px 0 16px;
+      border: 1px solid #1e293b;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    p code, li code, td code {
+      background: var(--surface-alt);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.88em;
+      border: 1px solid var(--border);
+    }
+
+    .table-wrap { overflow-x: auto; margin: 14px 0 18px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14.5px;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th { background: var(--surface-alt); font-weight: 700; }
+
+    details {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin: 12px 0;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 15px;
+      user-select: none;
+    }
+
+    details[open] summary {
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .qa-item {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+      background: var(--bg);
+    }
+
+    .qa-q { font-weight: 700; margin-bottom: 8px; }
+
+    .badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-right: 6px;
+    }
+
+    .badge-easy { background: #dcfce7; color: #166534; }
+    .badge-med { background: #fef3c7; color: #92400e; }
+    .badge-hard { background: #fee2e2; color: #991b1b; }
+
+    .diagram-box {
+      background: var(--surface-alt);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13.5px;
+      line-height: 1.5;
+      overflow-x: auto;
+      margin: 14px 0;
+      white-space: pre;
+    }
+
+    .mobile-bar {
+      display: none;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media (max-width: 920px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar {
+        display: none;
+        position: fixed;
+        inset: 0 auto 0 0;
+        width: 280px;
+        z-index: 30;
+      }
+      .sidebar.open { display: flex; }
+      .mobile-bar { display: flex; }
+      .main { padding: 20px 16px 60px; }
+      .section-card { padding: 18px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="mobile-bar">
+  <strong>Day 2 Mastery — Job Switch</strong>
+  <button onclick="document.querySelector('.sidebar').classList.toggle('open')" style="padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:var(--surface-alt);color:var(--text);">☰ Menu</button>
+</div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-tag">30-Day Job Switch Plan</span>
+      <h1>Day 2 Complete Guide</h1>
+      <p>Async JS • Event Loop • Design • DSA</p>
+    </div>
+
+    <div class="progress-box">
+      <div class="progress-header">
+        <span>Day 2 Progress</span>
+        <span id="progress-text">0 / 10</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="nav-group-title">Day 2 Core JS (Zero → Hero)</div>
+      <ul class="nav-links">
+        <li><a href="#topic-1">1. Promises &amp; Combinators</a></li>
+        <li><a href="#topic-2">2. async / await Mastery</a></li>
+        <li><a href="#topic-3">3. Event Loop &amp; Queues</a></li>
+        <li><a href="#topic-4">4. map / filter / reduce + Polyfills</a></li>
+        <li><a href="#topic-5">5. Destructuring</a></li>
+        <li><a href="#topic-6">6. Spread &amp; Rest (...)</a></li>
+      </ul>
+
+      <div class="nav-group-title">Practice &amp; Parallel Tracks</div>
+      <ul class="nav-links">
+        <li><a href="#practical-async">7. Output: Write &amp; Debug Async</a></li>
+        <li><a href="#ai-track">8. Day 2 AI / Python (30 min)</a></li>
+        <li><a href="#system-design">9. Day 2 System Design</a></li>
+        <li><a href="#dsa-day2">10. Day 2 DSA (3 Mediums)</a></li>
+      </ul>
+    </div>
+
+    <button class="theme-btn" id="theme-toggle">🌙 Switch to Dark Mode</button>
+  </aside>
+
+  <main class="main">
+    <!-- HERO -->
+    <div class="hero">
+      <span class="brand-tag">Week 1 • Day 2</span>
+      <h2>Asynchronous JavaScript, Event Loop, Functional Pipelines &amp; Medium DSA</h2>
+      <p>
+        <strong>Today's Goal:</strong> Master how JavaScript handles asynchronous code without blocking the UI thread, crack every Event Loop output puzzle, write custom polyfills for <code>map/filter/reduce</code>, design scalable APIs with caching &amp; rate limiting, and level up to 3 classic <strong>Medium</strong> Arrays &amp; Hashing DSA problems.
+      </p>
+      <div class="hero-meta">
+        <span class="pill">⏱ Core JS: 60–90 min</span>
+        <span class="pill">🏗 System Design: 30 min</span>
+        <span class="pill">🧠 DSA: 45 min</span>
+        <span class="pill">🤖 Python/AI: 30 min</span>
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- TOPIC 1: PROMISES                                         -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="topic-1">
+      <div class="section-header">
+        <h2>1. Promises (States, Chaining &amp; Combinators)</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="d2_t1"> Mastered</label>
+      </div>
+
+      <h3>Beginner Mental Model</h3>
+      <p>
+        JavaScript cannot pause your entire browser tab for 2 seconds while waiting for a backend API response — otherwise the user couldn't scroll or click anything! Before Promises, we used nested callbacks ("Callback Hell"). A <strong>Promise</strong> is an object representing the <em>eventual completion or failure</em> of an asynchronous operation.
+      </p>
+
+      <div class="callout callout-analogy">
+        <span class="callout-title">Real-Life Analogy: Coffee Shop Buzzer</span>
+        When you order coffee, the cashier hands you a vibrating buzzer (a <strong>Promise</strong>).
+        <ul>
+          <li>While they brew it, the buzzer is <strong><code>pending</code></strong> (you can go sit down and read your phone — non-blocking!).</li>
+          <li>When your drink is ready, it transitions to <strong><code>fulfilled</code></strong> with a value (your coffee).</li>
+          <li>If the espresso machine broke, it transitions to <strong><code>rejected</code></strong> with a reason (an Error).</li>
+          <li>Once it settles (fulfilled or rejected), it is <strong>immutable</strong> — a buzzer cannot un-ring or switch from fulfilled to rejected!</li>
+        </ul>
+      </div>
+
+      <h3>Creating, Consuming &amp; Chaining Promises</h3>
+<pre><code>// 1. Creating a Promise (The executor function runs SYNCHRONOUSLY!)
+function fetchTicketById(id) {
+  return new Promise((resolve, reject) => {
+    if (!id) {
+      reject(new Error("Ticket ID is required"));
+      return; // Always return after reject/resolve so code below doesn't run!
+    }
+    setTimeout(() => {
+      resolve({ id, title: "PostgreSQL connection pool exhausted", priority: "HIGH" });
+    }, 300);
+  });
+}
+
+// 2. Consuming & Chaining (.then always returns a NEW Promise!)
+fetchTicketById(101)
+  .then(ticket => {
+    console.log("Step 1:", ticket.title);
+    return ticket.priority; // Wrapped automatically into a resolved Promise("HIGH")
+  })
+  .then(priority => {
+    console.log("Step 2 Priority:", priority);
+  })
+  .catch(err => {
+    // Catches ANY rejection from ANY step above it!
+    console.error("Error caught:", err.message);
+  })
+  .finally(() => {
+    // Runs whether fulfilled OR rejected (ideal for hiding loading spinners!)
+    console.log("Cleanup: hide spinner");
+  });</code></pre>
+
+      <h3>The 4 Promise Combinators (Guaranteed Interview Question!)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Resolves When...</th>
+              <th>Rejects When...</th>
+              <th>Real-World Use Case</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>Promise.all([...])</code></td>
+              <td><strong>ALL</strong> promises fulfill (returns array of values in exact input order)</td>
+              <td><strong>ANY ONE</strong> rejects (fail-fast!)</td>
+              <td>Loading Ticket + User + Comments together; page can't render if any fails.</td>
+            </tr>
+            <tr>
+              <td><code>Promise.allSettled([...])</code></td>
+              <td><strong>ALL</strong> promises settle (never rejects! Returns <code>{status: "fulfilled", value}</code> or <code>{status: "rejected", reason}</code>)</td>
+              <td>Never rejects</td>
+              <td>Sending 10 notification emails or fetching independent dashboard widgets where partial failure is OK.</td>
+            </tr>
+            <tr>
+              <td><code>Promise.race([...])</code></td>
+              <td>The <strong>FIRST</strong> promise settles (if fulfilled)</td>
+              <td>The <strong>FIRST</strong> promise settles (if rejected!)</td>
+              <td>Implementing an API request timeout by racing <code>fetch()</code> against a 5s timer!</td>
+            </tr>
+            <tr>
+              <td><code>Promise.any([...])</code></td>
+              <td>The <strong>FIRST</strong> promise <strong>fulfills</strong> (ignores earlier rejections!)</td>
+              <td><strong>ALL</strong> reject (throws <code>AggregateError</code>)</td>
+              <td>Fetching an asset from 3 CDN mirrors — take whichever succeeds first!</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+<pre><code>// Classic Interview Pattern: Implementing a Timeout with Promise.race()
+function withTimeout(promise, ms) {
+  const timeout = new Promise((_, reject) =>
+    setTimeout(() => reject(new Error(`Timed out after ${ms}ms`)), ms)
+  );
+  return Promise.race([promise, timeout]);
+}</code></pre>
+
+      <div class="callout callout-pro">
+        <span class="callout-title">Angular &amp; RxJS Bridge (Your 2 YoE Edge!)</span>
+        Interviewers love asking: <strong>"Promise vs RxJS Observable?"</strong>
+        <ul>
+          <li><strong>Execution:</strong> Promises are <em>eager</em> (the executor runs immediately when created); Observables are <em>lazy</em> (nothing runs until <code>.subscribe()</code>).</li>
+          <li><strong>Values:</strong> Promises emit a <em>single</em> value; Observables emit <em>0, 1, or many</em> values over time (streams).</li>
+          <li><strong>Cancellation:</strong> Promises have no built-in cancellation (must use <code>AbortController</code> for <code>fetch</code>); Observables are natively cancellable via <code>subscription.unsubscribe()</code> or <code>switchMap</code>.</li>
+          <li><strong>Conversion:</strong> In modern Angular, convert a single-emission Observable to a Promise using <code>firstValueFrom(obs$)</code> or <code>lastValueFrom(obs$)</code> (replacing deprecated <code>.toPromise()</code>).</li>
+        </ul>
+      </div>
+
+      <h3>Interview Questions &amp; Practice Problems</h3>
+      <div class="qa-item">
+        <div class="qa-q">Q1 (Predict Output): What happens if a <code>.then()</code> runs AFTER a <code>.catch()</code>?</div>
+<pre><code>Promise.reject("DB Error")
+  .catch(err => {
+    console.log("Recovered from:", err);
+    return "Fallback Data";
+  })
+  .then(data => {
+    console.log("Next then:", data);
+  });</code></pre>
+        <details>
+          <summary>Show Answer</summary>
+          <p><strong>Output:</strong> <code>"Recovered from: DB Error"</code>, then <code>"Next then: Fallback Data"</code>.</p>
+          <p><strong>Why:</strong> A <code>.catch()</code> block returns a <em>resolved</em> promise (unless you explicitly <code>throw</code> inside it!). So the chain continues into the next <code>.then()</code> with <code>"Fallback Data"</code>.</p>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q2 (Interview Coding): Write your own polyfill for <code>Promise.all(promises)</code>.</div>
+        <details>
+          <summary>Show Solution</summary>
+<pre><code>function myPromiseAll(iterable) {
+  const items = Array.from(iterable);
+  return new Promise((resolve, reject) => {
+    if (items.length === 0) return resolve([]);
+    const results = new Array(items.length);
+    let completed = 0;
+
+    items.forEach((item, index) => {
+      // Wrap in Promise.resolve in case an item is a plain primitive like 42!
+      Promise.resolve(item)
+        .then(value => {
+          results[index] = value; // Preserve input order, NOT completion order!
+          completed++;
+          if (completed === items.length) resolve(results);
+        })
+        .catch(reject); // Fail fast on first rejection
+    });
+  });
+}</code></pre>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- TOPIC 2: ASYNC / AWAIT                                    -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="topic-2">
+      <div class="section-header">
+        <h2>2. <code>async</code> / <code>await</code> Mastery</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="d2_t2"> Mastered</label>
+      </div>
+
+      <h3>Beginner Mental Model</h3>
+      <p>
+        <code>async/await</code> is <strong>syntactic sugar</strong> built on top of Promises (and Generators under the hood). It lets you write asynchronous code that <em>looks</em> clean and top-to-bottom like synchronous code, without actually blocking the main thread!
+      </p>
+      <ul>
+        <li>Adding <code>async</code> before a function guarantees it <strong>always returns a Promise</strong>. If you return <code>42</code>, JS wraps it as <code>Promise.resolve(42)</code>. If you throw an error, it returns a rejected Promise.</li>
+        <li><code>await</code> pauses execution of <strong>only that async function</strong> until the awaited Promise settles, freeing the Call Stack to handle clicks, animations, and other requests.</li>
+      </ul>
+
+      <h3>4 Huge Production Traps with <code>async/await</code></h3>
+
+      <h4>Trap 1: Accidental Sequential Waterfall (Slow Performance!)</h4>
+<pre><code>// ❌ SLOW (Takes 1s + 1s = 2 seconds!)
+async function loadDashboardSlow(userId) {
+  const user = await fetchUser(userId);      // waits 1s
+  const tickets = await fetchTickets(userId); // didn't even start until user finished!
+  return { user, tickets };
+}
+
+// ✅ FAST (Takes max(1s, 1s) = 1 second!)
+async function loadDashboardFast(userId) {
+  const [user, tickets] = await Promise.all([
+    fetchUser(userId),
+    fetchTickets(userId)
+  ]);
+  return { user, tickets };
+}</code></pre>
+
+      <h4>Trap 2: <code>forEach</code> Does NOT Wait for <code>await</code>!</h4>
+<pre><code>// ❌ BROKEN: Logs "All done!" BEFORE any ticket is saved!
+async function saveAllBroken(ids) {
+  ids.forEach(async (id) => {
+    await saveTicket(id); // forEach ignores the returned Promise!
+  });
+  console.log("All done!");
+}
+
+// ✅ FIX A (Sequential — when order or rate-limit matters):
+async function saveSequential(ids) {
+  for (const id of ids) {
+    await saveTicket(id);
+  }
+  console.log("All done sequentially!");
+}
+
+// ✅ FIX B (Parallel — fastest!):
+async function saveParallel(ids) {
+  await Promise.all(ids.map(id => saveTicket(id)));
+  console.log("All done in parallel!");
+}</code></pre>
+
+      <h4>Trap 3: Missing <code>await</code> on <code>return</code> inside <code>try / catch</code>!</h4>
+<pre><code>async function failingQuery() {
+  throw new Error("PostgreSQL syntax error");
+}
+
+// ❌ BUG: try/catch NEVER catches the error if you omit 'await' before return!
+async function brokenWrapper() {
+  try {
+    return failingQuery(); // Returns the pending/rejected Promise directly, leaving try/catch immediately!
+  } catch (err) {
+    console.log("Caught?", err.message); // NEVER RUNS!
+  }
+}
+
+// ✅ FIX: Always use 'return await' inside a try/catch block!
+async function fixedWrapper() {
+  try {
+    return await failingQuery();
+  } catch (err) {
+    console.log("Caught!", err.message); // ✅ Runs!
+    return null;
+  }
+}</code></pre>
+
+      <h4>Trap 4: Express Async Error Trap (Your Support Operations Center Backend!)</h4>
+      <div class="callout callout-trap">
+        <span class="callout-title">Node / Express v4 Critical Pitfall</span>
+        In Express 4, if an <code>async</code> route handler throws an error without <code>try { ... } catch (err) { next(err); }</code>, Express does <strong>NOT</strong> automatically catch the rejected Promise — the request hangs forever or crashes Node with <code>UnhandledPromiseRejection</code>! (Express 5 fixes this natively, or in Express 4 wrap async controllers in a helper or <code>try/catch</code> + <code>next(err)</code>).
+      </div>
+
+      <h3>Interview Questions &amp; Practice Problems</h3>
+      <div class="qa-item">
+        <div class="qa-q">Q1 (Interview): What does <code>await 42</code> (awaiting a non-promise primitive) do?</div>
+        <details>
+          <summary>Show Answer</summary>
+          <p>JavaScript wraps it in <code>Promise.resolve(42)</code> and <strong>still suspends</strong> the async function for one microtask tick before resuming with <code>42</code>! Code immediately after <code>await 42</code> will always run asynchronously after the current synchronous call stack clears.</p>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q2 (Practice): Convert a nested <code>.then()</code> API sequence into clean <code>async/await</code> with proper error handling and parallel independent calls.</div>
+        <details>
+          <summary>Show Solution</summary>
+<pre><code>// Before:
+// getUser(id).then(u => Promise.all([getRoles(u.id), getOrg(u.orgId)]).then(([r, o]) => ({ u, r, o })))
+
+// Clean async/await:
+async function getUserProfile(id) {
+  try {
+    const user = await getUser(id); // Must run first to get user.orgId
+    const [roles, org] = await Promise.all([
+      getRoles(user.id),
+      getOrg(user.orgId)
+    ]);
+    return { user, roles, org };
+  } catch (error) {
+    console.error("Failed loading profile:", error);
+    throw error;
+  }
+}</code></pre>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- TOPIC 3: THE EVENT LOOP                                   -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="topic-3">
+      <div class="section-header">
+        <h2>3. The Event Loop (Call Stack, Microtasks &amp; Macrotasks)</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="d2_t3"> Mastered</label>
+      </div>
+
+      <h3>Beginner Mental Model</h3>
+      <p>
+        JavaScript is <strong>single-threaded</strong> — it has only <strong>one Call Stack</strong> and can execute only one line of JS at a time. Yet browsers and Node.js handle timers, network calls, and mouse clicks concurrently! How? Because the <strong>Browser / Node Runtime</strong> provides multi-threaded background helpers (Web APIs / libuv), and the <strong>Event Loop</strong> coordinates when finished callbacks re-enter the Call Stack.
+      </p>
+
+      <div class="callout callout-analogy">
+        <span class="callout-title">Real-Life Analogy: One Chef + Two Ticket Lines</span>
+        <ul>
+          <li><strong>Call Stack</strong> = The single Chef cooking one dish at a time.</li>
+          <li><strong>Web APIs (Timers / Fetch)</strong> = Smart ovens and delivery drivers running in the background while the Chef keeps cooking.</li>
+          <li><strong>Microtask Queue (VIP Line)</strong> = Urgent Promise continuations (<code>.then</code>, <code>await</code>, <code>queueMicrotask</code>). The Chef must clear <strong>EVERY SINGLE</strong> VIP order (even newly added ones!) before taking even one order from the regular line!</li>
+          <li><strong>Macrotask / Callback Queue (Regular Line)</strong> = <code>setTimeout</code>, <code>setInterval</code>, DOM click events. The Chef processes <strong>ONE</strong> regular order per loop turn, then checks if the browser needs to repaint the screen, then drains the VIP line again!</li>
+        </ul>
+      </div>
+
+      <div class="diagram-box">┌───────────────────┐      ┌─────────────────────────────────┐
+│    CALL STACK     │─────▶│  Web APIs / Node libuv          │
+│ (Sync JS executes │      │  (fetch, setTimeout, DOM, fs)   │
+│  line by line)    │      └───────────┬─────────────────────┘
+└─────────▲─────────┘                  │ completes & queues callback
+          │                            ▼
+          │        ┌─────────────────────────────────────────┐
+          │        │ 1. MICROTASK QUEUE (VIP - Drain ALL!)   │
+          │        │    Promise.then/catch/finally, await,   │
+          │        │    queueMicrotask, MutationObserver     │
+          │        └───────────────────┬─────────────────────┘
+          │                            │ empty? then pick ONE from:
+          │        ┌───────────────────▼─────────────────────┐
+          └────────│ 2. MACROTASK QUEUE (1 Task per Tick)    │
+    Event Loop     │    setTimeout, setInterval, I/O, UI     │
+                   └─────────────────────────────────────────┘</div>
+
+      <h3>Exact Execution Order Rule</h3>
+      <ol>
+        <li>Run all <strong>Synchronous</strong> code on the Call Stack until empty.</li>
+        <li>Drain the <strong>entire Microtask Queue</strong> (if a microtask queues another microtask, run that too before moving on!).</li>
+        <li>(Browser) Perform UI Render / Paint / <code>requestAnimationFrame</code> if needed (~60fps).</li>
+        <li>Pop <strong>ONE</strong> task from the <strong>Macrotask Queue</strong>, run it on the Call Stack.</li>
+        <li>Go back to Step 2 (Drain all Microtasks again)!</li>
+      </ol>
+
+      <div class="callout callout-trap">
+        <span class="callout-title">Microtask Starvation &amp; Node.js Difference</span>
+        <ul>
+          <li><strong>Microtask Starvation:</strong> Calling <code>function loop() { Promise.resolve().then(loop); }</code> freezes the browser UI completely! Macrotasks (clicks, timers) and UI repaints never get a turn because the Microtask Queue never empties.</li>
+          <li><strong>Node.js Extra Detail:</strong> In Node.js, <code>process.nextTick()</code> runs in a special queue <em>even before</em> regular Promise Microtasks! And <code>setImmediate()</code> runs in the Check phase of Node's libuv event loop (often before <code>setTimeout(0)</code> inside an I/O callback).</li>
+        </ul>
+      </div>
+
+      <h3>Interview Output Prediction Puzzles (Solve Before Opening!)</h3>
+
+      <div class="qa-item">
+        <div class="qa-q">Puzzle 1 (Classic): Predict the exact console order!</div>
+<pre><code>console.log("1");
+
+setTimeout(() => console.log("2"), 0);
+
+Promise.resolve()
+  .then(() => {
+    console.log("3");
+    Promise.resolve().then(() => console.log("4"));
+  })
+  .then(() => console.log("5"));
+
+console.log("6");</code></pre>
+        <details>
+          <summary>Show Exact Trace &amp; Answer</summary>
+          <p><strong>Output:</strong> <code>1</code> → <code>6</code> → <code>3</code> → <code>4</code> → <code>5</code> → <code>2</code></p>
+          <p><strong>Step-by-step Trace:</strong></p>
+          <ol>
+            <li>Sync runs: logs <code>1</code>, schedules timer <code>2</code> (Macrotask), queues first <code>.then</code> (Microtask), logs <code>6</code>.</li>
+            <li>Call Stack empty → Drain Microtasks: runs first <code>.then</code> → logs <code>3</code>, queues inner <code>Promise.resolve().then(4)</code> (Microtask), and returns <code>undefined</code> which resolves the outer chain queuing <code>.then(5)</code> (Microtask).</li>
+            <li>Still draining Microtasks: runs <code>4</code>, then runs <code>5</code>!</li>
+            <li>Microtask Queue now empty → Pick 1 Macrotask: logs <code>2</code>!</li>
+          </ol>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Puzzle 2 (<code>async/await</code> + Executor Sync Trap): Predict the exact console order!</div>
+<pre><code>async function async1() {
+  console.log("A");
+  await async2();
+  console.log("B");
+}
+
+async function async2() {
+  console.log("C");
+}
+
+console.log("D");
+setTimeout(() => console.log("E"), 0);
+async1();
+new Promise((resolve) => {
+  console.log("F");
+  resolve();
+}).then(() => console.log("G"));
+console.log("H");</code></pre>
+        <details>
+          <summary>Show Exact Trace &amp; Answer</summary>
+          <p><strong>Output:</strong> <code>D</code> → <code>A</code> → <code>C</code> → <code>F</code> → <code>H</code> → <code>B</code> → <code>G</code> → <code>E</code></p>
+          <p><strong>Why:</strong></p>
+          <ul>
+            <li><code>D</code> logs sync. Timer <code>E</code> goes to Macrotask queue.</li>
+            <li><code>async1()</code> runs synchronously up to <code>await</code>: logs <code>A</code>, calls <code>async2()</code> which logs <code>C</code> synchronously and returns a resolved promise. Everything AFTER <code>await async2()</code> (<code>console.log("B")</code>) is pushed into the <strong>Microtask Queue</strong>!</li>
+            <li><code>new Promise(...)</code> executor runs <strong>synchronously</strong>: logs <code>F</code>, resolves immediately, pushing <code>G</code> into the <strong>Microtask Queue</strong>.</li>
+            <li><code>H</code> logs sync.</li>
+            <li>Microtasks drain in FIFO order: <code>B</code>, then <code>G</code>.</li>
+            <li>Macrotask runs last: <code>E</code>.</li>
+          </ul>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- TOPIC 4: MAP / FILTER / REDUCE + POLYFILLS                -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="topic-4">
+      <div class="section-header">
+        <h2>4. <code>map</code> / <code>filter</code> / <code>reduce</code> (Pipelines &amp; Polyfills)</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="d2_t4"> Mastered</label>
+      </div>
+
+      <h3>Why Today Focuses Deeper on Functional Pipelines</h3>
+      <p>
+        Yesterday we covered mutating vs non-mutating Array basics. Today, we go to the <strong>interview-winning level</strong>: writing custom polyfills (frequently asked in JS coding rounds!), chaining pipelines cleanly, and mastering <code>reduce</code> as the universal Swiss Army Knife.
+      </p>
+
+      <h3>Callback Signature (All Three Share This!)</h3>
+      <ul>
+        <li><code>arr.map((element, index, array) =&gt; newValue, thisArg)</code> → Returns new array of exact same length.</li>
+        <li><code>arr.filter((element, index, array) =&gt; boolean, thisArg)</code> → Returns new array containing elements where callback returned <em>truthy</em>.</li>
+        <li><code>arr.reduce((accumulator, element, index, array) =&gt; nextAcc, initialValue)</code> → Collapses array into a single output value.</li>
+      </ul>
+
+      <h3>Writing Production-Clean Polyfills (Must-Know!)</h3>
+<pre><code>// 1. Array.prototype.myMap
+Array.prototype.myMap = function (callback, thisArg) {
+  const result = [];
+  for (let i = 0; i < this.length; i++) {
+    if (i in this) { // Respects sparse arrays just like the native spec!
+      result[i] = callback.call(thisArg, this[i], i, this);
+    }
+  }
+  return result;
+};
+
+// 2. Array.prototype.myFilter
+Array.prototype.myFilter = function (callback, thisArg) {
+  const result = [];
+  for (let i = 0; i < this.length; i++) {
+    if (i in this && callback.call(thisArg, this[i], i, this)) {
+      result.push(this[i]);
+    }
+  }
+  return result;
+};
+
+// 3. Array.prototype.myReduce (Handles missing initialValue properly!)
+Array.prototype.myReduce = function (callback, initialValue) {
+  const hasInitial = arguments.length >= 2;
+  if (!hasInitial && this.length === 0) {
+    throw new TypeError("Reduce of empty array with no initial value");
+  }
+  let acc = hasInitial ? initialValue : this[0];
+  let startIndex = hasInitial ? 0 : 1;
+
+  for (let i = startIndex; i < this.length; i++) {
+    if (i in this) {
+      acc = callback(acc, this[i], i, this);
+    }
+  }
+  return acc;
+};</code></pre>
+
+      <h3>Real-World Support Operations Center Pipeline</h3>
+<pre><code>const incidents = [
+  { id: "INC-1", team: "auth", severity: "P1", minsOpen: 45, resolved: true },
+  { id: "INC-2", team: "db",   severity: "P1", minsOpen: 120, resolved: false },
+  { id: "INC-3", team: "auth", severity: "P2", minsOpen: 30, resolved: true },
+  { id: "INC-4", team: "db",   severity: "P1", minsOpen: 80, resolved: true }
+];
+
+// Single-pass reduce (avoids creating intermediate arrays from .filter().map() on large datasets!)
+const p1ResolvedStats = incidents.reduce(
+  (acc, inc) => {
+    if (inc.severity === "P1" && inc.resolved) {
+      acc.count += 1;
+      acc.totalMins += inc.minsOpen;
+      acc.ids.push(inc.id);
+    }
+    return acc;
+  },
+  { count: 0, totalMins: 0, ids: [] }
+);
+console.log(p1ResolvedStats); // { count: 2, totalMins: 125, ids: ["INC-1", "INC-4"] }</code></pre>
+
+      <div class="callout callout-trap">
+        <span class="callout-title">Classic JS Quiz Trap: <code>["1", "2", "3"].map(parseInt)</code></span>
+        Output is <code>[1, NaN, NaN]</code>! Why? Because <code>map</code> passes <strong>3 arguments</strong> <code>(val, index, arr)</code> to <code>parseInt(str, radix)</code>:
+        <ul>
+          <li><code>parseInt("1", 0)</code> → radix 0 defaults to base 10 → <code>1</code></li>
+          <li><code>parseInt("2", 1)</code> → base 1 doesn't exist → <code>NaN</code></li>
+          <li><code>parseInt("3", 2)</code> → "3" isn't valid in binary (base 2) → <code>NaN</code>!</li>
+        </ul>
+        <strong>Fix:</strong> <code>["1", "2", "3"].map(s =&gt; parseInt(s, 10))</code> or <code>.map(Number)</code>.
+      </div>
+
+      <h3>Interview Questions &amp; Practice Problems</h3>
+      <div class="qa-item">
+        <div class="qa-q">Q1 (Practice): Implement <code>map()</code> using ONLY <code>reduce()</code>.</div>
+        <details>
+          <summary>Show Solution</summary>
+<pre><code>function mapWithReduce(arr, fn) {
+  return arr.reduce((acc, item, idx, src) => {
+    acc.push(fn(item, idx, src));
+    return acc;
+  }, []);
+}
+console.log(mapWithReduce([1, 2, 3], x => x * 10)); // [10, 20, 30]</code></pre>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q2 (Practice): Build an async sequential runner using <code>reduce()</code> that executes an array of task functions one after another (not in parallel).</div>
+        <details>
+          <summary>Show Solution</summary>
+<pre><code>const tasks = [
+  () => Promise.resolve("1. Connect DB"),
+  () => Promise.resolve("2. Run Migrations"),
+  () => Promise.resolve("3. Start Express")
+];
+
+tasks.reduce(
+  (chain, task) => chain.then(() => task().then(console.log)),
+  Promise.resolve()
+);</code></pre>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- TOPIC 5: DESTRUCTURING                                    -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="topic-5">
+      <div class="section-header">
+        <h2>5. Destructuring (Arrays, Objects, Nested &amp; Function Params)</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="d2_t5"> Mastered</label>
+      </div>
+
+      <h3>Beginner Mental Model</h3>
+      <p>
+        Destructuring lets you unpack values from arrays or properties from objects directly into distinct variables in a single, readable line. Think of it as pattern matching on the <strong>left-hand side</strong> of <code>=</code>.
+      </p>
+
+      <h3>Every Pattern &amp; Edge Case You Need</h3>
+<pre><code>// 1. Array Destructuring (Position-based!)
+const coords = [12.97, 77.59, 920];
+const [lat, lng] = coords;          // lat=12.97, lng=77.59
+const [, , altitude] = coords;      // Skip elements with commas!
+const [head, ...tail] = [1, 2, 3];  // head=1, tail=[2, 3]
+
+// Classic Variable Swap without a temp variable:
+let a = 10, b = 20;
+[a, b] = [b, a]; // a=20, b=10
+
+// 2. Object Destructuring (Key-name-based!)
+const ticket = {
+  id: 500,
+  title: "502 Bad Gateway",
+  assignee: null,
+  meta: { region: "ap-south-1" }
+};
+
+// Rename + Default value + Nested extraction:
+const {
+  id: ticketId,
+  status = "OPEN",                    // undefined -> uses default "OPEN"
+  assignee = "Unassigned",            // ⚠️ CAREFUL! assignee is null, NOT undefined! So assignee stays null!
+  meta: { region: awsRegion } = {}    // Default {} prevents TypeError if meta is missing!
+} = ticket;
+
+console.log(ticketId, status, assignee, awsRegion); // 500, "OPEN", null, "ap-south-1"
+
+// 3. Computed Property Destructuring
+const dynamicField = "title";
+const { [dynamicField]: heading } = ticket; // heading = "502 Bad Gateway"
+
+// 4. Function Parameter Destructuring (Express / React / Angular options!)
+function createAlert({ channel = "slack", severity = "warn", message } = {}) {
+  console.log(`[${channel}] (${severity}): ${message}`);
+}
+createAlert({ message: "High CPU" }); // Works!
+createAlert();                        // Works too because of trailing '= {}'!</code></pre>
+
+      <div class="callout callout-trap">
+        <span class="callout-title">2 Subtle Destructuring Traps</span>
+        <ol>
+          <li><strong>Defaults ONLY trigger on strict <code>undefined</code></strong> — never on <code>null</code>, <code>0</code>, <code>""</code>, or <code>false</code>!</li>
+          <li><strong>Destructuring <code>null</code> or <code>undefined</code> throws <code>TypeError</code>:</strong> <code>const { a } = null;</code> crashes! Always guard API responses with <code>const { a } = response ?? {};</code>.</li>
+        </ol>
+      </div>
+
+      <h3>Interview Questions &amp; Practice Problems</h3>
+      <div class="qa-item">
+        <div class="qa-q">Q1 (Predict Output): What is logged here?</div>
+<pre><code>const obj = { a: 1, b: null, c: undefined };
+const { a = 10, b = 20, c = 30 } = obj;
+console.log(a, b, c);</code></pre>
+        <details>
+          <summary>Show Answer</summary>
+          <p><strong>Output:</strong> <code>1 null 30</code>. Because <code>b</code> is <code>null</code> (not <code>undefined</code>), the default <code>20</code> is NOT used.</p>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q2 (Practice): Given <code>const apiRes = { data: { user: { name: "Neha", links: ["github", "linkedin"] } } };</code>, extract <code>name</code> as <code>userName</code> and the first link as <code>primaryLink</code> in ONE destructuring statement with safe defaults.</div>
+        <details>
+          <summary>Show Solution</summary>
+<pre><code>const {
+  data: {
+    user: {
+      name: userName = "Anonymous",
+      links: [primaryLink = "none"] = []
+    } = {}
+  } = {}
+} = apiRes ?? {};
+
+console.log(userName, primaryLink); // "Neha" "github"</code></pre>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- TOPIC 6: SPREAD & REST (...)                              -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="topic-6">
+      <div class="section-header">
+        <h2>6. Spread &amp; Rest Operators (<code>...</code>)</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="d2_t6"> Mastered</label>
+      </div>
+
+      <h3>Beginner Mental Model</h3>
+      <p>
+        Both operators look identical (<code>...</code>), but their job depends on <strong>where</strong> they are placed:
+      </p>
+      <ul>
+        <li><strong>REST = Collect / Pack</strong> remaining items INTO a single Array or Object. Used in <em>function parameters</em> or on the <em>left side</em> of destructuring. (Must always be the <strong>last</strong> item!)</li>
+        <li><strong>SPREAD = Expand / Unpack</strong> an Array, String, Set, or Object OUT into individual elements/properties. Used in <em>function calls</em> or <em>array/object literals</em>.</li>
+      </ul>
+
+<pre><code>// 1. REST in Function Parameters (Replaces legacy 'arguments'!)
+// Why better than 'arguments'?
+// - 'args' is a REAL Array (has .map/.reduce), whereas 'arguments' is array-like.
+// - Arrow functions do NOT even have their own 'arguments' object!
+function logAudit(actor, ...actions) {
+  console.log(`${actor} performed:`, actions.join(", "));
+}
+logAudit("Admin", "LOGIN", "UPDATE_SLA", "CLOSE_TICKET");
+
+// 2. REST in Object Destructuring (Omit sensitive fields cleanly!)
+const dbUser = { id: 1, email: "a@b.com", passwordHash: "$2b$10$..." };
+const { passwordHash, ...safeUser } = dbUser; // safeUser = { id: 1, email: "a@b.com" }
+
+// 3. SPREAD in Arrays, Strings, Sets & Function Calls
+const nums = [10, 45, 22];
+console.log(Math.max(...nums));           // 45 (unpacks into Math.max(10, 45, 22))
+const unique = [...new Set([1, 2, 2, 3])]; // [1, 2, 3]
+const chars = [..."OPS"];                  // ["O", "P", "S"]
+
+// 4. SPREAD in Objects (Order matters! Later keys overwrite earlier keys)
+const defaults = { timeout: 3000, retries: 2 };
+const prodConfig = { ...defaults, retries: 5 }; // { timeout: 3000, retries: 5 }
+
+// 5. Conditional Property Spreading (Super clean React/Angular/Node pattern!)
+const isAdmin = true;
+const payload = {
+  userId: 9,
+  ...(isAdmin && { role: "SUPER_ADMIN" }) // If false, spreading 'false' adds nothing!
+};</code></pre>
+
+      <div class="callout callout-warn">
+        <span class="callout-title">Warning: Spread on Objects vs Arrays</span>
+        Spreading an object inside an array (<code>[...{ a: 1 }]</code>) throws a <code>TypeError: object is not iterable</code>! However, spreading an array inside an object (<code>{ ...["x", "y"] }</code>) works and produces <code>{ "0": "x", "1": "y" }</code>. And remember from Day 1: spread only creates a <strong>shallow copy</strong>!
+      </div>
+
+      <h3>Interview Questions &amp; Practice Problems</h3>
+      <div class="qa-item">
+        <div class="qa-q">Q1 (Interview): What happens if you put a rest parameter before another parameter: <code>function f(...a, b) {}</code>?</div>
+        <details>
+          <summary>Show Answer</summary>
+          <p>It throws a <code>SyntaxError: Rest parameter must be last formal parameter</code>.</p>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Q2 (Practice): Write a function <code>omitKeys(obj, ...keysToRemove)</code> that returns a new object without mutating <code>obj</code>.</div>
+        <details>
+          <summary>Show Solution</summary>
+<pre><code>function omitKeys(obj, ...keysToRemove) {
+  const removeSet = new Set(keysToRemove);
+  return Object.fromEntries(
+    Object.entries(obj).filter(([key]) => !removeSet.has(key))
+  );
+}
+console.log(omitKeys({ id: 1, secret: "x", token: "y" }, "secret", "token"));
+// { id: 1 }</code></pre>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 7: DAY 2 PRACTICAL OUTPUT                         -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="practical-async">
+      <div class="section-header">
+        <h2>7. Day 2 Practical Output: Write &amp; Debug Asynchronous Functions</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="d2_p"> Completed All 4</label>
+      </div>
+      <p>From your roadmap: <strong>"Day 2 Practical Output: Write and debug asynchronous functions."</strong> Debug the first two broken snippets, then write the next two from scratch!</p>
+
+      <div class="qa-item">
+        <div class="qa-q">Task 1 (Debug): Why does this function return <code>[]</code> (empty array) instead of the fetched user objects? Fix it!</div>
+<pre><code>async function fetchAllUsers(ids) {
+  const users = [];
+  ids.forEach(async (id) => {
+    const user = await Promise.resolve({ id, name: `User-${id}` });
+    users.push(user);
+  });
+  return users;
+}
+fetchAllUsers([1, 2, 3]).then(console.log); // Logs []!</code></pre>
+        <details>
+          <summary>Show Diagnosis &amp; Fix</summary>
+          <p><strong>Bug:</strong> <code>forEach</code> starts the async callbacks synchronously and immediately returns <code>users</code> (still <code>[]</code>) before any microtask resumes after <code>await</code>.</p>
+<pre><code>async function fetchAllUsers(ids) {
+  return Promise.all(
+    ids.map(id => Promise.resolve({ id, name: `User-${id}` }))
+  );
+}</code></pre>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Task 2 (Debug): Spot TWO bugs in this Express/Node helper (1 error-handling bug + 1 performance bug).</div>
+<pre><code>async function getTicketReport(ticketId) {
+  try {
+    const ticket = await fetchTicket(ticketId);
+    const comments = await fetchComments(ticketId);
+    const sla = await fetchSLA(ticketId);
+    return saveAuditLog({ ticket, comments, sla }); // Suppose saveAuditLog rejects!
+  } catch (err) {
+    return { error: "Handled gracefully" };
+  }
+}</code></pre>
+        <details>
+          <summary>Show Diagnosis &amp; Fix</summary>
+          <ul>
+            <li><strong>Performance Bug:</strong> <code>ticket</code>, <code>comments</code>, and <code>sla</code> all depend only on <code>ticketId</code>, yet are awaited sequentially (3x latency!). Run them with <code>Promise.all</code>.</li>
+            <li><strong>Error-Handling Bug:</strong> <code>return saveAuditLog(...)</code> lacks <code>await</code>, so if <code>saveAuditLog</code> rejects, the <code>catch</code> block is bypassed!</li>
+          </ul>
+<pre><code>async function getTicketReport(ticketId) {
+  try {
+    const [ticket, comments, sla] = await Promise.all([
+      fetchTicket(ticketId),
+      fetchComments(ticketId),
+      fetchSLA(ticketId)
+    ]);
+    return await saveAuditLog({ ticket, comments, sla });
+  } catch (err) {
+    return { error: "Handled gracefully", detail: err.message };
+  }
+}</code></pre>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Task 3 (Write): Build <code>retryAsync(fn, retries, delayMs)</code> that retries a failing async function up to <code>retries</code> times with a pause between attempts.</div>
+        <details>
+          <summary>Show Solution</summary>
+<pre><code>const sleep = (ms) => new Promise(res => setTimeout(res, ms));
+
+async function retryAsync(fn, retries = 3, delayMs = 300) {
+  let lastError;
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      return await fn();
+    } catch (err) {
+      lastError = err;
+      console.warn(`Attempt ${attempt} failed: ${err.message}`);
+      if (attempt < retries) await sleep(delayMs);
+    }
+  }
+  throw lastError;
+}</code></pre>
+        </details>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Task 4 (Write): Build a <code>createConcurrencyQueue</code> or batch runner that processes 10 ticket IDs in batches of 3 at a time using <code>Promise.allSettled</code>.</div>
+        <details>
+          <summary>Show Solution</summary>
+<pre><code>async function processInBatches(items, batchSize, workerFn) {
+  const results = [];
+  for (let i = 0; i < items.length; i += batchSize) {
+    const batch = items.slice(i, i + batchSize);
+    const settled = await Promise.allSettled(batch.map(workerFn));
+    results.push(...settled);
+  }
+  return results;
+}</code></pre>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 8: DAY 2 AI / PYTHON TRACK                        -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="ai-track">
+      <div class="section-header">
+        <h2>8. Day 2 AI Track (30 Mins): Python Collections, Loops &amp; Comprehensions</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="d2_ai"> Completed AI Slot</label>
+      </div>
+      <p>
+        Continuing <strong>Week 1 Python Fundamentals</strong>: Today covers Python's 4 core data structures (<code>list</code>, <code>tuple</code>, <code>set</code>, <code>dict</code>), loops, conditionals, and Python's superpower — <strong>comprehensions</strong> (used heavily when cleaning text chunks for RAG &amp; LLM prompts!).
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Python Structure</th>
+              <th>Syntax</th>
+              <th>Mutable? Ordered?</th>
+              <th>JS Equivalent</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>list</code></td>
+              <td><code>["a", "b", "c"]</code></td>
+              <td>Mutable, Ordered, Allows dupes</td>
+              <td><code>Array</code></td>
+            </tr>
+            <tr>
+              <td><code>tuple</code></td>
+              <td><code>("P1", "HIGH")</code></td>
+              <td><strong>Immutable</strong>, Ordered</td>
+              <td><code>Object.freeze([...])</code></td>
+            </tr>
+            <tr>
+              <td><code>set</code></td>
+              <td><code>{"auth", "db"}</code></td>
+              <td>Mutable, Unordered, Unique items</td>
+              <td><code>new Set([...])</code></td>
+            </tr>
+            <tr>
+              <td><code>dict</code></td>
+              <td><code>{"id": 1, "open": True}</code></td>
+              <td>Mutable, Insertion-ordered</td>
+              <td><code>Object</code> / <code>new Map()</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+<pre><code># Day 2 Python Practice (Run with: python day2.py)
+tickets = [
+    {"id": 1, "priority": "P1", "open": True},
+    {"id": 2, "priority": "P2", "open": False},
+    {"id": 3, "priority": "P1", "open": True},
+]
+
+# Conditionals (elif instead of else if!) + Loops
+for t in tickets:
+    if t["priority"] == "P1" and t["open"]:
+        print(f"ALERT: Ticket #{t['id']} needs immediate triage!")
+    elif t["open"]:
+        print(f"Ticket #{t['id']} is queued.")
+    else:
+        print(f"Ticket #{t['id']} is closed.")
+
+# List Comprehension (Replaces JS .filter().map() in ONE readable line!)
+urgent_ids = [t["id"] for t in tickets if t["priority"] == "P1" and t["open"]]
+print("Urgent IDs:", urgent_ids)  # [1, 3]
+
+# Dict Comprehension (Super useful for building lookup maps!)
+status_by_id = {t["id"]: ("OPEN" if t["open"] else "CLOSED") for t in tickets}
+print("Status Map:", status_by_id)  # {1: 'OPEN', 2: 'CLOSED', 3: 'OPEN'}</code></pre>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 9: DAY 2 SYSTEM DESIGN                            -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="system-design">
+      <div class="section-header">
+        <h2>9. Day 2 System Design: API Styles, Caching &amp; Rate Limiting</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="d2_sd"> Mastered</label>
+      </div>
+
+      <h3>Part A: Choosing the Right Communication Protocol</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Protocol</th>
+              <th>How It Works</th>
+              <th>When to Use in Support Operations Center</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>REST (HTTP/JSON)</strong></td>
+              <td>Stateless request/response over HTTP verbs (<code>GET, POST, PATCH, DELETE</code>).</td>
+              <td><strong>Default choice</strong> for CRUD endpoints: <code>GET /tickets</code>, <code>POST /tickets</code>. Easy caching, great tooling.</td>
+            </tr>
+            <tr>
+              <td><strong>GraphQL</strong></td>
+              <td>Single endpoint; client asks for exact fields needed (solves over/under-fetching).</td>
+              <td>Complex dashboards fetching deeply nested User + Team + Tickets + Comments in one query.</td>
+            </tr>
+            <tr>
+              <td><strong>SSE (Server-Sent Events)</strong></td>
+              <td>Unidirectional Server → Client stream over plain HTTP.</td>
+              <td><strong>Streaming AI responses token-by-token</strong> (like ChatGPT!) or one-way live ticket feed!</td>
+            </tr>
+            <tr>
+              <td><strong>WebSockets</strong></td>
+              <td>Full-duplex (two-way) persistent TCP connection.</td>
+              <td>Real-time agent-customer live chat or collaborative ticket editing ("Agent B is typing...").</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Part B: Caching (Why &amp; How — Redis Cache-Aside Pattern)</h3>
+      <p>
+        Reading PostgreSQL on disk takes ~5–50 ms; reading RAM in <strong>Redis</strong> takes &lt;1 ms. For high-read endpoints like "Dashboard Open Ticket Counts" or "User Permissions", use the <strong>Cache-Aside (Lazy Loading)</strong> pattern:
+      </p>
+      <ol>
+        <li>Express receives <code>GET /api/stats</code> → checks <strong>Redis</strong> first.</li>
+        <li><strong>Cache Hit:</strong> Data exists in Redis → return immediately in 1 ms!</li>
+        <li><strong>Cache Miss:</strong> Query PostgreSQL → write result to Redis with a <strong>TTL (Time-To-Live, e.g., 60s)</strong> → return to client.</li>
+        <li><strong>Cache Invalidation:</strong> When a new ticket is created/closed, either delete the cache key (<code>redis.del("stats")</code>) or let the short TTL expire.</li>
+      </ol>
+
+      <h3>Part C: Rate Limiting (Protecting Your Express + AI APIs!)</h3>
+      <p>
+        If a buggy frontend loop or attacker hits your AI Ticket Summarization endpoint 1,000 times/sec, your OpenAI/LLM bill explodes and PostgreSQL crashes! Place a <strong>Rate Limiter</strong> middleware (e.g., backed by Redis) at the API Gateway / Express layer:
+      </p>
+      <ul>
+        <li><strong>Token Bucket Algorithm:</strong> User gets a bucket of e.g. 20 tokens refilling at 2 tokens/sec. Allows short bursts cleanly while capping sustained abuse.</li>
+        <li><strong>Sliding Window Log/Counter:</strong> Strictly allows max 100 requests in any rolling 60-second window. Return HTTP <strong><code>429 Too Many Requests</code></strong> with a <code>Retry-After</code> header!</li>
+      </ul>
+
+      <h3>Day 2 System Design Interview Questions</h3>
+      <div class="qa-item">
+        <div class="qa-q">Q1: You are adding an "AI Ticket Reply Stream" to your Support Operations Center. Should you use WebSockets or Server-Sent Events (SSE)?</div>
+        <details>
+          <summary>Show Answer</summary>
+          <p><strong>Server-Sent Events (SSE)</strong> is usually better here! Streaming an LLM reply only requires Server → Client pushes after one initial POST prompt. SSE works over standard HTTP/HTTPS, auto-reconnects natively in browsers, doesn't need WebSocket state management across load balancers, and is how OpenAI/Anthropic stream tokens.</p>
+        </details>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">Q2: What happens if Redis goes down in a Cache-Aside architecture?</div>
+        <details>
+          <summary>Show Answer</summary>
+          <p>The app should <strong>degrade gracefully</strong> (catch Redis connection errors and fall back to PostgreSQL instead of throwing 500s), though you must watch out for a <strong>Thundering Herd / Cache Stampede</strong> hitting PostgreSQL all at once — solved using connection pooling, rate limiting, or request coalescing.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 10: DAY 2 DSA SEQUENTIAL (3 MEDIUM PROBLEMS)      -->
+    <!-- ========================================================= -->
+    <section class="section-card" id="dsa-day2">
+      <div class="section-header">
+        <h2>10. Day 2 DSA (Sequential): Pattern 1 — Arrays &amp; Hashing (3 Mediums)</h2>
+        <label class="topic-check"><input type="checkbox" class="day-check" data-id="d2_dsa"> Solved All 3</label>
+      </div>
+      <p>
+        Yesterday we solved Easy #217, #242, #1. Today we tackle the next 3 sequential problems in <strong>Arrays &amp; Hashing</strong> — all classic interview favorites!
+      </p>
+
+      <!-- Problem 1: #49 -->
+      <h3>DSA #4: Group Anagrams (LeetCode #49 — <span class="badge badge-med">Medium</span>)</h3>
+      <p><strong>Problem:</strong> Given an array of strings <code>strs</code>, group the anagrams together. You can return the answer in any order.<br>
+      <em>Example:</em> <code>["eat","tea","tan","ate","nat","bat"]</code> → <code>[["bat"],["nat","tan"],["eat","tea","ate"]]</code></p>
+      <ul>
+        <li><strong>Approach 1 (Sort Key):</strong> Sort each word's letters (<code>"eat"</code> → <code>"aet"</code>) and use it as a Hash Map key. Time: <code>O(n · k log k)</code> where <code>k</code> = max word length.</li>
+        <li><strong>Approach 2 (Optimal Frequency Signature):</strong> Count the 26 lowercase letters for each word into an array <code>[1,0,0,0,1,...,1...]</code> and join with a delimiter <code>"#"</code> as the Map key! Time: <strong><code>O(n · k)</code></strong>, Space: <code>O(n · k)</code>.</li>
+      </ul>
+<pre><code>function groupAnagrams(strs) {
+  const groups = new Map();
+
+  for (const word of strs) {
+    const counts = new Array(26).fill(0);
+    for (let i = 0; i < word.length; i++) {
+      counts[word.charCodeAt(i) - 97]++; // 'a' is ASCII 97
+    }
+    const signature = counts.join("#"); // Delimiter prevents [1, 10] colliding with [11, 0]!
+    if (!groups.has(signature)) groups.set(signature, []);
+    groups.get(signature).push(word);
+  }
+
+  return Array.from(groups.values());
+}
+// Edge case: [""] -> signature "0#0#...#0" -> [[""]]</code></pre>
+
+      <!-- Problem 2: #347 -->
+      <h3>DSA #5: Top K Frequent Elements (LeetCode #347 — <span class="badge badge-med">Medium</span>)</h3>
+      <p><strong>Problem:</strong> Given an integer array <code>nums</code> and an integer <code>k</code>, return the <code>k</code> most frequent elements. Your algorithm's time complexity must be better than <code>O(n log n)</code>!</p>
+      <ul>
+        <li><strong>Sorting Frequencies:</strong> Count frequencies in Map, sort entries by count → <code>O(n log n)</code> (too slow for the follow-up!).</li>
+        <li><strong>Optimal (Bucket Sort in <code>O(n)</code> Time!):</strong>
+          1. Build a frequency <code>Map</code> (<code>num → count</code>).<br>
+          2. Notice the maximum possible frequency of any number is <code>nums.length</code>! Create an array of <code>buckets</code> of size <code>nums.length + 1</code>, where <code>buckets[freq]</code> holds all numbers appearing <code>freq</code> times.<br>
+          3. Walk backwards from the highest bucket <code>nums.length</code> down to <code>1</code>, collecting elements until we have <code>k</code> items!</li>
+      </ul>
+<pre><code>function topKFrequent(nums, k) {
+  const freq = new Map();
+  for (const n of nums) {
+    freq.set(n, (freq.get(n) || 0) + 1);
+  }
+
+  // buckets[i] stores array of numbers that appear exactly i times
+  const buckets = Array.from({ length: nums.length + 1 }, () => []);
+  for (const [num, count] of freq.entries()) {
+    buckets[count].push(num);
+  }
+
+  const result = [];
+  for (let count = buckets.length - 1; count >= 1 && result.length < k; count--) {
+    for (const num of buckets[count]) {
+      result.push(num);
+      if (result.length === k) return result;
+    }
+  }
+  return result;
+}
+// Dry run: nums = [1,1,1,2,2,3], k = 2
+// freq = {1:3, 2:2, 3:1} -> buckets[3]=[1], buckets[2]=[2], buckets[1]=[3]
+// Walk backwards -> pushes 1, then 2 -> returns [1, 2]!
+// Time: O(n), Space: O(n)</code></pre>
+
+      <!-- Problem 3: #238 -->
+      <h3>DSA #6: Product of Array Except Self (LeetCode #238 — <span class="badge badge-med">Medium</span>)</h3>
+      <p><strong>Problem:</strong> Given an integer array <code>nums</code>, return an array <code>answer</code> such that <code>answer[i]</code> equals the product of all elements of <code>nums</code> except <code>nums[i]</code>. Must run in <code>O(n)</code> time and <strong>without using the division operator</strong>!</p>
+      <ul>
+        <li><strong>Why no division?</strong> Division breaks if there is a <code>0</code> in the array (divide-by-zero!).</li>
+        <li><strong>Core Intuition (Prefix × Suffix):</strong> For any index <code>i</code>, the product of everything except <code>nums[i]</code> is simply:<br>
+        <code>(Product of everything to the LEFT of i) × (Product of everything to the RIGHT of i)</code>!</li>
+        <li><strong>Optimal <code>O(1)</code> Extra Space:</strong><br>
+        Pass 1 (Left → Right): Store prefix products directly inside <code>answer[i]</code>.<br>
+        Pass 2 (Right → Left): Maintain a running <code>suffix</code> variable and multiply it into <code>answer[i]</code>!</li>
+      </ul>
+<pre><code>function productExceptSelf(nums) {
+  const n = nums.length;
+  const answer = new Array(n).fill(1);
+
+  // Pass 1: answer[i] gets product of all elements to the LEFT of i
+  let prefix = 1;
+  for (let i = 0; i < n; i++) {
+    answer[i] = prefix;
+    prefix *= nums[i];
+  }
+
+  // Pass 2: Multiply by product of all elements to the RIGHT of i
+  let suffix = 1;
+  for (let i = n - 1; i >= 0; i--) {
+    answer[i] *= suffix;
+    suffix *= nums[i];
+  }
+
+  return answer;
+}
+
+// Dry run: nums = [1, 2, 3, 4]
+// After Pass 1 (prefixes): answer = [1, 1, 2, 6]
+// Pass 2 (suffixes from right):
+//   i=3: ans[3]=6*1=6,  suffix=1*4=4
+//   i=2: ans[2]=2*4=8,  suffix=4*3=12
+//   i=1: ans[1]=1*12=12, suffix=12*2=24
+//   i=0: ans[0]=1*24=24, suffix=24*1=24
+// Output: [24, 12, 8, 6]! Handles zeros natively (e.g. [-1, 1, 0, -3, 3] -> [0, 0, 9, 0, 0])!
+// Time: O(n), Extra Space: O(1) (excluding output array)</code></pre>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  // Theme Toggle
+  const root = document.documentElement;
+  const themeBtn = document.getElementById("theme-toggle");
+  const savedTheme = localStorage.getItem("day2_theme") || "light";
+  root.setAttribute("data-theme", savedTheme);
+  themeBtn.textContent = savedTheme === "dark" ? "☀️ Switch to Light Mode" : "🌙 Switch to Dark Mode";
+
+  themeBtn.addEventListener("click", () => {
+    const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    localStorage.setItem("day2_theme", next);
+    themeBtn.textContent = next === "dark" ? "☀️ Switch to Light Mode" : "🌙 Switch to Dark Mode";
+  });
+
+  // Day 2 Progress Tracker
+  const dayChecks = document.querySelectorAll(".day-check");
+  const progressText = document.getElementById("progress-text");
+  const progressFill = document.getElementById("progress-fill");
+
+  function updateProgress() {
+    let done = 0;
+    dayChecks.forEach(cb => { if (cb.checked) done++; });
+    progressText.textContent = `${done} / ${dayChecks.length}`;
+    progressFill.style.width = `${Math.round((done / dayChecks.length) * 100)}%`;
+  }
+
+  dayChecks.forEach(cb => {
+    const key = "day2_check_" + cb.dataset.id;
+    cb.checked = localStorage.getItem(key) === "true";
+    cb.addEventListener("change", () => {
+      localStorage.setItem(key, cb.checked);
+      updateProgress();
+    });
+  });
+  updateProgress();
+</script>
+</body>
+</html>
