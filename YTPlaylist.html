@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>30-Day Tech Stack & Playlists Study Plan - Saurabh Kumar</title>
+  <style>
+    @page {
+      size: A4 landscape;
+      margin: 8mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: #1f2937;
+      background: #ffffff;
+      padding: 16px;
+      font-size: 8.8pt;
+      line-height: 1.35;
+    }
+
+    .header {
+      margin-bottom: 12px;
+      border-bottom: 2px solid #2563eb;
+      padding-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    h1 {
+      font-size: 15pt;
+      color: #0f172a;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .meta {
+      font-size: 8.5pt;
+      color: #64748b;
+    }
+
+    .callout {
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      padding: 6px 10px;
+      margin-bottom: 12px;
+      font-size: 8.3pt;
+      color: #1e40af;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 10px;
+    }
+
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 5px 7px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+      font-size: 8.2pt;
+      text-transform: uppercase;
+    }
+
+    tr:nth-child(even) td {
+      background-color: #f8fafc;
+    }
+
+    .tech-name {
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .creator {
+      color: #2563eb;
+      font-weight: 600;
+    }
+
+    .time-badge {
+      display: inline-block;
+      background: #e2e8f0;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 7.5pt;
+      white-space: nowrap;
+    }
+
+    .day-badge {
+      background: #dbeafe;
+      color: #1d4ed8;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 4px;
+      display: inline-block;
+      white-space: nowrap;
+      font-size: 7.8pt;
+    }
+
+    .topics-list {
+      font-size: 8pt;
+      color: #334155;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div>
+      <h1>30-Day Tech Stack &amp; DSA (Java) Study Plan</h1>
+      <p class="meta">Target: Software Engineer - Frontend / Full-Stack | 2+ Years Experience</p>
+    </div>
+    <div class="meta">
+      Candidate: <strong>Saurabh Kumar</strong> | Novoinvent Software
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Execution Rule:</strong> Watch videos at 1.25x – 1.5x speed. Focus on architectural reasoning and interview keywords. Solve 3–4 DSA problems in Java every morning via <strong>NeetCode 150</strong>.
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 3%;">#</th>
+        <th style="width: 14%;">Tech Stack</th>
+        <th style="width: 20%;">Recommended YT Playlist / Source</th>
+        <th style="width: 8%;">Watch Time</th>
+        <th style="width: 45%;">High-Yield Interview Topics to Extract</th>
+        <th style="width: 10%;">Target Days</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><span class="tech-name">JavaScript Core</span></td>
+        <td><strong>Namaste JavaScript (S1 &amp; S2)</strong><br><span class="creator">Akshay Saini</span></td>
+        <td><span class="time-badge">~5 hrs</span></td>
+        <td class="topics-list">Execution context, Call stack, Closures, Hoisting, Temporal Dead Zone, <code>this</code> binding, Event Loop, Microtask Queue, Promises, async/await, Prototype Chain.</td>
+        <td><span class="day-badge">Days 1–2</span></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><span class="tech-name">TypeScript</span></td>
+        <td><strong>TypeScript Crash Course</strong><br><span class="creator">Jack Herrington / Web Dev Simplified</span></td>
+        <td><span class="time-badge">~1.5 hrs</span></td>
+        <td class="topics-list">Interface vs Type, Generics, Type Narrowing, Discriminated Unions, Keyof/Typeof, Utility Types (<code>Partial</code>, <code>Pick</code>, <code>Omit</code>, <code>Record</code>).</td>
+        <td><span class="day-badge">Day 3</span></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><span class="tech-name">OOP &amp; SOLID</span></td>
+        <td><strong>OOP in Java / Masterclass</strong><br><span class="creator">Kunal Kushwaha / Telusko</span></td>
+        <td><span class="time-badge">~2.5 hrs</span></td>
+        <td class="topics-list"><strong>4 Pillars:</strong> Encapsulation, Abstraction, Inheritance, Polymorphism (Overloading vs Overriding). <strong>SOLID Principles</strong> (Single Responsibility to Dependency Inversion). Abstract class vs Interface. Composition over Inheritance.</td>
+        <td><span class="day-badge">Day 4</span></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><span class="tech-name">Angular (v14–v17)</span></td>
+        <td><strong>Angular Architecture &amp; Signals</strong><br><span class="creator">Decoded Frontend</span></td>
+        <td><span class="time-badge">~3 hrs</span></td>
+        <td class="topics-list">Lifecycle hooks, Standalone Components, Change Detection (<code>Default</code> vs <code>OnPush</code>), Dependency Injection hierarchy, Angular Signals, ViewChild, Interceptors.</td>
+        <td><span class="day-badge">Days 4–5</span></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><span class="tech-name">RxJS</span></td>
+        <td><strong>RxJS Masterclass / Operators</strong><br><span class="creator">Decoded Frontend</span></td>
+        <td><span class="time-badge">~2 hrs</span></td>
+        <td class="topics-list">Observables vs Subjects vs BehaviorSubjects, Flattening operators (<code>switchMap</code>, <code>mergeMap</code>, <code>concatMap</code>, <code>exhaustMap</code>), <code>combineLatest</code>, <code>catchError</code>.</td>
+        <td><span class="day-badge">Day 5</span></td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td><span class="tech-name">React &amp; Next.js</span></td>
+        <td><strong>React &amp; Next.js 14 App Router</strong><br><span class="creator">Web Dev Simplified / ByteGrad</span></td>
+        <td><span class="time-badge">~4 hrs</span></td>
+        <td class="topics-list">React Hooks (<code>useState</code>, <code>useEffect</code>, <code>useRef</code>, <code>useMemo</code>, <code>useCallback</code>), Server vs Client Components (<code>'use client'</code>), SSR, Hydration, App Router layouts.</td>
+        <td><span class="day-badge">Days 8–10</span></td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td><span class="tech-name">Node.js &amp; Express</span></td>
+        <td><strong>Node.js Architecture &amp; Express API</strong><br><span class="creator">Hussein Nasser &amp; Dave Gray</span></td>
+        <td><span class="time-badge">~3.5 hrs</span></td>
+        <td class="topics-list">Event Loop phases, Libuv thread pool, Express middleware execution order, Centralized error handlers, JWT authentication flow, bcrypt hashing, RBAC.</td>
+        <td><span class="day-badge">Days 15–17</span></td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td><span class="tech-name">PostgreSQL &amp; Prisma</span></td>
+        <td><strong>PostgreSQL &amp; Prisma Course</strong><br><span class="creator">freeCodeCamp / Web Dev Simplified</span></td>
+        <td><span class="time-badge">~2.5 hrs</span></td>
+        <td class="topics-list">SQL Joins (INNER, LEFT, RIGHT), Group By, B-Tree Indexes, ACID transactions, Prisma schema design, 1:N / M:N relations, connection pooling with PgBouncer.</td>
+        <td><span class="day-badge">Days 19–21</span></td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td><span class="tech-name">Docker (Basics)</span></td>
+        <td><strong>Docker for Beginners</strong><br><span class="creator">TechWorld with Nana</span></td>
+        <td><span class="time-badge">~1.5 hrs</span></td>
+        <td class="topics-list">Images vs Containers, writing multi-stage <code>Dockerfile</code>, Port mapping, Env variables, Docker Compose orchestration for Node.js + PostgreSQL.</td>
+        <td><span class="day-badge">Day 25</span></td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td><span class="tech-name">System Design</span></td>
+        <td><strong>System Design Fundamentals</strong><br><span class="creator">ByteByteGo &amp; Gaurav Sen</span></td>
+        <td><span class="time-badge">~3 hrs</span></td>
+        <td class="topics-list">Horizontal vs Vertical Scaling, Latency vs Throughput, Layer 4 vs Layer 7 Load Balancing, Caching (Redis / Cache-aside), WebSockets vs Polling for live support feeds.</td>
+        <td><span class="day-badge">Days 1–28</span></td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td><span class="tech-name">DSA in JAVA</span></td>
+        <td><strong>NeetCode 150 (Java Track)</strong><br><span class="creator">NeetCode.io (Java Solutions Tab)</span></td>
+        <td><span class="time-badge">Daily</span></td>
+        <td class="topics-list">Solve 3–4 problems daily in <strong>Java</strong>: Arrays &amp; Hashing (HashMap/HashSet), Two Pointers, Sliding Window, Stacks, Binary Search, Trees, and Dynamic Programming.</td>
+        <td><span class="day-badge">Daily</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>
