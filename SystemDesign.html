@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>28-Day System Design Video Curriculum - Saurabh Kumar</title>
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #111827;
+      --card-border: #1f2937;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent: #38bdf8;
+      --accent-subtle: rgba(56, 189, 248, 0.12);
+      --green: #34d399;
+      --green-subtle: rgba(52, 211, 153, 0.15);
+      --yellow: #fbbf24;
+      --yellow-subtle: rgba(251, 191, 36, 0.15);
+      --purple: #a855f7;
+      --purple-subtle: rgba(168, 85, 247, 0.15);
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .badge-top {
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: 9999px;
+      background: var(--accent-subtle);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 0.4rem;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* Execution Callout */
+    .callout {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .callout-item h4 {
+      font-size: 0.9rem;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .callout-item p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Section Titles */
+    h2.week-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 2.5rem 0 1rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 0.5rem;
+    }
+
+    .week-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      background: var(--purple-subtle);
+      color: var(--purple);
+    }
+
+    /* Tables */
+    .table-wrapper {
+      overflow-x: auto;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      background: var(--card-bg);
+      margin-bottom: 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+
+    th {
+      background: #172033;
+      color: #ffffff;
+      padding: 0.85rem 1rem;
+      font-weight: 600;
+      border-bottom: 1px solid var(--card-border);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--card-border);
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Badges & Chips */
+    .day-pill {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .topic-name {
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .search-chip {
+      font-family: var(--font-mono);
+      background: #030712;
+      border: 1px solid #374151;
+      padding: 0.35rem 0.6rem;
+      border-radius: 6px;
+      color: #e5e7eb;
+      font-size: 0.82rem;
+      display: inline-block;
+      line-height: 1.3;
+    }
+
+    .highlight-sop {
+      color: var(--yellow);
+      font-weight: 600;
+      font-size: 0.75rem;
+      display: block;
+      margin-top: 0.25rem;
+    }
+
+    .creator-pill {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      white-space: nowrap;
+      background: var(--green-subtle);
+      color: var(--green);
+    }
+
+    .time-pill {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      white-space: nowrap;
+      background: var(--yellow-subtle);
+      color: var(--yellow);
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: #ffffff;
+        color: #000000;
+        padding: 0;
+      }
+      .container {
+        max-width: 100%;
+      }
+      .card-bg, .table-wrapper {
+        background: #ffffff;
+        border: 1px solid #cccccc;
+      }
+      th {
+        background: #f3f4f6;
+        color: #000000;
+      }
+      td {
+        border-bottom: 1px solid #e5e7eb;
+        color: #1f2937;
+      }
+      .topic-name {
+        color: #000000;
+      }
+      .search-chip {
+        background: #f9fafb;
+        border: 1px solid #d1d5db;
+        color: #111827;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <span class="badge-top">Target: 2+ YOE Full-Stack / Frontend Switch</span>
+      <h1>28-Day System Design Video Curriculum</h1>
+      <p class="subtitle">Curated daily 15–20 minute video plan mapped to exact YouTube search terms and creators.</p>
+    </header>
+
+    <!-- 3-Step Execution Method -->
+    <div class="callout">
+      <div class="callout-item">
+        <h4>1. Search &amp; Watch (15 Mins)</h4>
+        <p>Copy the exact title in the search chip into YouTube. Watch at 1.25x – 1.5x speed. Focus on architectural trade-offs.</p>
+      </div>
+      <div class="callout-item">
+        <h4>2. Sketch Architecture (5 Mins)</h4>
+        <p>Draw the 4–5 core boxes on paper: Client &rarr; Load Balancer &rarr; API &rarr; Cache (Redis) &rarr; Database (Postgres).</p>
+      </div>
+      <div class="callout-item">
+        <h4>3. Relate to Your Project</h4>
+        <p>Anchor every concept back to your <strong>Support Operations Center (SOP)</strong> to deliver convincing interview answers.</p>
+      </div>
+    </div>
+
+    <!-- WEEK 1 -->
+    <h2 class="week-title">
+      <span>Week 1: LLD, OOP &amp; Core Architecture</span>
+      <span class="week-tag">Days 1 – 7</span>
+    </h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 8%;">Day</th>
+            <th style="width: 25%;">Core Concept</th>
+            <th style="width: 45%;">Exact YouTube Title to Search</th>
+            <th style="width: 14%;">Creator</th>
+            <th style="width: 8%;">Runtime</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="day-pill">Day 1</span></td>
+            <td><span class="topic-name">Client-Server &amp; Scaling 0 to 10M</span></td>
+            <td><span class="search-chip">"How to Scale a System from 0 to 10 Million Users"</span></td>
+            <td><span class="creator-pill">ByteByteGo</span></td>
+            <td><span class="time-pill">10 mins</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill">Day 2</span></td>
+            <td><span class="topic-name">Monolith vs Microservices &amp; REST</span></td>
+            <td><span class="search-chip">"Monolithic vs Microservice Architecture" + "REST vs GraphQL vs gRPC"</span></td>
+            <td><span class="creator-pill">ByteByteGo</span></td>
+            <td><span class="time-pill">12 mins</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill">Day 3</span></td>
+            <td><span class="topic-name">OOP Concepts &amp; Interfaces</span></td>
+            <td><span class="search-chip">"Object Oriented Programming (OOP) in One Video"</span></td>
+            <td><span class="creator-pill">Concept &amp;&amp; Coding</span></td>
+            <td><span class="time-pill">18 mins</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill">Day 4</span></td>
+            <td><span class="topic-name">SOLID Principles with Code</span></td>
+            <td><span class="search-chip">"SOLID Principles with Code Examples"</span></td>
+            <td><span class="creator-pill">Concept &amp;&amp; Coding</span></td>
+            <td><span class="time-pill">22 mins</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill">Day 5</span></td>
+            <td><span class="topic-name">Creational: Singleton &amp; Factory</span></td>
+            <td><span class="search-chip">"Factory Pattern" AND "Singleton Pattern"</span></td>
+            <td><span class="creator-pill">Concept &amp;&amp; Coding</span></td>
+            <td><span class="time-pill">18 mins</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill">Day 6</span></td>
+            <td><span class="topic-name">Behavioral: Observer &amp; Strategy</span></td>
+            <td><span class="search-chip">"Observer Design Pattern" AND "Strategy Design Pattern"</span></td>
+            <td><span class="creator-pill">Concept &amp;&amp; Coding</span></td>
+            <td><span class="time-pill">20 mins</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill">Day 7</span></td>
+            <td><span class="topic-name">Dependency Injection &amp; Repo Pattern</span></td>
+            <td><span class="search-chip">"What is Dependency Injection? (with practical code)"</span></td>
+            <td><span class="creator-pill">Web Dev Simplified</span></td>
+            <td><span class="time-pill">12 mins</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- WEEK 2 -->
+    <h2 class="week-title">
+      <span>Week 2: Client-Side System Design &amp; Real-Time</span>
+      <span class="week-tag">Days 8 – 14</span>
+    </h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 8%;">Day</th>
+            <th style="width: 25%;">Core Concept</th>
+            <th style="width: 45%;">Exact YouTube Title to Search</th>
+            <th style="width: 14%;">Creator</th>
+            <th style="width: 8%;">Runtime</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="day-pill">Day 8</span></td>
+            <td><span class="topic-name">Client-Side System Design Basics</span></td>
+            <td><span class="search-chip">"Frontend System Design Interview - An Introduction"</span></td>
+            <td><span class="creator-pill">GreatFrontEnd</span></td>
+            <td><span class="time-pill">15 mins</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill">Day 9</span></td>
+            <td><span class="topic-name">SSR, SSG, CSR &amp; Hydration</span></td>
+            <td><span class="search-chip">"Rendering Patterns: SSR, SSG, ISR, CSR Explained"</span></td>
+            <td><span class="creator-pill">Fireship / ByteGrad</span></td>
+            <td><span class="time-pill">12 mins</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill">Day 10</span></td>
+            <td><span class="topic-name">Pagination: Offset vs Cursor</span></td>
+            <td><span class="search-chip">"Offset vs Cursor Pagination: Which One is Better?"</span></td>
+            <td><span class="creator-pill">ByteByteGo</span></td>
+            <td><span class="time-pill">6 mins</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill">Day 11</span></td>
+            <td><span class="topic-name">Real-Time: WebSockets vs Polling</span></td>
+            <td><span class="search-chip">"WebSockets vs Long Polling vs SSE"</span></td>
+            <td><span class="creator-pill">ByteByteGo</span></td>
+            <td><span class="time-pill">8 mins</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill">Day 12</span></td>
+            <td><span class="topic-name">Frontend Performance &amp; Virtualization</span></td>
+            <td><span class="search-chip">"How Virtualized Lists Work (Rendering 100k items safely)"</span></td>
+            <td><span class="creator-pill">Web Dev Simplified</span></td>
+            <td><span class="time-pill">14 mins</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill">Day 13</span></td>
+            <td><span class="topic-name">Web Security (CORS, CSRF, XSS)</span></td>
+            <td><span class="search-chip">"Top 5 Web Security Vulnerabilities Explained"</span></td>
+            <td><span class="creator-pill">ByteByteGo</span></td>
+            <td><span class="time-pill">10 mins</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill">Day 14</span></td>
+            <td><span class="topic-name">System Design 1: Real-Time Chat App</span></td>
+            <td><span class="search-chip">"Design a Chat Application like WhatsApp / Slack"</span></td>
+            <td><span class="creator-pill">CodeKarle</span></td>
+            <td><span class="time-pill">24 mins</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- WEEK 3 -->
+    <h2 class="week-title">
+      <span>Week 3: Backend &amp; Database System Design</span>
+      <span class="week-tag">Days 15 – 21</span>
+    </h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 8%;">Day</th>
+            <th style="width: 25%;">Core Concept</th>
+            <th style="width: 45%;">Exact YouTube Title to Search</th>
+            <th style="width: 14%;">Creator</th>
+            <th style="width: 8%;">Runtime</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="day-pill">Day 15</span></td>
+            <td><span class="topic-name">SQL vs NoSQL Database Selection</span></td>
+            <td><span class="search-chip">"SQL vs NoSQL: How to Choose a Database?"</span></td>
+            <td><span class="creator-pill">ByteByteGo</span></td>
+            <td><span class="time-pill">8 mins</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill">Day 16</span></td>
+            <td><span class="topic-name">Database Normalization (1NF to 3NF)</span></td>
+            <td><span class="search-chip">"Database Normalization (1NF, 2NF, 3NF) Explained Simply"</span></td>
+            <td><span class="creator-pill">Decomplexify</span></td>
+            <td><span class="time-pill">15 mins</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill">Day 17</span></td>
+            <td><span class="topic-name">Database Indexing (B-Trees)</span></td>
+            <td><span class="search-chip">"How Database Indexes Work Under the Hood"</span></td>
+            <td><span class="creator-pill">ByteByteGo</span></td>
+            <td><span class="time-pill">8 mins</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill">Day 18</span></td>
+            <td><span class="topic-name">ACID Properties &amp; Transactions</span></td>
+            <td><span class="search-chip">"ACID Transactions Explained with Real-life Example"</span></td>
+            <td><span class="creator-pill">Gaurav Sen</span></td>
+            <td><span class="time-pill">16 mins</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill">Day 19</span></td>
+            <td><span class="topic-name">DB Scaling: Read Replicas &amp; PgBouncer</span></td>
+            <td><span class="search-chip">"Database Scaling: Replication, Sharding, and PgBouncer"</span></td>
+            <td><span class="creator-pill">Hussein Nasser</span></td>
+            <td><span class="time-pill">12 mins</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill">Day 20</span></td>
+            <td><span class="topic-name">Caching Architecture &amp; Redis</span></td>
+            <td><span class="search-chip">"How Does Caching Work? (Redis &amp; Eviction Policies)"</span></td>
+            <td><span class="creator-pill">ByteByteGo</span></td>
+            <td><span class="time-pill">8 mins</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill">Day 21</span></td>
+            <td><span class="topic-name">Rate Limiting (Token Bucket)</span></td>
+            <td><span class="search-chip">"System Design: Rate Limiting Algorithms (Token Bucket)"</span></td>
+            <td><span class="creator-pill">ByteByteGo / Piyush Garg</span></td>
+            <td><span class="time-pill">10 mins</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- WEEK 4 -->
+    <h2 class="week-title">
+      <span>Week 4: The 5 Real-World Systems &amp; Project Mastery</span>
+      <span class="week-tag">Days 22 – 28</span>
+    </h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 8%;">Day</th>
+            <th style="width: 25%;">Core Concept</th>
+            <th style="width: 45%;">Exact YouTube Title to Search</th>
+            <th style="width: 14%;">Creator</th>
+            <th style="width: 8%;">Runtime</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="day-pill">Day 22</span></td>
+            <td><span class="topic-name">System Design 2: URL Shortener</span></td>
+            <td><span class="search-chip">"System Design: URL Shortener (TinyURL) Interview Question"</span></td>
+            <td><span class="creator-pill">CodeKarle</span></td>
+            <td><span class="time-pill">22 mins</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill">Day 23</span></td>
+            <td><span class="topic-name">System Design 3: Notification Service</span></td>
+            <td><span class="search-chip">"System Design: Notification Service (Kafka, Queues, Workers)"</span></td>
+            <td><span class="creator-pill">CodeKarle / ByteByteGo</span></td>
+            <td><span class="time-pill">20 mins</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill">Day 24</span></td>
+            <td><span class="topic-name">System Design 4: E-Commerce Platform</span></td>
+            <td><span class="search-chip">"System Design: E-Commerce Website (Amazon / Flipkart)"</span></td>
+            <td><span class="creator-pill">CodeKarle</span></td>
+            <td><span class="time-pill">25 mins</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill">Day 25</span></td>
+            <td>
+              <span class="topic-name">System Design 5: Support / Ticket System</span>
+              <span class="highlight-sop">&starf; Direct Match for Your SOP Project</span>
+            </td>
+            <td><span class="search-chip">"System Design: Ticket Management System / JIRA System Design"</span></td>
+            <td><span class="creator-pill">CodeKarle</span></td>
+            <td><span class="time-pill">20 mins</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill">Day 26</span></td>
+            <td><span class="topic-name">Load Balancers (L4/L7) &amp; Consistent Hashing</span></td>
+            <td><span class="search-chip">"How Load Balancers Work" + "Consistent Hashing"</span></td>
+            <td><span class="creator-pill">ByteByteGo</span></td>
+            <td><span class="time-pill">14 mins</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill">Day 27</span></td>
+            <td><span class="topic-name">API Gateway &amp; Message Queues</span></td>
+            <td><span class="search-chip">"What is an API Gateway?" + "Message Queues (Kafka vs RabbitMQ)"</span></td>
+            <td><span class="creator-pill">ByteByteGo</span></td>
+            <td><span class="time-pill">15 mins</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill">Day 28</span></td>
+            <td><span class="topic-name">Full End-to-End Mock Interview</span></td>
+            <td><span class="search-chip">"Full System Design Interview Example: From Requirements to Architecture"</span></td>
+            <td><span class="creator-pill">Exponent / ByteByteGo</span></td>
+            <td><span class="time-pill">25 mins</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>
